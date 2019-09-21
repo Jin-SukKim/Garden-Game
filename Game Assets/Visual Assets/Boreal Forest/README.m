@@ -1,4 +1,4 @@
-# druid-assets/swamp
+# Boreal Forest Assets
 
 ## Plant 1 (Replace with name):
 [ add url here ]

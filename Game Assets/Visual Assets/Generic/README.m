@@ -1,4 +1,4 @@
-# druid-assets/swamp
+Generic Assets
 
 ## Asset 1 (Replace with name):
 [ add url here ]

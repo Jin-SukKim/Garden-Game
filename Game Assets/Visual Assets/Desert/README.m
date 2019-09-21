@@ -1,4 +1,4 @@
-# druid-assets/swamp
+# Desert Assets
 
 ## Plant 1 (Replace with name):
 [ add url here ]

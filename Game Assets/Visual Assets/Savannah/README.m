@@ -1,4 +1,4 @@
-# druid-assets/swamp
+# Savannah Assets
 
 ## Plant 1 (Replace with name):
 [ add url here ]
