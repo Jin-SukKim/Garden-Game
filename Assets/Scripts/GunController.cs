@@ -5,7 +5,7 @@ using UnityEngine;
 using Photon;
 using Photon.Pun;
 
-public class GunController : MonoBehaviour
+public class GunController : MonoBehaviourPun
 {
     public bool isFiring;
 
@@ -27,15 +27,26 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        shoot();
+
+    }
+    public void shoot()
+    {
         if (isFiring)
         {
             if (Time.time > timeBetweenShots + lastShot)
             {
-                BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
-                newBullet.speed = bulletSpeed;
-                lastShot = Time.time;
+                this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint.position, firePoint.rotation);
             }
         }
-
     }
+    [PunRPC]
+    private void Fire(Vector3 pos, Quaternion rot)
+    {   
+        BulletController newBullet = Instantiate(bullet, pos, rot) as BulletController;
+        newBullet.speed = bulletSpeed;
+        lastShot = Time.time;
+    }
+
+
 }
