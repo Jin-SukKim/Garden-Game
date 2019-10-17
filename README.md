@@ -24,6 +24,8 @@ If the branch fails, the label will be changed indicating it needs revision, not
 If the branch passes, it will be merged or marked as ready for merging, and/or discussed, depending on the magnitude of the changes, so the teams are aware of what’s going on.
 
 When you create an issue
+
+
 2.a Apply a "Team" Label
 
 2.b Apply one or more of the "Type" Labels
@@ -32,7 +34,9 @@ When you create an issue
 
 An issue should not have more than 1 status label.
 
+
 When you work on an issue
+
 3.a Assign it to yourself
 
 3.b Change the "Status" label and other labels as necessary.
@@ -44,4 +48,5 @@ Only one person should be assigned to an issue at a time. Issues can be passed b
 Comment on your issue frequently, share your thoughts, resources, what you tried, what worked and what didn't, and anything you learned that other's may benefit from.
 
 Provide Useful commit messages
+
 "safety commit" means you're about to do something risky and want to make sure you committed your work. This is fine. "did stuff" is not useful. What stuff? "Simplified movement controls and tidied code". This is acceptable. "fixed issue #23" will link the commit message to issue 23 in github, which is useful.
