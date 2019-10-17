@@ -1,5 +1,3 @@
-Git Standards
-Eamonn edited this page 1 hour ago · 1 revision
 The project has a "Master" branch and a "Develop" branch.
 
 The "Master" branch is ONLY for completed, functioning, fully merged project code from "Develop".
@@ -10,36 +8,45 @@ To avoid problems, merges into "Master" will only be done by 1 person.
 
 Merges will flow as follows:
 
-Issue Branch -> Team_Develop -> Team_Master -> Develop -> Master
+Issue Branch -> Develop -> Master
 
 -> means "merges into"
 
-1. Each team has a TeamName_Master and a TeamName_Develop branch.
-The TeamName_Master branch is for finished work that is ready to be merged into the main project "Develop" Branch. The TeamName_Develop branch is for "Issue" branches to be merged into.
+Work will flow as follows:
 
-2. When you create an issue
+Issue created Team, Type, and Status labels applied Branch created for issue coding/working on issue. coding complete (TL can review code for functionality, etc) “Status: Completed - Review needed” label applied, to let QA/PM’s know code needs official quality & testing revision. QA/PM applies the “status: under review” label, and reviews code for functionality & quality Code passes review, QA/PM merges or labels “Status: completed, ready for merge” OR Code fails review, gets “Status: Revision needed” label.
+
+Merging
+When your branch is ready for merging, Mark the related issue as “Status: Completed - review needed” The branch will then be reviewed by QA for completeness, testing, and quality.
+
+If the branch fails, the label will be changed indicating it needs revision, notes will be included (in the issue comments) about the changes needed, and the coder who last worked on the issue will be contacted.
+
+If the branch passes, it will be merged or marked as ready for merging, and/or discussed, depending on the magnitude of the changes, so the teams are aware of what’s going on.
+
+When you create an issue
+
+
 2.a Apply a "Team" Label
+
 2.b Apply one or more of the "Type" Labels
-3.c Apply a "Status" Label.
+
+2.c Apply a "Status" Label.
+
 An issue should not have more than 1 status label.
 
-3. When you work on an issue
+
+When you work on an issue
+
 3.a Assign it to yourself
+
 3.b Change the "Status" label and other labels as necessary.
+
 3.c Create a branch named "Issue#X" where "X" is the issue number of the issue you are working on. This way all the details about a branch can be easily found and people don't have to guess what a cryptically named branch is for.
+
 Only one person should be assigned to an issue at a time. Issues can be passed between people, but it should only have 1 person's name assigned to it.
 
 Comment on your issue frequently, share your thoughts, resources, what you tried, what worked and what didn't, and anything you learned that other's may benefit from.
 
-4. Provide Useful commit messages
-"safety commit" means you're about to do something risky and want to make sure you committed your work. This is fine. "did stuff" is not useful. What stuff? "Simplified movement controls and tidied code". This is acceptable. "fixed issue #23" will link the commit message to issue 23 in github, which is useful.
+Provide Useful commit messages
 
- Add a custom footer
- Pages 4
-Find a Page…
-Home
-Git Standards
-Mac Git Resources
-Windows Git Resources
- Add a custom sidebar
-Clone this wiki locally
+"safety commit" means you're about to do something risky and want to make sure you committed your work. This is fine. "did stuff" is not useful. What stuff? "Simplified movement controls and tidied code". This is acceptable. "fixed issue #23" will link the commit message to issue 23 in github, which is useful.
