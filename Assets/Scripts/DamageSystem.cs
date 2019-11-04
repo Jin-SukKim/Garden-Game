@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DamageSystem : MonoBehaviour
 {
     public float health;
+    public Slider healthSlider;
 
 
     private float currentHealth;
@@ -15,6 +17,8 @@ public class DamageSystem : MonoBehaviour
     void Start()
     {
         currentHealth = health;
+        healthSlider.maxValue = health;
+        healthSlider.value = currentHealth;
     }
 
     // Update is called once per frame
@@ -32,5 +36,6 @@ public class DamageSystem : MonoBehaviour
     public void Damage(float damage)
     {
         currentHealth -= damage;
+        healthSlider.value = currentHealth;
     }
 }
