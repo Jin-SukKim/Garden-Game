@@ -46,6 +46,7 @@ public class GunController : MonoBehaviourPun
         BulletController newBullet = Instantiate(bullet, pos, rot) as BulletController;
         newBullet.speed = bulletSpeed;
         lastShot = Time.time;
+        newBullet.team = this.transform.parent.GetComponent<Teams>().TeamsFaction;
     }
 
 

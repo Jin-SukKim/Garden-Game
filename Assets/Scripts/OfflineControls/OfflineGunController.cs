@@ -26,6 +26,7 @@ public class OfflineGunController : MonoBehaviour {
                 BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
                 newBullet.speed = bulletSpeed;
                 lastShot = Time.time;
+                newBullet.team = this.transform.parent.GetComponent<Teams>().TeamsFaction;
             }
         }
     }
