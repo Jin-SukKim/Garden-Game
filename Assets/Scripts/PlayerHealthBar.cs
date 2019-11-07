@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class PlayerHealthBar : MonoBehaviour {
     [SerializeField]
     public float lerpSpeed = 1;
+    [SerializeField]   
     private Image fillImage;
     private float currentFill;
     [SerializeField]
-    public float maxHealth { get; set; }
+    public float maxHealth;
 
     //property for the health bar's currentValue;
     public float CurrentValue
@@ -41,7 +42,7 @@ public class PlayerHealthBar : MonoBehaviour {
 
     void Start()
     {
-
+        currentFill = maxHealth;
     }
 
     void Update()
@@ -52,11 +53,11 @@ public class PlayerHealthBar : MonoBehaviour {
         }
 
         //manual controls for testing
-        if(Input.GetKeyDown("J"))
+        if(Input.GetKeyDown("j"))
         {
             CurrentValue -= 10;
         }
-        if (Input.GetKeyDown("K"))
+        if (Input.GetKeyDown("k"))
         {
             CurrentValue += 10;
         }
