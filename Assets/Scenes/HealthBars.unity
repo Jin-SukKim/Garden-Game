@@ -392,6 +392,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  image: {fileID: 0}
+  currentHealth: 0
   enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
     type: 3}
 --- !u!1001 &286977350
@@ -1063,6 +1065,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  image: {fileID: 0}
+  currentHealth: 0
   enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
     type: 3}
 --- !u!1 &756907268
@@ -1331,10 +1335,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82cb480f5ea6454b96d2697b6044d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetObject: {fileID: 1281382406}
+  targetDamageSystem: {fileID: 0}
   lerpSpeed: 6
   fillImage: {fileID: 1459560584}
   fillImageLerp: {fileID: 1148651848}
-  maxHealth: 100
+  maxValue: 0
 --- !u!1 &1148651846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,12 +1391,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.97164285, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fd71becf27a1c8344bc5d61e1976a60f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2dbcab2c1fad3464f866c64a2c68ba4c, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1567,6 +1573,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  image: {fileID: 0}
+  currentHealth: 0
   enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
     type: 3}
 --- !u!1 &1287523724
@@ -1821,6 +1829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  image: {fileID: 0}
+  currentHealth: 0
   enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
     type: 3}
 --- !u!1 &1459560582
@@ -1873,12 +1883,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.30717415, b: 0.25, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6412fb034ed518344a6775431783da8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2dbcab2c1fad3464f866c64a2c68ba4c, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
