@@ -1,15 +1,92 @@
 fileFormatVersion: 2
-guid: cda607d6b39fbe945a069235e981d283
+guid: d35a1778ad89540c282252faa0a04e9a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Material.001
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
-    9500000: //RootNode
+    100000: berry
+    100002: berry1
+    100004: berry10
+    100006: berry11
+    100008: berry2
+    100010: berry3
+    100012: berry4
+    100014: berry5
+    100016: berry6
+    100018: berry7
+    100020: berry8
+    100022: berry9
+    100024: Camera
+    100026: leaves1
+    100028: leaves2
+    100030: leaves3
+    100032: Light
+    100034: //RootNode
+    100036: transform1
+    100038: transform10
+    100040: transform11
+    100042: transform12
+    100044: transform13
+    100046: transform14
+    100048: transform15
+    100050: transform16
+    100052: transform17
+    100054: transform2
+    100056: transform3
+    100058: transform4
+    100060: transform5
+    100062: transform6
+    100064: transform7
+    100066: transform8
+    100068: transform9
+    100070: trunk1
+    100072: trunk2
+    100074: trunk3
+    400000: berry
+    400002: berry1
+    400004: berry10
+    400006: berry11
+    400008: berry2
+    400010: berry3
+    400012: berry4
+    400014: berry5
+    400016: berry6
+    400018: berry7
+    400020: berry8
+    400022: berry9
+    400024: Camera
+    400026: leaves1
+    400028: leaves2
+    400030: leaves3
+    400032: Light
+    400034: //RootNode
+    400036: transform1
+    400038: transform10
+    400040: transform11
+    400042: transform12
+    400044: transform13
+    400046: transform14
+    400048: transform15
+    400050: transform16
+    400052: transform17
+    400054: transform2
+    400056: transform3
+    400058: transform4
+    400060: transform5
+    400062: transform6
+    400064: transform7
+    400066: transform8
+    400068: transform9
+    400070: trunk1
+    400072: trunk2
+    400074: trunk3
+    2000000: Camera
+    2100000: trunk
+    2100002: berries
+    2100004: leaves
+    2300000: trunk3
+    3300000: trunk3
+    4300000: trunk3
+    10800000: Light
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -38,7 +115,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -62,8 +139,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -90,7 +167,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
