@@ -1,35 +1,106 @@
 fileFormatVersion: 2
 guid: a15355922238d2c4bac93539912aab18
 ModelImporter:
-  serializedVersion: 28
-  internalIDToNameTable:
-  - first:
-      74: -887982601649841707
-    second: metarig|metarigAction
-  - first:
-      74: 2667949614841947897
-    second: Walk
-  - first:
-      74: 5522812681064789136
-    second: Run
-  - first:
-      74: 8998078805064842193
-    second: T-Pose Run
-  - first:
-      74: -3100369314251171874
-    second: Idle
-  - first:
-      74: 3771464487664831772
-    second: Shoot
-  - first:
-      74: -6185155371445809522
-    second: Throw
-  - first:
-      74: 4348485665485846014
-    second: Death
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: AnimalLoverSkin
+    100002: CharacterModel
+    100004: FlowerChildSkin
+    100006: forearm.L
+    100008: forearm.L_end
+    100010: forearm.R
+    100012: forearm.R_end
+    100014: ForemanSkin
+    100016: metarig
+    100018: MoneyManSkin
+    100020: //RootNode
+    100022: shin.L
+    100024: shin.L_end
+    100026: shin.R
+    100028: shin.R_end
+    100030: Shotgun
+    100032: shoulder.L
+    100034: shoulder.R
+    100036: spine
+    100038: spine.001
+    100040: spine.002
+    100042: spine.003
+    100044: spine.004
+    100046: spine.005
+    100048: spine.006
+    100050: spine.006_end
+    100052: spine.008
+    100054: spine.009
+    100056: spine.010
+    100058: spine.010_end
+    100060: thigh.L
+    100062: thigh.R
+    100064: upper_arm.L
+    100066: upper_arm.R
+    400000: AnimalLoverSkin
+    400002: CharacterModel
+    400004: FlowerChildSkin
+    400006: forearm.L
+    400008: forearm.L_end
+    400010: forearm.R
+    400012: forearm.R_end
+    400014: ForemanSkin
+    400016: metarig
+    400018: MoneyManSkin
+    400020: //RootNode
+    400022: shin.L
+    400024: shin.L_end
+    400026: shin.R
+    400028: shin.R_end
+    400030: Shotgun
+    400032: shoulder.L
+    400034: shoulder.R
+    400036: spine
+    400038: spine.001
+    400040: spine.002
+    400042: spine.003
+    400044: spine.004
+    400046: spine.005
+    400048: spine.006
+    400050: spine.006_end
+    400052: spine.008
+    400054: spine.009
+    400056: spine.010
+    400058: spine.010_end
+    400060: thigh.L
+    400062: thigh.R
+    400064: upper_arm.L
+    400066: upper_arm.R
+    2100000: Foreman
+    2100002: FlowerChild
+    2100004: MoneyMan
+    2100006: Material
+    2100008: Material.002
+    2100010: Material.001
+    4300000: ForemanSkin
+    4300002: AnimalLoverSkin
+    4300004: MoneyManSkin
+    4300006: FlowerChildSkin
+    4300008: CharacterModel
+    4300010: Shotgun
+    7400000: metarig|metarigAction
+    7400002: Walk
+    7400004: Run
+    7400006: T-Pose Run
+    7400008: Idle
+    7400010: Shoot
+    7400012: Throw
+    7400014: Death
+    9500000: //RootNode
+    13700000: AnimalLoverSkin
+    13700002: CharacterModel
+    13700004: FlowerChildSkin
+    13700006: ForemanSkin
+    13700008: MoneyManSkin
+    13700010: Shotgun
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -58,7 +129,6 @@ ModelImporter:
     - serializedVersion: 16
       name: metarig|metarigAction
       takeName: metarig|metarigAction
-      internalID: -887982601649841707
       firstFrame: 0
       lastFrame: 215
       wrapMode: 0
@@ -87,7 +157,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Walk
       takeName: metarig|metarigAction
-      internalID: 2667949614841947897
       firstFrame: 0
       lastFrame: 39
       wrapMode: 0
@@ -116,7 +185,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Run
       takeName: metarig|metarigAction
-      internalID: 5522812681064789136
       firstFrame: 40
       lastFrame: 49
       wrapMode: 0
@@ -145,7 +213,6 @@ ModelImporter:
     - serializedVersion: 16
       name: T-Pose Run
       takeName: metarig|metarigAction
-      internalID: 8998078805064842193
       firstFrame: 50
       lastFrame: 59
       wrapMode: 0
@@ -174,7 +241,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Idle
       takeName: metarig|metarigAction
-      internalID: -3100369314251171874
       firstFrame: 60
       lastFrame: 109
       wrapMode: 0
@@ -203,7 +269,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Shoot
       takeName: metarig|metarigAction
-      internalID: 3771464487664831772
       firstFrame: 110
       lastFrame: 139
       wrapMode: 0
@@ -232,7 +297,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Throw
       takeName: metarig|metarigAction
-      internalID: -6185155371445809522
       firstFrame: 140
       lastFrame: 169
       wrapMode: 0
@@ -261,7 +325,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Death
       takeName: metarig|metarigAction
-      internalID: 4348485665485846014
       firstFrame: 170
       lastFrame: 214
       wrapMode: 0
@@ -294,7 +357,6 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -302,19 +364,18 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -323,10 +384,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -336,7 +397,6 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -344,7 +404,6 @@ ModelImporter:
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
