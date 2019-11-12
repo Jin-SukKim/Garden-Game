@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// this static class is used to access prefabs like bullets from anywhere in the code
 public static class PrefabManager
 {
     static Dictionary<string, GameObject> bullets = new Dictionary<string, GameObject>();
     
+    // static constructor for any initialization
     static PrefabManager()
     {
         LoadBullets();
     }
 
+    // loads all the bullets from the bullets folder in the resources folder
     public static void LoadBullets()
     {
         GameObject[] allBullets = Resources.LoadAll("Prefabs/Bullets",typeof(GameObject)).Cast<GameObject>().ToArray();
@@ -19,7 +22,6 @@ public static class PrefabManager
         // Store all bullets in the dictionary with name as key
         for (int i = 0; i < allBullets.Length; i++)
         {
-            Debug.Log(allBullets[i].name);
             bullets.Add(allBullets[i].name, allBullets[i]);
         }
     }

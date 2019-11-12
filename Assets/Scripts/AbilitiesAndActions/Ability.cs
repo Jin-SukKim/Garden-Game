@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// This can be used for any sort of ability, from shooting or spells or even maybe construction
+// it has a list of one or more IActions that are executed when all the conditions for this ability are met (cost,cooldown,range)
 public class Ability {   
 
+    // when we try to use an ability, this enum is returned to let us know if the casting the ability succeeded or not and why
     public enum AbilityFeedback { outOfRange, onCooldown, noResource, success};
 
     private float cost;
@@ -54,13 +57,12 @@ public class Ability {
         return AbilityFeedback.success;
     }
 
-    // CHECKS RESOURCE??????????
-    protected bool checkCooldown()
+    protected bool checkCost()
     {
         return (resource == null || resource.ResourceCheck(cost));
     }
 
-    protected bool checkCost() {
+    protected bool checkCooldown() {
         return (cooldown == 0 || Time.time >= cooldownTimestamp);
     }
 
@@ -68,7 +70,8 @@ public class Ability {
         return (range == 0 || (Vector3.SqrMagnitude(e.transform.position - pos) <= range * range));
     }
 
-    // need to check if no actions in list?????
+    // executed when an ability passes all of its checks
+    // executes all actions in action list
     protected void fireAbility(Entity e) {
         payCostAndCoolDown();
         foreach(IAction a in actions) {
@@ -76,6 +79,8 @@ public class Ability {
         }
     }
 
+    // pays any cost if there this ability has a resource cost
+    // sets the cooldown timer
     protected void payCostAndCoolDown() {
         if (cooldown != 0) {
             cooldownTimestamp = Time.time + cooldown;
