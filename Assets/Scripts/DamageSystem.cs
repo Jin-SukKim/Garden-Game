@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class DamageSystem : MonoBehaviour
 {
     public float health;
-    public Slider healthSlider;
 
+    //The bar that displays remaining health
+    public Image healthbar;
 
     private float currentHealth;
 
@@ -17,8 +18,6 @@ public class DamageSystem : MonoBehaviour
     void Start()
     {
         currentHealth = health;
-        healthSlider.maxValue = health;
-        healthSlider.value = currentHealth;
     }
 
     // Update is called once per frame
@@ -36,6 +35,10 @@ public class DamageSystem : MonoBehaviour
     public void Damage(float damage)
     {
         currentHealth -= damage;
-        healthSlider.value = currentHealth;
+
+        if(healthbar)
+        {
+            healthbar.fillAmount = currentHealth/health;
+        }
     }
 }

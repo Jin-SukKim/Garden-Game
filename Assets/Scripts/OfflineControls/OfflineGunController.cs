@@ -16,11 +16,21 @@ public class OfflineGunController : MonoBehaviour {
 
     public Transform firePoint;
 
-    public Slider manabar;
-    public int mana = 5;
+    //The bar that displays remaining mana
+    public Image manabar;
+
+    //The maximum amount of mana the player can have
+    public float maxMana = 10;
+
+    //The player's current mana
+    public float mana;
 
     // Start is called before the first frame update
     void Start() {
+        if(manabar)
+        {
+            mana = maxMana;
+        }
     }
 
     // Update is called once per frame
@@ -31,8 +41,11 @@ public class OfflineGunController : MonoBehaviour {
                 newBullet.speed = bulletSpeed;
                 lastShot = Time.time;
 
-                mana--;
-                manabar.value = mana;
+                if(manabar)
+                {
+                    mana--;
+                    manabar.fillAmount = mana/maxMana;
+                }    
             }
         }
     }
