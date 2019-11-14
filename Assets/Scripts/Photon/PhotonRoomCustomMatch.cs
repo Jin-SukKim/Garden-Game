@@ -131,6 +131,16 @@ public class PhotonRoomCustomMatch : MonoBehaviourPunCallbacks, IInRoomCallbacks
         ListPlayers();
     }
 
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        base.OnMasterClientSwitched(newMasterClient);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            startButton.SetActive(true);
+        }
+
+    }
+
     //public override void OnLeftRoom()
     //{
     //    base.OnLeftRoom();
