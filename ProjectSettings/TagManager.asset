@@ -9,8 +9,6 @@ TagManager:
   - Bullet
   - Object
   - Destructible
-  - UsernameInput
-  - CreateAccountButton
   layers:
   - Default
   - TransparentFX
