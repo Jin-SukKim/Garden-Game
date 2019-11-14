@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DamageSystem : MonoBehaviour
 {
     public float health;
+    public Image image;
 
     //The bar that displays remaining health
     public Image healthbar;
