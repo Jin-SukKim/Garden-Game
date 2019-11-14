@@ -8,10 +8,7 @@ public class DamageSystem : MonoBehaviour
     public float health;
     public Image image;
 
-    //The bar that displays remaining health
-    public Image healthbar;
-
-    private float currentHealth;
+    public float currentHealth;
 
     public GameObject enemeyDeathAnimation;
 
@@ -36,10 +33,5 @@ public class DamageSystem : MonoBehaviour
     public void Damage(float damage)
     {
         currentHealth -= damage;
-
-        if(healthbar)
-        {
-            healthbar.fillAmount = currentHealth/health;
-        }
     }
 }
