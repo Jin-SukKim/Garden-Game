@@ -47,6 +47,8 @@ public class OfflineGunController : MonoBehaviour {
                     manabar.fillAmount = mana/maxMana;
                 }    
             }
+
+            AbilitiesDirectory.TryCastAbility("shotgunAttack", GetComponent<Entity>(), targetPos);
         }
     }
 }

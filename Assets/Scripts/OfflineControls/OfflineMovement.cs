@@ -68,11 +68,11 @@ public class OfflineMovement : MonoBehaviour {
         Vector3 forwardBackMovement = forwardBackDirection * speed * Time.deltaTime * Input.GetAxis("VertKey");
 
         if (Input.GetAxis("HorizKey") > 0) {
-            Debug.Log("horiz");
+            //Debug.Log("horiz");
         }
 
         if (Input.GetAxis("VertKey") > 0) {
-            Debug.Log("vert");
+            //Debug.Log("vert");
         }
 
 
