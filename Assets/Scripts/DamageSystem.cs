@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DamageSystem : MonoBehaviour
 {
     public float health;
+    public Image image;
 
-
-    private float currentHealth;
+    public float currentHealth;
 
     public GameObject enemeyDeathAnimation;
 
