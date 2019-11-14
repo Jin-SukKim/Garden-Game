@@ -20,6 +20,9 @@ public class DamageSystem : MonoBehaviour
     }
 
     // Update is called once per frame
+    /// <summary>
+    /// Determines if the object is still alive and destroys it if health is lower than 0
+    /// </summary>
     void Update()
     {
         if (currentHealth <= 0 && respawn == false)
@@ -32,15 +35,22 @@ public class DamageSystem : MonoBehaviour
         else if (currentHealth <= 0 && respawn == true)
         {
             gameObject.transform.position = respawnPointWait.transform.position;
-            StartCoroutine(WaitingRespawn());
+            StartCoroutine(waitingRespawn());
         }
     }
 
+    /// <summary>
+    /// Decreases health amount by damage value parameter
+    /// </summary>
+    /// <param name="damage"></param>
     public void Damage(float damage)
     {
         currentHealth -= damage;
     }
 
+    /// <summary>
+    /// Respawn function that moves the object to the respawn point and resets health
+    /// </summary>
     public void Respawn()
     {
         if (respawn)
@@ -50,7 +60,11 @@ public class DamageSystem : MonoBehaviour
         }
     }
 
-    IEnumerator WaitingRespawn()
+    /// <summary>
+    /// Waiting function for respawn that waits 3 seconds before respawning the object
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator waitingRespawn()
     {
         yield return new WaitForSeconds(3);
         Respawn();

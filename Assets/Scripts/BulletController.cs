@@ -32,6 +32,10 @@ public class BulletController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Determines if the object loses health on collision with the bullet object
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionEnter(Collision other)
     {
         if (gameObject.tag == "Bullet")
