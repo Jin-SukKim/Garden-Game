@@ -14,9 +14,11 @@ namespace Photon.Pun.Demo.PunBasics
     {
         public GameObject player1SpawnPosition;
         public GameObject player2SpawnPosition;
+        public GameObject minionAISpawnPosition;
 
         private GameObject player1;
         private GameObject player2;
+        private GameObject minionAI;
 
         // Start Method
         void Start()
@@ -39,6 +41,9 @@ namespace Photon.Pun.Demo.PunBasics
                         player1SpawnPosition.transform.rotation, 0);
                     Debug.Log("master");
                     player1.AddComponent<Movement>();
+                    minionAI = PhotonNetwork.Instantiate("EnemyAITester",
+                        minionAISpawnPosition.transform.position,
+                        minionAISpawnPosition.transform.rotation, 0);
                 }
                 else // Normal clients instantiate second player, save reference to player2
                 {
