@@ -90,6 +90,7 @@ public class OfflineGunController : MonoBehaviour {
                         fireArc();
                         break;
                     case 2:
+                        //Prevents spines from being shot while this attack is already active
                         if(spineCount == 0)
                             fireSpine();
                         break;
@@ -121,7 +122,6 @@ public class OfflineGunController : MonoBehaviour {
 
     public void fireSpine()
     {
-        Debug.Log("Spine: " + transform.position);
         StartCoroutine(spineShoot(transform.position, transform.forward));
     }
 
