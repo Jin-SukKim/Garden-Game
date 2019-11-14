@@ -35,6 +35,7 @@ public class PhotonRoomCustomMatch : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public GameObject roomGameObject;
     public Transform playersPanel;
     public GameObject playerListingPrefab;
+    public GameObject roomListingPrefab;
     public GameObject startButton;
 
     private void Awake()
@@ -125,9 +126,21 @@ public class PhotonRoomCustomMatch : MonoBehaviourPunCallbacks, IInRoomCallbacks
         base.OnPlayerLeftRoom(otherPlayer);
         Debug.Log(otherPlayer.NickName + " has left the game");
         playersInRoom--;
+
         ClearPlayerListings();
         ListPlayers();
     }
+
+    //public override void OnLeftRoom()
+    //{
+    //    base.OnLeftRoom();
+    //    if (playersInRoom == 0)
+    //    {
+    //        Debug.Log("destroying room listing prefab");
+
+    //        Destroy(roomListingPrefab);
+    //    }
+    //}
 
     public void StartGame()
     {
@@ -137,13 +150,14 @@ public class PhotonRoomCustomMatch : MonoBehaviourPunCallbacks, IInRoomCallbacks
             return;
         }
         PhotonNetwork.LoadLevel("MainEnvironment");
-    }
+    }   
 
-    void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
+    public void LeaveRoom()
     {
-        currentScene = scene.buildIndex;
+        PhotonNetwork.LeaveRoom();
+        lobbyGameObject.SetActive(true);
+        roomGameObject.SetActive(false);
     }
-
     // Start is called before the first frame update
     void Start()
     {

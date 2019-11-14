@@ -75,6 +75,7 @@ namespace Photon.Pun.Demo.PunBasics
             }
         }
 
+
         public void QuitRoom()
         {
             Application.Quit();

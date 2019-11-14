@@ -10,12 +10,12 @@ public class RoomButton : MonoBehaviour
     public Text sizeText;
 
     public string roomName;
-    public int roomSize;
+    public string roomSize;
 
     public void SetRoom()
     {
         nameText.text = roomName;
-        sizeText.text = roomSize.ToString();
+        sizeText.text = roomSize;
     }
 
     public void JoinRoomOnClick()
