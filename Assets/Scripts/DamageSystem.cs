@@ -1,15 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DamageSystem : MonoBehaviour
 {
     public float health;
-    public Image image;
 
-    //The bar that displays remaining health
-    public Image healthbar;
 
     private float currentHealth;
 
@@ -36,10 +32,5 @@ public class DamageSystem : MonoBehaviour
     public void Damage(float damage)
     {
         currentHealth -= damage;
-
-        if(healthbar)
-        {
-            healthbar.fillAmount = currentHealth/health;
-        }
     }
 }
