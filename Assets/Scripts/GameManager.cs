@@ -20,6 +20,12 @@ namespace Photon.Pun.Demo.PunBasics
         private GameObject player2;
         private GameObject minionAI;
 
+        // Strings to identify the correct prefab to use from resources folder
+        [SerializeField]
+        private string player1ResourceString;
+        [SerializeField]
+        private string player2ResourceString;
+
         // Start Method
         void Start()
         {
@@ -36,7 +42,7 @@ namespace Photon.Pun.Demo.PunBasics
                 {
                     Debug.Log("Instantiating Player 1");
                     // Instantiate first player, save reference to player1
-                    player1 = PhotonNetwork.Instantiate("PlayerIndustrialist1",
+                    player1 = PhotonNetwork.Instantiate(player1ResourceString,
                         player1SpawnPosition.transform.position,
                         player1SpawnPosition.transform.rotation, 0);
                     Debug.Log("master");
@@ -48,7 +54,7 @@ namespace Photon.Pun.Demo.PunBasics
                 else // Normal clients instantiate second player, save reference to player2
                 {
                     //Add more code here for player 3 and 4
-                    player2 = PhotonNetwork.Instantiate("PlayerIndustrialist2",
+                    player2 = PhotonNetwork.Instantiate(player1ResourceString,
                         player2SpawnPosition.transform.position,
                         player2SpawnPosition.transform.rotation, 0);
                     player2.AddComponent<Movement>();

@@ -204,7 +204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -8.58, y: 7.5700006, z: -8.98}
+  m_LocalPosition: {x: 16.56, y: 7.5700006, z: -34.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -234,7 +234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608304231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.53, y: 1, z: -25.15}
+  m_LocalPosition: {x: 22.53, y: 0.1, z: -25.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1238137831}
@@ -272,6 +272,8 @@ MonoBehaviour:
   player1SpawnPosition: {fileID: 1287523724}
   player2SpawnPosition: {fileID: 608304231}
   minionAISpawnPosition: {fileID: 1651474582}
+  player1ResourceString: MoneyManTest
+  player2ResourceString: FlowerChild
 --- !u!4 &756907270
 Transform:
   m_ObjectHideFlags: 0
@@ -342,7 +344,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287523724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.17, y: 1, z: -21.42}
+  m_LocalPosition: {x: 31.17, y: 0.1, z: -21.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1238137831}
@@ -514,6 +516,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480128670100420139, guid: 944d1054987d93f4784fd68fc770ac2e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 944d1054987d93f4784fd68fc770ac2e, type: 3}

@@ -20,12 +20,15 @@ public class Movement : MonoBehaviour
 
     PhotonView photonView;
     private string playerName = "";
+    // Will be used later for animation
+    //private Animator anim;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        theGun = GameObject.Find("Gun").GetComponent<GunController>();
+        // Link the animator
+        //anim = GetComponent<Animator>();
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -59,17 +62,14 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine)
-        {
+        if (photonView.IsMine){
             //// Points the player's cube object in the direction of the cursor
             //// Ray casting to get the cursor position, uses that result to direct player
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Plane plane = new Plane(Vector3.up, Vector3.zero);
             float distance;
 
-            if (plane.Raycast(ray, out distance))
-            {
-
+            if (plane.Raycast(ray, out distance)){
                 // Target value is the instant location of cursor, can be used for shooting function later
                 Vector3 target = ray.GetPoint(distance);
 
@@ -79,6 +79,16 @@ public class Movement : MonoBehaviour
             }
 
             // WASD movement
+
+            // Triggering animations through parameters
+            //if (Input.GetAxis("HorizKey") != 0 || Input.GetAxis("VertKey") != 0) {
+            //    // Set walking to true if there is a movement input
+            //    anim.SetBool("IsWalking", true);
+            //}
+            //else {
+            //    anim.SetBool("IsWalking", false);
+            //}
+
             // Using Time.deltaTime allows for smoother movement
             Vector3 leftRightMovement = leftRightDirection * speed * Time.deltaTime * Input.GetAxis("HorizKey");
             Vector3 forwardBackMovement = forwardBackDirection * speed * Time.deltaTime * Input.GetAxis("VertKey");
