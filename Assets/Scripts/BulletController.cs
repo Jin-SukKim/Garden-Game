@@ -17,8 +17,8 @@ public class BulletController : MonoBehaviour
     public GameObject impactEffect;
     public BulletType type;
 
-    float animationStart;
-    Vector3 midPoint;
+    private float animationStart;
+    private Vector3 midPoint;
 
     public Vector3 endPos;
     public Vector3 startPos;
@@ -77,7 +77,10 @@ public class BulletController : MonoBehaviour
 
 
     }
-
+    /// <summary>
+    /// Collision Enter function
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionEnter(Collision other)
     {
         if (gameObject.tag == "Bullet")

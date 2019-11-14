@@ -10,7 +10,6 @@ public class OfflineGunController : MonoBehaviour {
     public float bulletSpeed;
 
     public float timeBetweenShots;
-    private float shotCounter;
 
     private float lastShot = 0;
 
@@ -32,6 +31,7 @@ public class OfflineGunController : MonoBehaviour {
     private LineRenderer laserSight;
 
     public int spineCount;
+    private int maxSpines = 5;
 
     // Start is called before the first frame update
     void Start() {
@@ -73,8 +73,11 @@ public class OfflineGunController : MonoBehaviour {
 
         if (Input.GetKeyDown("q"))
         {
-            FireMode++;
-            transform.Find("Targeting").gameObject.SetActive(FireMode == (int)BulletController.BulletType.arc);
+            if(spineCount == 0)
+            {
+                FireMode++;
+                transform.Find("Targeting").gameObject.SetActive(FireMode == (int)BulletController.BulletType.arc);
+            }
         }
 
         if (isFiring)
@@ -84,25 +87,28 @@ public class OfflineGunController : MonoBehaviour {
                 switch (fireMode)
                 {
                     case 0:
-                        fireStraight();
+                        FireStraight();
                         break;
                     case 1:
-                        fireArc();
+                        FireArc();
                         break;
                     case 2:
                         //Prevents spines from being shot while this attack is already active
                         if(spineCount == 0)
-                            fireSpine();
+                            FireSpine();
                         break;
                     default:
-                        fireStraight();
+                        FireStraight();
                         break;
                 }
             }
         }
     }
 
-    public void fireStraight()
+    /// <summary>
+    /// Fires the straight shot
+    /// </summary>
+    public void FireStraight()
     {
         BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
         newBullet.type = BulletController.BulletType.straight;
@@ -110,7 +116,10 @@ public class OfflineGunController : MonoBehaviour {
         lastShot = Time.time;
     }
 
-    public void fireArc()
+    /// <summary>
+    /// Fires the arc shot
+    /// </summary>
+    public void FireArc()
     {
         BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
         newBullet.type = BulletController.BulletType.arc;
@@ -120,14 +129,17 @@ public class OfflineGunController : MonoBehaviour {
         lastShot = Time.time;
     }
 
-    public void fireSpine()
+    /// <summary>
+    /// Starts the coroutine to shoot the spine attack
+    /// </summary>
+    public void FireSpine()
     {
         StartCoroutine(spineShoot(transform.position, transform.forward));
     }
 
     IEnumerator spineShoot(Vector3 startPos, Vector3 startDir)
     {
-        while (spineCount < 5)
+        while (spineCount < maxSpines)
         {
             BulletController newBullet = Instantiate(bullet, startPos, firePoint.rotation) as BulletController;
             newBullet.type = BulletController.BulletType.spine;
