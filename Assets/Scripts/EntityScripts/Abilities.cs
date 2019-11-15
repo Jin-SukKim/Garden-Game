@@ -8,7 +8,13 @@ public class Abilities : MonoBehaviour
 {
     Entity owner;
 
-    List<string> abilityIDs = new List<string>();
+    [SerializeField]
+    private List<string> abilityIDs = new List<string>();
+
+    private void Start()
+    {
+        owner = GetComponent<Entity>();
+    }
 
     public bool AddAbility(string abilityID)
     {
@@ -24,6 +30,11 @@ public class Abilities : MonoBehaviour
     public Ability.AbilityFeedback TryCastAbility(string abilityID, Vector3 targetPosition)
     {
         return AbilitiesDirectory.TryCastAbility(abilityID, owner, targetPosition);
+    }
+
+    public Ability.AbilityFeedback basicAttack(Vector3 targetPosition)
+    {
+        return AbilitiesDirectory.TryCastAbility(abilityIDs[0], owner, targetPosition);
     }
 
 }

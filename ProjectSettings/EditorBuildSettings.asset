@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Issues/HealthBars.unity
     guid: 9fb85d72e5a90bc45b3e0ddfefdea7a2
+  - enabled: 0
+    path: Assets/Scenes/ZoraTesting.unity
+    guid: bfd8dcb8f380919489aceedb47b680bd
   m_configObjects: {}

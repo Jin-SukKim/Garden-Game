@@ -962,6 +962,8 @@ GameObject:
   - component: {fileID: 114604081147062776}
   - component: {fileID: 114230857742840928}
   - component: {fileID: 136279040075355878}
+  - component: {fileID: 114607642457821286}
+  - component: {fileID: 4235325832265764883}
   m_Layer: 0
   m_Name: MoneyManTest
   m_TagString: Player
@@ -1023,7 +1025,7 @@ MonoBehaviour:
   bullet: {fileID: 2611586976283010915, guid: 8ec3450441275204e846f74d39d18ce5, type: 3}
   bulletSpeed: 5
   timeBetweenShots: 0.1
-  firePoint: {fileID: 0}
+  photonView: {fileID: 114604081147062776}
 --- !u!114 &114989556046526820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1128,6 +1130,32 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &114607642457821286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4766889928794413047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d047c02093d1fb641a5e739e3aed2cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIDs:
+  - shotgunAttack
+--- !u!114 &4235325832265764883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4766889928794413047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ddfaa2efc3aada4cb7a5ef3408c7138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4766889928794413049
 GameObject:
   m_ObjectHideFlags: 0

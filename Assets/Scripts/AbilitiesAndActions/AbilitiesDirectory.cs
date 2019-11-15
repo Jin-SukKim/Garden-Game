@@ -34,6 +34,7 @@ public static class AbilitiesDirectory
             return abilityDictionary[abilityID].TryCastAbility(caster, targetPosition);
         } catch(Exception e)
         {
+            Debug.Log("ABILITY SHOTGUN : " + abilityID);
             throw e;
         }
     }
@@ -43,6 +44,7 @@ public static class AbilitiesDirectory
     // should only be used once!
     public static void MakeShotgunAbility()
     {
+        Debug.Log("MADE THE SHOTGUN ABILITY");
         List<IAction> actions = new List<IAction>();
         actions.Add(new ShotgunAction());
         
