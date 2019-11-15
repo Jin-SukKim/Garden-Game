@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PhotonLobbyCustomMatch : MonoBehaviourPunCallbacks, ILobbyCallbacks
+public class PhotonLobbyCustomMatch : MonoBehaviourPunCallbacks, ILobbyCallbacks, IMatchmakingCallbacks
 {
     public static PhotonLobbyCustomMatch lobby;
 
@@ -19,6 +19,8 @@ public class PhotonLobbyCustomMatch : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     public List<RoomInfo> roomListings;
 
+    public Text textError;
+    public Text textConnectionStatus;
     public void Awake()
     {
         lobby = this; //Creates singleton
@@ -27,7 +29,7 @@ public class PhotonLobbyCustomMatch : MonoBehaviourPunCallbacks, ILobbyCallbacks
     void Start()
     {
         PlayerPrefs.DeleteAll();
-
+        textConnectionStatus.text = "Connecting to server...";
         PhotonNetwork.ConnectUsingSettings();
         roomListings = new List<RoomInfo>();
     }
@@ -35,6 +37,7 @@ public class PhotonLobbyCustomMatch : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("Connected to Master");
+        textConnectionStatus.text = "Connected to Game Server";
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
         JoinLobby();
@@ -102,7 +105,7 @@ public class PhotonLobbyCustomMatch : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public void CreateRoom()
     {
         Debug.Log("Trying to create room");
-
+        textError.enabled = false;
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = byte.Parse(roomSize) };
         PhotonNetwork.CreateRoom(roomName, roomOps);
     }
@@ -110,6 +113,8 @@ public class PhotonLobbyCustomMatch : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         Debug.Log("Failed creating new room. Room with same name exists.");
+        textError.text = message;
+        textError.enabled = true;
         //CreateRoom(); //Retry with different room name (random number)
     }
 
@@ -130,7 +135,20 @@ public class PhotonLobbyCustomMatch : MonoBehaviourPunCallbacks, ILobbyCallbacks
             PhotonNetwork.JoinLobby();
         }
     }
+    //public override void OnDisconnected(DisconnectCause cause)
+    //{
+    //    base.OnDisconnected(cause);
+    //    textConnectionStatus.text = "Disconnected from Game Server";
+    //}
 
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        base.OnJoinRoomFailed(returnCode, message);
+        textError.text = message;
+        textError.enabled = true;
+        Debug.Log(message);
+        
+    }
     //public override void OnJoinedLobby()
     //{
     //    base.OnJoinedLobby();
