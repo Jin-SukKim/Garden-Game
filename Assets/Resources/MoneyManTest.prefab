@@ -966,7 +966,7 @@ GameObject:
   - component: {fileID: 4235325832265764883}
   m_Layer: 0
   m_Name: MoneyManTest
-  m_TagString: Player
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1000,7 +1000,7 @@ Animator:
   m_GameObject: {fileID: 4766889928794413047}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a15355922238d2c4bac93539912aab18, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2cc628831350a424681f04a475575c79, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1363,7 +1363,7 @@ PrefabInstance:
     - target: {fileID: 6978567589119462439, guid: baf9db5231b210c489f7c8a89126eb13,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.35
+      value: -0.042
       objectReference: {fileID: 0}
     - target: {fileID: 6978567589119462439, guid: baf9db5231b210c489f7c8a89126eb13,
         type: 3}
@@ -1373,7 +1373,7 @@ PrefabInstance:
     - target: {fileID: 6978567589119462439, guid: baf9db5231b210c489f7c8a89126eb13,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.36
+      value: 0.852
       objectReference: {fileID: 0}
     - target: {fileID: 6978567589119462439, guid: baf9db5231b210c489f7c8a89126eb13,
         type: 3}

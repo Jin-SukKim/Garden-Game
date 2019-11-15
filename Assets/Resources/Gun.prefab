@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 114838513868801546}
   m_Layer: 0
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   bullet: {fileID: 2611586976283010915, guid: 8ec3450441275204e846f74d39d18ce5, type: 3}
   bulletSpeed: 5
   timeBetweenShots: 0.1
-  firePoint: {fileID: 8763553517629858557}
+  photonView: {fileID: 0}
 --- !u!114 &114184912680323634
 MonoBehaviour:
   m_ObjectHideFlags: 0

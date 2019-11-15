@@ -33,27 +33,23 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (gameObject.tag == "Bullet")
-        {
-            //if (other.gameObject.tag == "Enemy")
-            //{
-            //    other.gameObject.GetComponent<Enemy>().HurtEnemy(damageToGive);
-            //    GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-            //    Destroy(obj, 2f);
-            //    Destroy(gameObject);
-            //}
+        //if (gameObject.tag == "Bullet")
+        //{
 
-            // For now anything with this tag can be destroyed in the same way.
-            if (other.gameObject.tag == "Destructible")
-            {
-                other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
-                GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-                Destroy(obj, 2f);
-                Destroy(gameObject);
-            }
 
-            
+
+        //}
+
+        Debug.Log("IN COLLISION BULLET");
+
+        // For now anything with this tag can be destroyed in the same way.
+        if (other.gameObject.tag == "Destructible") {
+            Debug.Log("HIT!");
+            other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
+            GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            //Destroy(obj, 2f);
+            Destroy(gameObject);
         }
-        
+
     }
 }
