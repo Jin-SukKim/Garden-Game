@@ -22,6 +22,14 @@ public class OfflineGunController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (isFiring) {
+          
+          // ISSUE 38
+//             if (Time.time > timeBetweenShots + lastShot) {
+//                 BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
+//                 newBullet.speed = bulletSpeed;
+//                 lastShot = Time.time;
+//                 newBullet.team = this.transform.parent.GetComponent<Teams>().TeamsFaction;
+              
             //if (Time.time > timeBetweenShots + lastShot) {
             //    BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
             //    newBullet.speed = bulletSpeed;
