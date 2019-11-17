@@ -49,27 +49,29 @@ public class BulletController : MonoBehaviour
             //}
 
             // For now anything with this tag can be destroyed in the same way.
-            if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != this.team )
+            if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != this.team)
             {
                 other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
                 GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
                 Destroy(obj, 2f);
                 Destroy(gameObject);
-            } else if (other.gameObject.GetComponent<Teams>().TeamsFaction == this.team)
+            }
+            else if (other.gameObject.GetComponent<Teams>().TeamsFaction == this.team)
             {
                 GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
 
-        // For now anything with this tag can be destroyed in the same way.
-//         if (other.gameObject.tag == "Destructible") {
-//             Debug.Log("HIT!");
-//             other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
-//             GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-//             //Destroy(obj, 2f);
-//             Destroy(gameObject);
+            // For now anything with this tag can be destroyed in the same way.
+            //         if (other.gameObject.tag == "Destructible") {
+            //             Debug.Log("HIT!");
+            //             other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
+            //             GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            //             //Destroy(obj, 2f);
+            //             Destroy(gameObject);
 
-//         }
+            //         }
+        }
 
     }
 }

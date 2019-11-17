@@ -8,7 +8,7 @@ public class DamageSystem : MonoBehaviour
     public float health;
     public Image image;
 
-    private float currentHealth;
+    public float currentHealth;
     public bool respawn = false;
 
     public GameObject enemeyDeathAnimation;
