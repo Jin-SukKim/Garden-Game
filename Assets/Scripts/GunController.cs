@@ -89,16 +89,8 @@ public class GunController : MonoBehaviourPun
     [PunRPC]
     private void Fire(Vector3 pos)
     {
-        // OLD
-        /*BulletController newBullet = Instantiate(bullet, pos, rot) as BulletController;
-        newBullet.speed = bulletSpeed;
-        lastShot = Time.time;
-        newBullet.team = this.transform.parent.GetComponent<Teams>().TeamsFaction;
-        lastShot = Time.time;*/
-
         // NEW
         abilities.basicAttack(pos);
-        //newBullet.team = this.transform.parent.GetComponent<Teams>().TeamsFaction;
     }
 
 

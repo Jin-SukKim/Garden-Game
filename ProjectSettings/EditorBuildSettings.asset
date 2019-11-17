@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Launcher.unity
     guid: 2a1168beaea3c89458c1900a9c7206ec
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainEnvironment.unity
     guid: 1945f7d9c6ba91e40b758501c1a4c16e
   - enabled: 0
@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Issues/HealthBars.unity
     guid: 9fb85d72e5a90bc45b3e0ddfefdea7a2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ZoraTesting.unity
     guid: bfd8dcb8f380919489aceedb47b680bd
   m_configObjects: {}

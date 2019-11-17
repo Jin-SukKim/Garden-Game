@@ -26,13 +26,14 @@ public static class PrefabManager
         }
     }
 
-    public static bool SpawnBullet(string bulletID, Vector3 pos, Quaternion rot, int team)
+    public static bool SpawnBullet(string bulletID, Vector3 pos, Quaternion rot, Entity e)
     {
 
         if (bullets.ContainsKey(bulletID))
         {
             GameObject newObj = GameObject.Instantiate(bullets[bulletID], pos, rot);
             BulletController newBullet = newObj.GetComponent<BulletController>();
+            newBullet.entity = e;
             return true;
         } else
         {

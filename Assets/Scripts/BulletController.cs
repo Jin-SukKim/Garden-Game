@@ -12,7 +12,7 @@ public class BulletController : MonoBehaviour
 
     public int damageToGive;
     public GameObject impactEffect;
-    public Teams.Faction team;
+    public Entity entity;
 
 
     // Start is called before the first frame update
@@ -40,38 +40,24 @@ public class BulletController : MonoBehaviour
     {
         if (gameObject.tag == "Bullet")
         {
-            //if (other.gameObject.tag == "Enemy")
-            //{
-            //    other.gameObject.GetComponent<Enemy>().HurtEnemy(damageToGive);
-            //    GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-            //    Destroy(obj, 2f);
-            //    Destroy(gameObject);
-            //}
-
             // For now anything with this tag can be destroyed in the same way.
-            if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != this.team)
+            if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.team)
             {
                 other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
                 GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
                 Destroy(obj, 2f);
                 Destroy(gameObject);
+            } else if (other.gameObject.GetComponent<Entity>() == entity) // If it's the caster case
+            {
+                return;
             }
-            else if (other.gameObject.GetComponent<Teams>().TeamsFaction == this.team)
+
+            // Shooting team mate case
+            if (other.gameObject.GetComponent<Teams>().TeamsFaction == entity.team)
             {
                 GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
-
-            // For now anything with this tag can be destroyed in the same way.
-            //         if (other.gameObject.tag == "Destructible") {
-            //             Debug.Log("HIT!");
-            //             other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
-            //             GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-            //             //Destroy(obj, 2f);
-            //             Destroy(gameObject);
-
-            //         }
         }
-
     }
 }

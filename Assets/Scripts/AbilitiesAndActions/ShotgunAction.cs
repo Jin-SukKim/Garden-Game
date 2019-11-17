@@ -16,7 +16,7 @@ public class ShotgunAction : IAction
             //Debug.LogFormat("Shooting bullet {0}",i);
 
             Vector3 randDir = dir + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));
-            PrefabManager.SpawnBullet("Bullet",e.transform.position,Quaternion.LookRotation(randDir, Vector3.up),0);
+            PrefabManager.SpawnBullet("Bullet",e.transform.position,Quaternion.LookRotation(randDir, Vector3.up), e);
         }
     }
 }

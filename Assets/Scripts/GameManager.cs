@@ -46,7 +46,9 @@ namespace Photon.Pun.Demo.PunBasics
                         player1SpawnPosition.transform.position,
                         player1SpawnPosition.transform.rotation, 0);
                     Debug.Log("master");
+                    // Hookup controls
                     player1.AddComponent<Movement>();
+                    player1.AddComponent<GunController>();
                     minionAI = PhotonNetwork.Instantiate("EnemyAITester",
                         minionAISpawnPosition.transform.position,
                         minionAISpawnPosition.transform.rotation, 0);
@@ -54,10 +56,12 @@ namespace Photon.Pun.Demo.PunBasics
                 else // Normal clients instantiate second player, save reference to player2
                 {
                     //Add more code here for player 3 and 4
-                    player2 = PhotonNetwork.Instantiate(player1ResourceString,
+                    player2 = PhotonNetwork.Instantiate(player2ResourceString,
                         player2SpawnPosition.transform.position,
                         player2SpawnPosition.transform.rotation, 0);
+                    // Hookup controls
                     player2.AddComponent<Movement>();
+                    player2.AddComponent<GunController>();
                 }
             }
         }
