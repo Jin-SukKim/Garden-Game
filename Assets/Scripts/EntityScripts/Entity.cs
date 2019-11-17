@@ -9,7 +9,7 @@ public class Entity : MonoBehaviour
     public Teams.Faction team;
     public DamageSystem health;
     public Abilities abilities;
-
+    public Transform spawnPoint;
 
     private void Start()
     {
@@ -17,5 +17,6 @@ public class Entity : MonoBehaviour
         team = GetComponent<Teams>().TeamsFaction;
         health = GetComponent<DamageSystem>();
         abilities = GetComponent<Abilities>();
+        spawnPoint = gameObject.transform.Find("spawnPoint");
     }
 }

@@ -1147,6 +1147,7 @@ MonoBehaviour:
   team: 0
   health: {fileID: 0}
   abilities: {fileID: 0}
+  spawnPoint: {fileID: 0}
 --- !u!114 &114606246167635992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1392,7 +1393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5736860782961633325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35, y: 0.63, z: 0.36}
+  m_LocalPosition: {x: 0.007, y: 1.022, z: 0.494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4766889928794180567}

@@ -74,13 +74,13 @@ public class GunController : MonoBehaviourPun
                 {
                     if (!PhotonNetwork.IsConnected)
                     {
+                        Debug.Log("NOT CONNECtED TO NEt");
                         Fire(firePoint);
                     }
                     else
                     {
                         this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint);
                     }
-
                 }
             }
         }
