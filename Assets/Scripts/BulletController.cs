@@ -61,8 +61,15 @@ public class BulletController : MonoBehaviour
                 Destroy(gameObject);
             }
 
-            
-        }
-        
+        // For now anything with this tag can be destroyed in the same way.
+//         if (other.gameObject.tag == "Destructible") {
+//             Debug.Log("HIT!");
+//             other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
+//             GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+//             //Destroy(obj, 2f);
+//             Destroy(gameObject);
+
+//         }
+
     }
 }

@@ -8,7 +8,7 @@ using Photon.Pun;
 public class Movement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public GunController theGun;
+    //public GunController theGun;
 
     [SerializeField]
     float speed = 4f;
@@ -18,14 +18,21 @@ public class Movement : MonoBehaviour
     // character should move.
     Vector3 forwardBackDirection, leftRightDirection;
 
-    PhotonView photonView;
+    public PhotonView photonView;
+
     private string playerName = "";
+    // Will be used later for animation
+    //private Animator anim;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        theGun = GameObject.Find("Gun").GetComponent<GunController>();
+        Debug.Log("PHOTON VIEW: " + photonView);
+        // Link the animator
+        //anim = GetComponent<Animator>();
+
+        photonView = GetComponent<PhotonView>();
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -46,7 +53,7 @@ public class Movement : MonoBehaviour
         leftRightDirection = Camera.main.transform.right;
 
         photonView = gameObject.GetComponent<PhotonView>();
-        playerName = photonView.Owner.NickName;
+        //playerName = photonView.Owner.NickName;
         gameObject.name = playerName;
 
         // Attach camera to player through a reference to the camera objects script
@@ -59,52 +66,29 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine)
-        {
-            //// Points the player's cube object in the direction of the cursor
-            //// Ray casting to get the cursor position, uses that result to direct player
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Plane plane = new Plane(Vector3.up, Vector3.zero);
-            float distance;
-
-            if (plane.Raycast(ray, out distance))
-            {
-
-                // Target value is the instant location of cursor, can be used for shooting function later
-                Vector3 target = ray.GetPoint(distance);
-
-                Vector3 direction = target - transform.position;
-                float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0, rotation, 0);
-            }
-
+        if (photonView.IsMine || !PhotonNetwork.IsConnected){
             // WASD movement
+
+            // Triggering animations through parameters
+/*            if (Input.GetAxis("HorizKey") != 0 || Input.GetAxis("VertKey") != 0)
+            {
+                // Set walking to true if there is a movement input
+                anim.setbool("iswalking", true);
+                Debug.Log("MOVING!");
+            }
+            else
+            {
+                anim.SetBool("IsWalking", false);
+                Debug.Log("NOT MOVING!");
+            }*/
+
             // Using Time.deltaTime allows for smoother movement
             Vector3 leftRightMovement = leftRightDirection * speed * Time.deltaTime * Input.GetAxis("HorizKey");
             Vector3 forwardBackMovement = forwardBackDirection * speed * Time.deltaTime * Input.GetAxis("VertKey");
 
-
-            // Get the combined 
-            //Vector3 heading = Vector3.Normalize(rightMovement + upMovement);
-
-            // Causes rotation
-            //transform.forward = heading;
-
             // Causes movement
             transform.position += leftRightMovement;
             transform.position += forwardBackMovement;
-
-
-            //shooting mechanics
-            if (Input.GetMouseButtonDown(0))
-            {
-                theGun.isFiring = true;
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                theGun.isFiring = false;
-            }
         }
     }
 }
