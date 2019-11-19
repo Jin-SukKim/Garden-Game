@@ -32,7 +32,6 @@ public class Movement : MonoBehaviour
         // Link the animator
         //anim = GetComponent<Animator>();
 
-        photonView = GetComponent<PhotonView>();
 
         rb = GetComponent<Rigidbody2D>();
 

@@ -29,8 +29,8 @@ public class GunController : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
-        photonView = GetComponent<PhotonView>();
-        abilities = GetComponent<Abilities>();
+        photonView = gameObject.GetComponent<PhotonView>();
+        abilities = gameObject.GetComponent<Abilities>();
     }
 
     // Update is called once per frame
