@@ -8,5 +8,6 @@ public class Account {
 
     public string username;
     public string jsonWebToken;
+    public string passwordHash;
 
 }

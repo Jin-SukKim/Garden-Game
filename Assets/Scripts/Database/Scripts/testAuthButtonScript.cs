@@ -32,7 +32,6 @@ public class testAuthButtonScript : MonoBehaviour {
     }
 
     IEnumerator GetRequest(string uri) {
-
         UnityWebRequest www = UnityWebRequest.Get(uri);
         string token = PlayerPrefs.GetString("token", string.Empty);
         if (token == string.Empty) {
