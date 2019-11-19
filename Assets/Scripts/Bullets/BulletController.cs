@@ -11,61 +11,16 @@ public class BulletController : MonoBehaviour
     public float speed;
     public float lifeTime;
 
-    private float arcLifetime;
-
     public int damageToGive;
     public GameObject impactEffect;
     public BulletType type;
 
-    private float animationStart;
-    private Vector3 midPoint;
-
-    public Vector3 endPos;
-    public Vector3 startPos;
-    public Vector3 startDir;
-
-    public OfflineGunController owner;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if(type == BulletType.arc)
-        {
-            arcLifetime = 2f;
-            lifeTime = arcLifetime;
-            animationStart = Time.time;
-            //The apex of the arc
-            midPoint = ((endPos + startPos) / 2) + new Vector3(0, 10f);
-        }else if(type == BulletType.spine)
-        {
-            transform.position = startPos;
-            transform.position += Vector3.down;
-            transform.position += owner.spineCount * startDir;
-            lifeTime = 0.25f;
-        }
-        
-    }
+    public Vector3 shootingLoc;
+    public Vector3 targetLoc;
 
     // Update is called once per frame
     void Update()
     {
-        if(type == BulletType.arc)
-        {
-            float lerpVal = (Time.time - animationStart) / arcLifetime;
-
-            Vector3 curve1 = Vector3.Lerp(startPos, midPoint, lerpVal);
-            Vector3 curve2 = Vector3.Lerp(midPoint, endPos, lerpVal);
-            transform.position = Vector3.Lerp(curve1, curve2, lerpVal);
-        }
-        else if(type == BulletType.spine)
-        {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
-        }
-        else if(type == BulletType.straight)
-        {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        }
-
         lifeTime -= Time.deltaTime;
 
         if (lifeTime <= 0)
@@ -74,8 +29,13 @@ public class BulletController : MonoBehaviour
             Destroy(obj, 2f);
             Destroy(gameObject);
         }
+    }
 
-
+    public void InitBullet(Vector3 shootingLoc, Vector3 targetLoc)
+    {
+        Debug.Log("Initializing bullet: " + shootingLoc + ", " + targetLoc);
+        this.shootingLoc = shootingLoc;
+        this.targetLoc = targetLoc;
     }
     /// <summary>
     /// Collision Enter function
@@ -101,14 +61,6 @@ public class BulletController : MonoBehaviour
                 Destroy(obj, 2f);
                 Destroy(gameObject);
             }
-
-            
         }
-        
-    }
-
-    void OnDestroy()
-    {
-        //Debug.Log("Bullet Destroyed");
     }
 }

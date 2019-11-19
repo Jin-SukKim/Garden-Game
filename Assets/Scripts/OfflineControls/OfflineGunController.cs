@@ -41,36 +41,18 @@ public class OfflineGunController : MonoBehaviour {
         laserSight.positionCount = 2;
     }
 
-    // Update is called once per frame
-    void Update() {
-		if (isFiring) {
-            //if (Time.time > timeBetweenShots + lastShot) {
-            //    BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
-            //    newBullet.speed = bulletSpeed;
-            //    lastShot = Time.time;
-            //}
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Plane plane = new Plane(Vector3.up, Vector3.zero);
-            float distance;
-            Vector3 targetPos = new Vector3();
-            if (plane.Raycast(ray, out distance))
-            {
 
-                // Target value is the instant location of cursor, can be used for shooting function later
-                targetPos = ray.GetPoint(distance);
-            }
-
-            AbilitiesDirectory.TryCastAbility("shotgunAttack", GetComponent<Entity>(), targetPos);
-        }
-
+    //Laser sight
+    public void RenderLaserBeam()
+    {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
         {
-            laserSight.SetPosition(1, new Vector3(0,0,(float)(hit.distance / 0.3514)));
+            laserSight.SetPosition(1, new Vector3(0, 0, (float)(hit.distance / 0.3514)));
         }
         else
         {
-            laserSight.SetPosition(1, new Vector3(0,0,(float) (20/ 0.3514)));
+            laserSight.SetPosition(1, new Vector3(0, 0, (float)(20 / 0.3514)));
         }
 
         if (true)
@@ -84,11 +66,68 @@ public class OfflineGunController : MonoBehaviour {
                 // Target value is the instant location of cursor, can be used for shooting function later
                 Vector3 target = ray.GetPoint(distance);
 
-                if(Vector3.Distance(transform.position, target) < 7.5f)
+                if (Vector3.Distance(transform.position, target) < 7.5f)
                 {
                     targeting.position = target + new Vector3(0, 0.1f);
                 }
             }
+        }
+    }
+
+    // Update is called once per frame
+    void Update() {
+
+        RenderLaserBeam();
+
+        if (isFiring) {
+            //if (Time.time > timeBetweenShots + lastShot) {
+            //    BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
+            //    newBullet.speed = bulletSpeed;
+            //    lastShot = Time.time;
+            //}
+
+            
+
+            if (Time.time > timeBetweenShots + lastShot)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Plane plane = new Plane(Vector3.up, Vector3.zero);
+                float distance;
+                Vector3 targetPos = new Vector3();
+                if (plane.Raycast(ray, out distance))
+                {
+
+                    // Target value is the instant location of cursor, can be used for shooting function later
+                    targetPos = ray.GetPoint(distance);
+                }
+
+                AbilitiesDirectory.TryCastAbility("shotgunAttack", GetComponent<Entity>(), targetPos);
+                /*
+                switch (fireMode)
+                {
+                    case 0:
+                        //FireStraight();
+                        break;
+                    case 1:
+                        AbilitiesDirectory.TryCastAbility("shotgunAttack", GetComponent<Entity>(), targetPos);
+                        break;
+                    case 2:
+                        //Prevents spines from being shot while this attack is already active
+                        //if (spineCount == 0)
+                            //FireSpine();
+                        break;
+                    case 3:
+                        //FireArc();
+                        AbilitiesDirectory.TryCastAbility("LobAttack", GetComponent<Entity>(), targetPos);
+                        break;
+                    default:
+                        //FireStraight();
+                        break;
+                }
+                */
+            }
+
+            
         }
 
         if (Input.GetKeyDown("q"))
@@ -100,6 +139,7 @@ public class OfflineGunController : MonoBehaviour {
             }
         }
 
+        /*
         if (isFiring)
         {
             if (Time.time > timeBetweenShots + lastShot)
@@ -123,8 +163,10 @@ public class OfflineGunController : MonoBehaviour {
                 }
             }
         }
+        */
     }
 
+    /*
     /// <summary>
     /// Fires the straight shot
     /// </summary>
@@ -174,4 +216,5 @@ public class OfflineGunController : MonoBehaviour {
         spineCount = 0;
 
     }
+    */
 }

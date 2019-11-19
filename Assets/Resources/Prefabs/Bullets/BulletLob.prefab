@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2611586976283010916}
   - component: {fileID: 2611586976283010917}
   - component: {fileID: 2611586976283010914}
-  - component: {fileID: 114677202308010652}
+  - component: {fileID: 114997397044247782}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: BulletLob
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114677202308010652
+--- !u!114 &114997397044247782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,14 +101,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2611586976283010912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5338432b690dce141a051991e176afbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 7015e2fddd9893d43bfbb4928480dcd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  lifeTime: 0.5
+  speed: 5
+  lifeTime: 5
   damageToGive: 1
   impactEffect: {fileID: 4344580563010153815, guid: 9260327777720af4f9e7fc029ae7ace7,
     type: 3}
-  type: 0
+  type: 1
   shootingLoc: {x: 0, y: 0, z: 0}
   targetLoc: {x: 0, y: 0, z: 0}

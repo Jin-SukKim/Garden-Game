@@ -11,12 +11,14 @@ public class ShotgunAction : IAction
         //Debug.Log("Shooting a shotgun");
 
         Vector3 dir = a.GetTargetPosition() - e.transform.position;
+        Debug.Log("Shotgun dir: " + dir);
         for(int i = 0; i < bulletCount; i++)
         {
             //Debug.LogFormat("Shooting bullet {0}",i);
 
             Vector3 randDir = dir + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));
-            PrefabManager.SpawnBullet("Bullet",e.transform.position,Quaternion.LookRotation(randDir, Vector3.up),0);
+            Debug.Log(randDir);
+            PrefabManager.SpawnBullet("Bullet",e.transform.position,randDir,0);
         }
     }
 }

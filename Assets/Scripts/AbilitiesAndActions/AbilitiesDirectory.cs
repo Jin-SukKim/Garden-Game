@@ -14,6 +14,7 @@ public static class AbilitiesDirectory
     {
         // I'm not sure what's the best way to create abilities right now
         MakeShotgunAbility();
+        MakeLobAbility();
     }
 
     public static bool addAbility(string abilityID, Ability ability)
@@ -48,5 +49,14 @@ public static class AbilitiesDirectory
         
         Ability ability = new Ability(0.5f,999,actions);
         abilityDictionary.Add("shotgunAttack", ability);
+    }
+
+    public static void MakeLobAbility()
+    {
+        List<IAction> actions = new List<IAction>();
+        actions.Add(new ShootAction());
+
+        Ability ability = new Ability(0.5f, 999, actions);
+        abilityDictionary.Add("lobAttack", ability);
     }
 }

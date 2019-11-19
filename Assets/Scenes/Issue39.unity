@@ -235,6 +235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  image: {fileID: 0}
+  currentHealth: 0
   enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
     type: 3}
 --- !u!208 &240874029
@@ -785,6 +787,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  image: {fileID: 0}
+  currentHealth: 0
   enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
     type: 3}
 --- !u!208 &714097993
@@ -1128,6 +1132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  image: {fileID: 0}
+  currentHealth: 0
   enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
     type: 3}
 --- !u!208 &1281382413
@@ -1412,6 +1418,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  image: {fileID: 0}
+  currentHealth: 0
   enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
     type: 3}
 --- !u!208 &1364587913
@@ -1547,7 +1555,7 @@ PrefabInstance:
     - target: {fileID: 5213747837981704520, guid: 21068692902c6ed49a0c7c063bbabf14,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5213747836887008162, guid: 21068692902c6ed49a0c7c063bbabf14,
         type: 3}
