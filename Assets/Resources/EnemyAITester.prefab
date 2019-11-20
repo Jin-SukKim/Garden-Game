@@ -144,8 +144,10 @@ MonoBehaviour:
   health: 5
   image: {fileID: 0}
   currentHealth: 0
-  enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
-    type: 3}
+  respawn: 0
+  enemeyDeathAnimation: {fileID: 0}
+  respawnPoint: {fileID: 0}
+  respawnPointWait: {fileID: 0}
 --- !u!54 &4117974512831428912
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -177,8 +179,10 @@ MonoBehaviour:
   health: 5
   image: {fileID: 0}
   currentHealth: 0
-  enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
-    type: 3}
+  respawn: 0
+  enemeyDeathAnimation: {fileID: 0}
+  respawnPoint: {fileID: 0}
+  respawnPointWait: {fileID: 0}
 --- !u!114 &114075977698051234
 MonoBehaviour:
   m_ObjectHideFlags: 0

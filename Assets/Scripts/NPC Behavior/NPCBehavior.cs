@@ -16,6 +16,6 @@ public class NPCBehavior : StateMachineBehaviour {
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         // Assign the object that is passed in as the NPC object
         NPC = animator.gameObject;
-        mainTarget = GameObject.FindGameObjectWithTag("Player");
+        //mainTarget = GameObject.FindGameObjectWithTag("Player");
     }
 }

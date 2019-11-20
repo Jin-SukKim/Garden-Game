@@ -52,7 +52,7 @@ public class Ability {
 
         if (!checkCost())
             return AbilityFeedback.noResource;
-        
+
         fireAbility(e);
         return AbilityFeedback.success;
     }
