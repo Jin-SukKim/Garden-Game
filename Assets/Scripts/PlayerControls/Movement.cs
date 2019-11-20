@@ -29,9 +29,11 @@ public class Movement : MonoBehaviour
     void Start()
     {
         Debug.Log("PHOTON VIEW: " + photonView);
-        // Link the animator
+        // Link the animator, will be used later
         //anim = GetComponent<Animator>();
 
+        // attach photon view WITH THE GAMEOBJECT KEYWORD :)
+        photonView = gameObject.GetComponent<PhotonView>();
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -42,16 +44,11 @@ public class Movement : MonoBehaviour
         forwardBackDirection.y = 0;
 
         // Normalizing a vector keeps a vectors direction but sets the length to 1.
-        // basically allows us to use the vector for motion.
         forwardBackDirection = Vector3.Normalize(forwardBackDirection);
-
-        // Quaternion creates a rotation for the leftRight vector, telling it to rotate 90 degrees around the x axis 
-        // leftRightDirection = Quaternion.Euler(new Vector3(0, 90, 0)) * forwardBackDirection;
 
         // Establish the leftRight direction relative to the camera's
         leftRightDirection = Camera.main.transform.right;
 
-        photonView = gameObject.GetComponent<PhotonView>();
         //playerName = photonView.Owner.NickName;
         gameObject.name = playerName;
 
