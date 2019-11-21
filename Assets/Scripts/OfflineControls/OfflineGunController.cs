@@ -16,26 +16,12 @@ public class OfflineGunController : MonoBehaviour {
     public Transform firePoint;
     public Transform targeting;
 
-    private int fireMode;
-    public int FireMode {
-        get { return fireMode; }
-        set { 
-            fireMode = value;
-            if(fireMode >= Enum.GetNames(typeof(BulletController.BulletType)).Length)
-            {
-                fireMode = 0;
-            }
-        }
-    }
 
     private LineRenderer laserSight;
 
-    public int spineCount;
-    private int maxSpines = 5;
 
     // Start is called before the first frame update
     void Start() {
-        fireMode = 0;
         laserSight = gameObject.GetComponent<LineRenderer>();
         laserSight.useWorldSpace = false;
         laserSight.positionCount = 2;
@@ -65,12 +51,9 @@ public class OfflineGunController : MonoBehaviour {
 
             if (Time.time > timeBetweenShots + lastShot)
             {
-                if(fireMode == 0)
-                {
-                    RaycastHit hit;
-                    Vector3 targetPos = transform.position + (10 * transform.forward);
-                    AbilitiesDirectory.TryCastAbility("shotgunAttack", GetComponent<Entity>(), targetPos);
-                }
+                RaycastHit hit;
+                Vector3 targetPos = transform.position + (10 * transform.forward);
+                AbilitiesDirectory.TryCastAbility("shotgunAttack", GetComponent<Entity>(), targetPos);
             }
 
             
