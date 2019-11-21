@@ -110,4 +110,19 @@ public class Ability {
     {
         return targetPosition;
     }
+
+    public void AbilityUpdate()
+    {
+        //run down a ability timer
+    }
+
+    public void OnAbilityStart()
+    {
+
+    }
+
+    public void OnAbilityEnd()
+    {
+
+    }
 }

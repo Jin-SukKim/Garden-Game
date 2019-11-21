@@ -29,6 +29,7 @@ public class DamageSystem : MonoBehaviour
     {
         if (currentHealth <= 0 && respawn == false)
         {
+            Debug.Log("DESTROYING OBJECT");
             GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
             //Destroy(gameObject.GetComponent("Rigidbody"));
             Destroy(obj, 5f);
@@ -47,6 +48,7 @@ public class DamageSystem : MonoBehaviour
     /// <param name="damage"></param>
     public void Damage(float damage)
     {
+        Debug.Log("OW");
         currentHealth -= damage;
     }
 
