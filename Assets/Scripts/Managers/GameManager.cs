@@ -81,9 +81,10 @@ namespace Photon.Pun.Demo.PunBasics
             Debug.Log("OnPlayerLeftRoom() " + other.NickName); // seen when other disconnects
             if (PhotonNetwork.IsMasterClient)
             {
-                PhotonNetwork.LoadLevel("Launcher");
+                //PhotonNetwork.LoadLevel("Launcher");
             }
         }
+
 
         public void QuitRoom()
         {
