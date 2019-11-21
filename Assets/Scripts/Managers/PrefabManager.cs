@@ -31,9 +31,7 @@ public static class PrefabManager
 
         if (bullets.ContainsKey(bulletID))
         {
-            Quaternion dir = Quaternion.LookRotation(targetLoc);
-            GameObject newObj = GameObject.Instantiate(bullets[bulletID], pos, dir);
-            newObj.transform.rotation = Quaternion.Slerp(newObj.transform.rotation, dir, 0f);
+            GameObject newObj = GameObject.Instantiate(bullets[bulletID], pos, rot);
             BulletController newBullet = newObj.GetComponent<BulletController>();
             newBullet.entity = e;
             return true;

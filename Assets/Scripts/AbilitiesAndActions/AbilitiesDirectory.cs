@@ -14,9 +14,6 @@ public static class AbilitiesDirectory
     {
         // I'm not sure what's the best way to create abilities right now
         MakeShotgunAbility();
-        MakeLobAbility();
-        MakeShootAbility();
-        MakeSpineAbility();
     }
 
     public static bool addAbility(string abilityID, Ability ability)
@@ -44,20 +41,6 @@ public static class AbilitiesDirectory
         return abilityDictionary[abilityID].TryCastAbility(caster, targetPosition, info);
     }
 
-    // Tries to cast a specific ability without a range
-    // returns a specific AbilityFeedback enum of the ability is out of range, on cooldown, or there isnt enough resource to use
-    public static Ability.AbilityFeedback TryCastAbility(string abilityID, Entity caster)
-    {
-        try
-        {
-            return abilityDictionary[abilityID].TryCastAbility(caster);
-        }
-        catch (Exception e)
-        {
-            throw e;
-        }
-    }
-
     // I'm not sure what's the best way to create abilities right now
     // so this function creates the shotgun ability
     // should only be used once!
@@ -70,32 +53,5 @@ public static class AbilitiesDirectory
         Ability ability = new Ability(0.5f,999,actions);
         abilityDictionary.Add("shotgunAttack", ability);
         Debug.Log((abilityDictionary["shotgunAttack"] == null) ? "ability is NOT null" : "ability is NULL");
-    }
-
-    public static void MakeLobAbility()
-    {
-        List<IAction> actions = new List<IAction>();
-        actions.Add(new LobAction());
-
-        Ability ability = new Ability(0.5f, 999, actions);
-        abilityDictionary.Add("lobAttack", ability);
-    }
-
-    public static void MakeShootAbility()
-    {
-        List<IAction> actions = new List<IAction>();
-        actions.Add(new ShootAction());
-
-        Ability ability = new Ability(0.5f, 999, actions);
-        abilityDictionary.Add("shootAttack", ability);
-    }
-
-    public static void MakeSpineAbility()
-    {
-        List<IAction> actions = new List<IAction>();
-        actions.Add(new SpineAction());
-
-        Ability ability = new Ability(0.5f, 999, actions);
-        abilityDictionary.Add("spineAttack", ability);
     }
 }
