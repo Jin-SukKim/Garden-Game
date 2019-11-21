@@ -10,7 +10,7 @@ using Photon.Realtime;
 
 namespace Photon.Pun.Demo.PunBasics
 {
-    public class Launcher : MonoBehaviourPunCallbacks
+    public class Launcher : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         [SerializeField]
         private GameObject controlPanel;
@@ -140,6 +140,7 @@ namespace Photon.Pun.Demo.PunBasics
             roomJoinUI.SetActive(true);
             buttonLoadArena.SetActive(false);
             Debug.Log("connected");
+            base.OnJoinedLobby();
         }
 
         // Disconnection handling
@@ -166,5 +167,18 @@ namespace Photon.Pun.Demo.PunBasics
                 playerStatus.text = "Connected to Lobby";
             }
         }
+
+        
+        // Called after user connects to lobby
+        // public override void OnRoomListUpdate(List<RoomInfo> roomList) {
+        //     if(PhotonNetwork.IsConnected) {
+        //         foreach (RoomInfo room in roomList)
+        //         {
+        //             debug.log(room.name);
+        //             debug.log(room.PlayerCount);
+        //             debug.log(room.maxPlayers);
+        //         }
+        //     }
+        // }
     }
 }

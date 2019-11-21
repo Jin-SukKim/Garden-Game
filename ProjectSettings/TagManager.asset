@@ -11,6 +11,7 @@ TagManager:
   - Destructible
   - UsernameInput
   - CreateAccountButton
+  - Nexus
   layers:
   - Default
   - TransparentFX
