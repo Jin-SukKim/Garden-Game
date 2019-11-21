@@ -7,39 +7,54 @@ public class CharacterSelectScript : MonoBehaviour
 {
     const string PlayerID = "Player1";
 
+    Color selected = new Color(0.2f, 0.2f, 0.2f);
+    Color unSelectedNormal = new Color(1f, 1f, 1f);
+    Color unSelectedHilight = new Color(0.75f, 0.75f, 0.75f);
+
     int PlayerSelection = -1;
     GameObject[] SelectButtons = new GameObject[4];
 
-    Color unSelected = new Color(0, 0, 0, 255);
-    Color selected;
 
     // Start is called before the first frame update
     void Start()
-    {
-        selected = new Color(50, 50, 50, 255);
-
+    { 
         SelectButtons[0] = GameObject.Find("DruidSelect1");
         SelectButtons[1] = GameObject.Find("DruidSelect2");
         SelectButtons[2] = GameObject.Find("IndustrialistSelect1");
         SelectButtons[3] = GameObject.Find("IndustrialistSelect2");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public void ClickSelect(int i)
     {
+        if (PlayerSelection >= 0) deselectChar(PlayerSelection);
+ 
         PlayerSelection = i;
-        print(i);
+        selectChar(PlayerSelection);
+    }
+
+    private void selectChar(int i)
+    {
         Button but = SelectButtons[i].GetComponent<Button>();
 
         ColorBlock cb = but.colors;
         cb.normalColor = selected;
+        cb.highlightedColor = selected;
         but.colors = cb;
-        print(cb.ToString());
+
+        Text t = SelectButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>();
+        t.text = PlayerID;
+    }
+
+    private void deselectChar(int i)
+    {
+        Button but = SelectButtons[i].GetComponent<Button>();
+
+        ColorBlock cb = but.colors;
+        cb.normalColor = unSelectedNormal;
+        cb.highlightedColor = unSelectedHilight;
+        but.colors = cb;
+
+        Text t = SelectButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>();
+        t.text = "";
     }
 }
