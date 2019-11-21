@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 using Photon.Realtime;
+using System.Collections;
 
 //Figure out why we use demo.punbasics
 namespace Photon.Pun.Demo.PunBasics
@@ -20,11 +21,12 @@ namespace Photon.Pun.Demo.PunBasics
         private GameObject player2;
         private GameObject minionAI;
 
-        // Strings to identify the correct prefab to use from resources folder
+        /*RESOURCE REF*/
         [SerializeField]
         private string player1ResourceString;
         [SerializeField]
         private string player2ResourceString;
+
 
         // Start Method
         void Start()
@@ -75,6 +77,7 @@ namespace Photon.Pun.Demo.PunBasics
             }
         }
 
+
         // Photon callback to handle player leaving room
         public override void OnPlayerLeftRoom(Player other)
         {
@@ -90,6 +93,9 @@ namespace Photon.Pun.Demo.PunBasics
         {
             Application.Quit();
         }
+
+
+
 
     }
 }

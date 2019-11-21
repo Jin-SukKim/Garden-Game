@@ -11,9 +11,16 @@ public class Abilities : MonoBehaviour
     [SerializeField]
     private List<string> abilityIDs = new List<string>();
 
+    private Dictionary<string, AbilityCastInfo> castInfos = new Dictionary<string, AbilityCastInfo>();
+
     private void Start()
     {
         owner = GetComponent<Entity>();
+        foreach(string s in abilityIDs)
+        {
+            AbilityCastInfo info = new AbilityCastInfo();
+            castInfos.Add(s, info);
+        }
     }
 
     public bool AddAbility(string abilityID)
@@ -29,12 +36,17 @@ public class Abilities : MonoBehaviour
     // returns a specific AbilityFeedback enum of the ability is out of range, on cooldown, or there isnt enough resource to use
     public Ability.AbilityFeedback TryCastAbility(string abilityID, Vector3 targetPosition)
     {
-        return AbilitiesDirectory.TryCastAbility(abilityID, owner, targetPosition);
+        return AbilitiesDirectory.TryCastAbility(abilityID, owner, targetPosition, castInfos[abilityID]);
     }
 
     public Ability.AbilityFeedback basicAttack(Vector3 targetPosition)
     {
-        return AbilitiesDirectory.TryCastAbility(abilityIDs[0], owner, targetPosition);
+        return AbilitiesDirectory.TryCastAbility(abilityIDs[0], owner, targetPosition, castInfos[abilityIDs[0]]);
     }
+
+    //public float GetAbilityTimestamp()
+    //{
+
+    //}
 
 }

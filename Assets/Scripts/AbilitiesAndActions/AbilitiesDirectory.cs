@@ -27,16 +27,18 @@ public static class AbilitiesDirectory
 
     // Tries to cast a specific ability
     // returns a specific AbilityFeedback enum of the ability is out of range, on cooldown, or there isnt enough resource to use
-    public static Ability.AbilityFeedback TryCastAbility(string abilityID, Entity caster, Vector3 targetPosition)
+    public static Ability.AbilityFeedback TryCastAbility(string abilityID, Entity caster, Vector3 targetPosition, AbilityCastInfo info)
     {
-        try
-        {
-            return abilityDictionary[abilityID].TryCastAbility(caster, targetPosition);
-        } catch(Exception e)
-        {
-            Debug.Log("ABILITY SHOTGUN : " + abilityID);
-            throw e;
-        }
+        //try
+        //{
+        //    return abilityDictionary[abilityID].TryCastAbility(caster, targetPosition, info);
+        //} catch (Exception e)
+        //{
+        //    Debug.Log("ABILITY SHOTGUN : " + abilityID);
+        //    Debug.Log((abilityDictionary[abilityID] == null) ? "ability is NOT null" : "ability is NULL");
+        //    throw e;
+        //}
+        return abilityDictionary[abilityID].TryCastAbility(caster, targetPosition, info);
     }
 
     // I'm not sure what's the best way to create abilities right now
@@ -50,5 +52,6 @@ public static class AbilitiesDirectory
         
         Ability ability = new Ability(0.5f,999,actions);
         abilityDictionary.Add("shotgunAttack", ability);
+        Debug.Log((abilityDictionary["shotgunAttack"] == null) ? "ability is NOT null" : "ability is NULL");
     }
 }
