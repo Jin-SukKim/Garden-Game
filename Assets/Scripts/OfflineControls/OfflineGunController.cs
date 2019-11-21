@@ -75,14 +75,14 @@ public class OfflineGunController : MonoBehaviour {
 
             
         }
-
+        //Fire Lob
         if (Input.GetMouseButtonUp(1))
         {
             transform.Find("Targeting").gameObject.SetActive(false);
             Debug.Log("Fire: " + targeting.position);
             AbilitiesDirectory.TryCastAbility("lobAttack", GetComponent<Entity>(), targeting.position);
         }
-
+        //Aim Lob
         if (Input.GetMouseButton(1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -100,11 +100,11 @@ public class OfflineGunController : MonoBehaviour {
             }
             transform.Find("Targeting").gameObject.SetActive(true);
         }
-
+        //Fire straight shot
         if (Input.GetKey(KeyCode.Q)){
             AbilitiesDirectory.TryCastAbility("shootAttack", GetComponent<Entity>());
         }
-
+        //Fire spine attack
         if (Input.GetKey(KeyCode.E))
         {
             AbilitiesDirectory.TryCastAbility("spineAttack", GetComponent<Entity>());

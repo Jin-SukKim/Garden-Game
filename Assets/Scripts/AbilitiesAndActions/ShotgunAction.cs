@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Shoots a Rrndom spread of bullets in a certain direction
+/// </summary>
 public class ShotgunAction : IAction
 {
     string mBulletId = "BulletRound";

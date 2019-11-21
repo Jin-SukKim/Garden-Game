@@ -5,15 +5,16 @@ using UnityEngine;
 using Photon;
 using Photon.Pun;
 
+/// <summary>
+/// Base class for the other bullet types
+/// </summary>
 public class BulletController : MonoBehaviour
 {
-    public enum BulletType { straight, arc, spine };
     public float speed;
     public float lifeTime;
 
     public int damageToGive;
     public GameObject impactEffect;
-    public BulletType type;
 
     public Vector3 shootingLoc;
     public Vector3 targetLoc;
@@ -31,6 +32,11 @@ public class BulletController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Initializes the bullets with a starting location and an end location
+    /// </summary>
+    /// <param name="shootingLoc"></param>
+    /// <param name="targetLoc"></param>
     public void InitBullet(Vector3 shootingLoc, Vector3 targetLoc)
     {
         Debug.Log("Initializing bullet: " + shootingLoc + ", " + targetLoc);

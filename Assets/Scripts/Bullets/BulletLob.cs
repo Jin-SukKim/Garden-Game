@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the logic of lobbing an object to a certain location from a certain location
+/// </summary>
 public class BulletLob : BulletController
 {
     private float arcLifetime;
