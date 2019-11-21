@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2611586976283010916}
   - component: {fileID: 2611586976283010917}
   - component: {fileID: 2611586976283010914}
-  - component: {fileID: 114551143426215584}
+  - component: {fileID: 5010526046167587798}
   m_Layer: 0
   m_Name: BulletSpine
   m_TagString: Bullet
@@ -92,7 +92,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114551143426215584
+--- !u!114 &5010526046167587798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,15 +101,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2611586976283010912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9eae172bea54584183ca2250ad76e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5338432b690dce141a051991e176afbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  lifeTime: 0
-  damageToGive: 0
-  impactEffect: {fileID: 0}
+  speed: 5
+  lifeTime: 0.25
+  damageToGive: 1
+  impactEffect: {fileID: 4344580563010153815, guid: 9260327777720af4f9e7fc029ae7ace7,
+    type: 3}
   type: 0
   shootingLoc: {x: 0, y: 0, z: 0}
   targetLoc: {x: 0, y: 0, z: 0}
-  startDir: {x: 0, y: 0, z: 0}
-  owner: {fileID: 0}

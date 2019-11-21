@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootAction : IAction
 {
-    public string mBulletID = "BulletLob";
+    public string mBulletID = "Bullet";
     public void doAction(Entity e, Ability a)
     {
         Vector3 dir = a.GetTargetPosition() - e.transform.position;

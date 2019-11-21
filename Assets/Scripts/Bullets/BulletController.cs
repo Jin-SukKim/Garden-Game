@@ -19,7 +19,7 @@ public class BulletController : MonoBehaviour
     public Vector3 targetLoc;
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         lifeTime -= Time.deltaTime;
 

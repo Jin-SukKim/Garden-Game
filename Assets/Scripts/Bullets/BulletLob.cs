@@ -16,13 +16,16 @@ public class BulletLob : BulletController
         arcLifetime = 2f;
         lifeTime = arcLifetime;
         animationStart = Time.time;
+        targetLoc.y = 0;
         //The apex of the arc
         midPoint = ((shootingLoc + targetLoc) / 2) + new Vector3(0, 10f);
+        Debug.Log(targetLoc);
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         float lerpVal = (Time.time - animationStart) / arcLifetime;
 
         Vector3 curve1 = Vector3.Lerp(shootingLoc, midPoint, lerpVal);

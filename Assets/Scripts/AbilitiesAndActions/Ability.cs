@@ -108,7 +108,6 @@ public class Ability {
 
     public Vector3 GetTargetPosition()
     {
-        Debug.Log("Target Position: " + targetPosition);
         return targetPosition;
     }
 }
