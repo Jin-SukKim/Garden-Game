@@ -47,7 +47,16 @@ public class OfflineGunController : MonoBehaviour {
                     manabar.fillAmount = mana/maxMana;
                 }    
             }
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Plane plane = new Plane(Vector3.up, Vector3.zero);
+            float distance;
+            Vector3 targetPos = new Vector3();
+            if (plane.Raycast(ray, out distance))
+            {
 
+                // Target value is the instant location of cursor, can be used for shooting function later
+                targetPos = ray.GetPoint(distance);
+            }
             AbilitiesDirectory.TryCastAbility("shotgunAttack", GetComponent<Entity>(), targetPos);
         }
     }

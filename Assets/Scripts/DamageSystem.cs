@@ -11,7 +11,7 @@ public class DamageSystem : MonoBehaviour
     //The bar that displays remaining health
     public Image healthbar;
 
-    private float currentHealth;
+    public float currentHealth;
 
     public GameObject enemeyDeathAnimation;
 
