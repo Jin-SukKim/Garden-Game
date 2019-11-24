@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShotgunAction : IAction
 {
+    string mBulletId = "BulletRound";
     int bulletCount = 6;
 
     public void doAction(Entity e, Ability a)
@@ -13,10 +14,8 @@ public class ShotgunAction : IAction
         Vector3 dir = a.GetTargetPosition() - e.transform.position;
         for(int i = 0; i < bulletCount; i++)
         {
-            //Debug.LogFormat("Shooting bullet {0}",i);
-
-            Vector3 randDir = dir + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
-            PrefabManager.SpawnBullet("Bullet",e.spawnPoint.position,Quaternion.LookRotation(randDir), e);
+            Vector3 randDir = dir + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));
+            PrefabManager.SpawnBullet(mBulletId,e.spawnPoint.position,randDir,e);
         }
     }
 }

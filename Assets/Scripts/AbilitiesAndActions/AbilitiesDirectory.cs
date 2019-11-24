@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +14,9 @@ public static class AbilitiesDirectory
     {
         // I'm not sure what's the best way to create abilities right now
         MakeShotgunAbility();
+        MakeLobAbility();
+        MakeShootAbility();
+        MakeSpineAbility();
     }
 
     public static bool addAbility(string abilityID, Ability ability)
@@ -54,4 +57,59 @@ public static class AbilitiesDirectory
         abilityDictionary.Add("shotgunAttack", ability);
         Debug.Log((abilityDictionary["shotgunAttack"] == null) ? "ability is NOT null" : "ability is NULL");
     }
+
+    public static void MakeLobAbility()
+    {
+        List<IAction> actions = new List<IAction>();
+        actions.Add(new LobAction());
+
+        Ability ability = new Ability(0.5f, 999, actions);
+        abilityDictionary.Add("lobAttack", ability);
+    }
+
+    public static void MakeShootAbility()
+    {
+        List<IAction> actions = new List<IAction>();
+        actions.Add(new ShootAction());
+
+        Ability ability = new Ability(0.5f, 999, actions);
+        abilityDictionary.Add("shootAttack", ability);
+    }
+
+    public static void MakeSpineAbility()
+    {
+        List<IAction> actions = new List<IAction>();
+        actions.Add(new SpineAction());
+
+        Ability ability = new Ability(0.5f, 999, actions);
+        abilityDictionary.Add("spineAttack", ability);
+    }
 }
+
+    // Tries to cast a specific ability without a range
+    // returns a specific AbilityFeedback enum of the ability is out of range, on cooldown, or there isnt enough resource to use
+    public static Ability.AbilityFeedback TryCastAbility(string abilityID, Entity caster, AbilityCastInfo info)
+    {
+        try
+        {
+            return abilityDictionary[abilityID].TryCastAbility(caster, info);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    // Tries to cast a specific ability
+    // returns a specific AbilityFeedback enum of the ability is out of range, on cooldown, or there isnt enough resource to use
+/*    public static Ability.AbilityFeedback TryCastAbility(string abilityID, Entity caster, Vector3 targetPosition, AbilityCastInfo info)
+    {
+        try
+        {
+            return abilityDictionary[abilityID].TryCastAbility(caster, targetPosition, info);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }*/
+    //}

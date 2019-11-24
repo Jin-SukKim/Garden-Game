@@ -180,7 +180,8 @@ MonoBehaviour:
   image: {fileID: 0}
   currentHealth: 0
   respawn: 0
-  enemeyDeathAnimation: {fileID: 0}
+  enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
+    type: 3}
   respawnPoint: {fileID: 0}
   respawnPointWait: {fileID: 0}
 --- !u!114 &114075977698051234
