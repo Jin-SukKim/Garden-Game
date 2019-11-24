@@ -48,7 +48,8 @@ public static class PrefabManager
 
         if (bullets.ContainsKey(bulletID))
         {
-            GameObject newObj = GameObject.Instantiate(bullets[bulletID], pos, rot);
+            Quaternion dir = Quaternion.LookRotation(targetLoc);
+            GameObject newObj = GameObject.Instantiate(bullets[bulletID], pos, dir);
             BulletController newBullet = newObj.GetComponent<BulletController>();
             newBullet.InitBullet(pos, targetLoc);
 
