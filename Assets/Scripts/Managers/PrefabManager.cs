@@ -26,7 +26,24 @@ public static class PrefabManager
         }
     }
 
-    public static bool SpawnBullet(string bulletID, Vector3 pos, Quaternion rot, Entity e)
+/*    public static bool SpawnBullet(string bulletID, Vector3 pos, Quaternion rot, Entity e)
+    {
+
+        if (bullets.ContainsKey(bulletID))
+        {
+*//*            Quaternion dir = Quaternion.LookRotation(targetLoc);*//*
+            GameObject newObj = GameObject.Instantiate(bullets[bulletID], pos, dir);
+            newObj.transform.rotation = Quaternion.Slerp(newObj.transform.rotation, dir, 0f);
+            BulletController newBullet = newObj.GetComponent<BulletController>();
+*//*            newBullet.entity = e;*//*
+            return true;
+        } else
+        {
+            return false;
+        }
+    }*/
+
+    public static bool SpawnBullet(string bulletID, Vector3 pos, Vector3 targetLoc, Entity e)
     {
 
         if (bullets.ContainsKey(bulletID))
@@ -35,9 +52,13 @@ public static class PrefabManager
             GameObject newObj = GameObject.Instantiate(bullets[bulletID], pos, dir);
             newObj.transform.rotation = Quaternion.Slerp(newObj.transform.rotation, dir, 0f);
             BulletController newBullet = newObj.GetComponent<BulletController>();
+            newBullet.InitBullet(pos, targetLoc);
+
+            //not the best way to do this
             newBullet.entity = e;
             return true;
-        } else
+        }
+        else
         {
             return false;
         }

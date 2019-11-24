@@ -25,7 +25,7 @@ public class SpineAction : IAction
         while (spineCount < maxSpines)
         {
             Vector3 targetPos = initalPos + (spineCount * dir) - e.transform.up;
-            PrefabManager.SpawnBullet(mBulletID, targetPos, e.transform.up, 0);
+            PrefabManager.SpawnBullet(mBulletID, targetPos, e.transform.up, e);
             spineCount++;
             yield return new WaitForSeconds(timeInterval);
         }

@@ -19,6 +19,8 @@ public class BulletController : MonoBehaviour
     public Vector3 shootingLoc;
     public Vector3 targetLoc;
 
+    public Entity entity;
+
     // Update is called once per frame
     protected virtual void Update()
     {
@@ -43,6 +45,7 @@ public class BulletController : MonoBehaviour
         this.shootingLoc = shootingLoc;
         this.targetLoc = targetLoc;
     }
+
     /// <summary>
     /// Collision Enter function
     /// </summary>
@@ -60,13 +63,34 @@ public class BulletController : MonoBehaviour
             //}
 
             // For now anything with this tag can be destroyed in the same way.
-            if (other.gameObject.tag == "Destructible")
+            // For now anything with this tag can be destroyed in the same way.
+            if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.team)
             {
                 other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
                 GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
                 Destroy(obj, 2f);
                 Destroy(gameObject);
             }
+            else if (other.gameObject.GetComponent<Entity>() == entity) // If it's the caster case
+            {
+                return;
+            }
+
+            // Shooting team mate case
+            if (other.gameObject.GetComponent<Teams>().TeamsFaction == entity.team)
+            {
+                GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+
+            // For nexus
+/*            if (other.gameObject.tag == "Nexus")
+            {
+                other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
+                GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(obj, 2f);
+                Destroy(gameObject);
+            }*/
         }
     }
 }

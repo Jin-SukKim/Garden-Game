@@ -18,7 +18,7 @@ public class ShotgunAction : IAction
         for(int i = 0; i < bulletCount; i++)
         {
             Vector3 randDir = dir + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));
-            PrefabManager.SpawnBullet(mBulletId,e.transform.position,randDir,0);
+            PrefabManager.SpawnBullet(mBulletId,e.spawnPoint.position,randDir,e);
         }
     }
 }

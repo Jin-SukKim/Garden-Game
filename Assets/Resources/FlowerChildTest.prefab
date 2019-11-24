@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityIDs:
-  - shotgunAttack
+  - shootAttack
 --- !u!114 &4235325832265764883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,6 +1195,7 @@ MonoBehaviour:
   bulletSpeed: 0
   timeBetweenShots: 0
   photonView: {fileID: 0}
+  targeting: {fileID: 0}
 --- !u!1 &4766889928794413049
 GameObject:
   m_ObjectHideFlags: 0
