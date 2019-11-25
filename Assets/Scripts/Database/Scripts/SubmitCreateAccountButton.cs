@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+
 
 public class SubmitCreateAccountButton : MonoBehaviour {
 
@@ -25,14 +27,9 @@ public class SubmitCreateAccountButton : MonoBehaviour {
     [SerializeField]
     private InputField PasswordInputField;
 
-    [SerializeField]
-    private InputField PlayerNameInputField;
-
     void Start() {
         Button createAccountButton = gameObject.GetComponent<Button>();
         StatusText = GameObject.Find("statusText").GetComponent<Text>();
-        UsernameInputField = GameObject.Find("UsernameInputField").GetComponent<InputField>();
-        PasswordInputField = GameObject.Find("PasswordInputField").GetComponent<InputField>();
         createAccountButton.onClick.AddListener(CreateAccountButtonClick);
     }
 
@@ -64,6 +61,7 @@ public class SubmitCreateAccountButton : MonoBehaviour {
     }
 
     IEnumerator SendHttpRequest(string url, string username, string passwordHash) {
+
         WWWForm postData = new WWWForm();
         postData.AddField("username", username);
         postData.AddField("passwordHash", passwordHash);
@@ -73,11 +71,16 @@ public class SubmitCreateAccountButton : MonoBehaviour {
 
         yield return request.SendWebRequest();
 
-        if (request.isNetworkError || request.isHttpError) {
+        if (request.isNetworkError || request.isHttpError)
+        {
             Debug.Log("error:");
             Debug.Log(request.error);
             StatusText.text = "that username is taken";
-        } else {
+        }
+        else
+        {
+            PlayerPrefs.DeleteKey("guest");
+
             Account account = JsonUtility.FromJson<Account>(request.downloadHandler.text);
             PlayerPrefs.SetString("username", account.username);
             PlayerPrefs.SetString("token", account.jsonWebToken);
@@ -86,10 +89,11 @@ public class SubmitCreateAccountButton : MonoBehaviour {
             StatusText.text = $"welcome {PlayerPrefs.GetString("username")}\n" +
                               $"your jwt is {PlayerPrefs.GetString("token")}";
 
-            PlayerNameInputField.text = PlayerPrefs.GetString("username");
             UsernameInputField.text = string.Empty;
             PasswordInputField.text = string.Empty;
             CreateAccountButton.SetActive(false);
+            SceneManager.LoadScene("Lobby");
+
         }
     }
 

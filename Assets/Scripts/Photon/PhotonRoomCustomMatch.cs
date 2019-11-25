@@ -22,6 +22,7 @@ public class PhotonRoomCustomMatch : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public int myNumberInRoom;
 
     public int playersInGame;
+    public int NUMBER_OF_PLAYERS_REQUIRED = 2;
 
     //Delayed start
     private bool readyToCount;
@@ -124,7 +125,7 @@ public class PhotonRoomCustomMatch : MonoBehaviourPunCallbacks, IInRoomCallbacks
         photonPlayers = PhotonNetwork.PlayerList;
         playersInRoom++;
         textError.enabled = false;
-        if(playersInRoom==4)
+        if(playersInRoom== NUMBER_OF_PLAYERS_REQUIRED)
         {
             textRoomError.enabled = false;
             textRoomStatus.enabled = true;
@@ -173,7 +174,7 @@ public class PhotonRoomCustomMatch : MonoBehaviourPunCallbacks, IInRoomCallbacks
         {
             return;
         }
-        if(playersInRoom< 4)
+        if(playersInRoom< NUMBER_OF_PLAYERS_REQUIRED)
         {
             textRoomError.text = "Not enough players in the room";
             textRoomError.enabled = true;

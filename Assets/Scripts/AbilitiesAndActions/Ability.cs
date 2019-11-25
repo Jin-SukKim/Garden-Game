@@ -68,6 +68,22 @@ public class Ability {
         return AbilityFeedback.success;
     }
 
+/*    public virtual AbilityFeedback TryCastAbility(Entity e)
+    {
+        if (!checkCooldown(info))
+            return AbilityFeedback.onCooldown;
+
+        if (!checkCost(e))
+            return AbilityFeedback.noResource;
+
+        targetPosition = e.transform.position;
+
+        fireAbility(e, info);
+        return AbilityFeedback.success;
+    }*/
+
+
+
     protected bool checkCost(Entity e)
     {
         return (getResource == null || getResource(e).CanPayCost(cost));

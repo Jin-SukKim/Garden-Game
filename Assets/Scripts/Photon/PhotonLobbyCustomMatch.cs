@@ -28,7 +28,6 @@ public class PhotonLobbyCustomMatch : MonoBehaviourPunCallbacks, ILobbyCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.DeleteAll();
         textConnectionStatus.text = "Connecting to server...";
         PhotonNetwork.ConnectUsingSettings();
         roomListings = new List<RoomInfo>();
@@ -39,7 +38,13 @@ public class PhotonLobbyCustomMatch : MonoBehaviourPunCallbacks, ILobbyCallbacks
         Debug.Log("Connected to Master");
         textConnectionStatus.text = "Connected to Game Server";
         PhotonNetwork.AutomaticallySyncScene = true;
-        PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
+        if(PlayerPrefs.GetString("guest", "") != "")
+        {
+            PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
+        } else
+        {
+            PhotonNetwork.NickName = PlayerPrefs.GetString("username", null);
+        }
         JoinLobby();
     }
 
@@ -106,7 +111,7 @@ public class PhotonLobbyCustomMatch : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         Debug.Log("Trying to create room");
         textError.enabled = false;
-        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = byte.Parse(roomSize) };
+        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 4 };
         PhotonNetwork.CreateRoom(roomName, roomOps);
     }
 
@@ -121,11 +126,6 @@ public class PhotonLobbyCustomMatch : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public void OnRoomNameChanged(string nameIn)
     {
         roomName = roomNameField.text;
-    }
-
-    public void OnRoomSizeChanged(string sizeIn)
-    {
-        roomSize = roomSizeField.text;
     }
 
     public void JoinLobby()
