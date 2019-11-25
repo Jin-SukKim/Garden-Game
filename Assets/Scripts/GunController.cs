@@ -166,7 +166,8 @@ public class GunController : MonoBehaviourPun
 
 
 
-        abilities.TryCastAbility("shootAttack", pos);
+        //abilities.TryCastAbility("shootAttack", pos);
+        abilities.basicAttack(pos);
     }
 
 
