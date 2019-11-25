@@ -33,7 +33,7 @@ public class DamageSystem : MonoBehaviour
             GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
             //Destroy(gameObject.GetComponent("Rigidbody"));
             Destroy(obj, 5f);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else if (currentHealth <= 0 && respawn == true)
         {

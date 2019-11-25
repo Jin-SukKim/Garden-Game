@@ -11,6 +11,11 @@ public class Entity : MonoBehaviour
     public Abilities abilities;
     public Transform spawnPoint;
 
+    public MeshRenderer renderer;
+    public CapsuleCollider collider;
+
+    public bool inputAllowed;
+
     private void Start()
     {
         // Now the core components of the player can be accessed through the single entity component
@@ -18,5 +23,7 @@ public class Entity : MonoBehaviour
         health = GetComponent<DamageSystem>();
         abilities = GetComponent<Abilities>();
         spawnPoint = gameObject.transform.Find("spawnPoint");
+        renderer = GetComponent<MeshRenderer>();
+        collider = GetComponent<CapsuleCollider>();
     }
 }
