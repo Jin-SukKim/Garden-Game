@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class CharacterSelectScript : MonoBehaviour
+public class CharacterSelectScript : MonoBehaviourPunCallbacks
 {
-    const string PlayerID = "Player1";
+    public PhotonView pv;
+    string PlayerID;
 
     Color selected = new Color(0.2f, 0.2f, 0.2f);
     Color unSelectedNormal = new Color(1f, 1f, 1f);
@@ -17,7 +20,11 @@ public class CharacterSelectScript : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
+        pv = gameObject.GetComponent<PhotonView>();
+
+        PlayerID = PhotonNetwork.LocalPlayer.NickName;
+
         SelectButtons[0] = GameObject.Find("DruidSelect1");
         SelectButtons[1] = GameObject.Find("DruidSelect2");
         SelectButtons[2] = GameObject.Find("IndustrialistSelect1");
@@ -26,12 +33,13 @@ public class CharacterSelectScript : MonoBehaviour
 
     public void ClickSelect(int i)
     {
-        if (PlayerSelection >= 0) deselectChar(PlayerSelection);
- 
-        PlayerSelection = i;
-        selectChar(PlayerSelection);
+            if (PlayerSelection >= 0) deselectChar(PlayerSelection);
+
+            PlayerSelection = i;
+            selectChar(PlayerSelection);
     }
 
+    [PunRPC]
     private void selectChar(int i)
     {
         Button but = SelectButtons[i].GetComponent<Button>();
@@ -45,6 +53,7 @@ public class CharacterSelectScript : MonoBehaviour
         t.text = PlayerID;
     }
 
+    [PunRPC]
     private void deselectChar(int i)
     {
         Button but = SelectButtons[i].GetComponent<Button>();
