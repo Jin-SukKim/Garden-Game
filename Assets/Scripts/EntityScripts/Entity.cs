@@ -10,7 +10,9 @@ public class Entity : MonoBehaviour
     public DamageSystem health;
     public Abilities abilities;
     public Transform spawnPoint;
-
+    public bool CanAct;
+    public bool CanCast;
+    public bool CanMove;
     private void Start()
     {
         // Now the core components of the player can be accessed through the single entity component
@@ -18,5 +20,8 @@ public class Entity : MonoBehaviour
         health = GetComponent<DamageSystem>();
         abilities = GetComponent<Abilities>();
         spawnPoint = gameObject.transform.Find("spawnPoint");
+        CanAct = true;
+        CanCast = true;
+        CanMove = true;
     }
 }

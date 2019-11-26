@@ -46,81 +46,81 @@ public class InputManager : MonoBehaviour
             return;
         }
 
-        if (photonView.IsMine || !PhotonNetwork.IsConnected)
+        if ((photonView.IsMine || !PhotonNetwork.IsConnected) && MyEntity.CanAct)
         {
-
-            //// Points the player's cube object in the direction of the cursor
-            //// Ray casting to get the cursor position, uses that result to direct player
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Plane plane = new Plane(Vector3.up, Vector3.zero);
-            float distance;
-
-            if (plane.Raycast(ray, out distance))
+            if (MyEntity.CanCast)
             {
-                // Target value is the instant location of cursor, can be used for shooting function later
-                firePoint = ray.GetPoint(distance);
+                //// Points the player's cube object in the direction of the cursor 
+                //// Ray casting to get the cursor position, uses that result to direct player
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Plane plane = new Plane(Vector3.up, Vector3.zero);
+                float distance;
 
-                Vector3 direction = firePoint - MyEntity.gameObject.transform.position;
-                float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-                MyEntity.gameObject.transform.rotation = Quaternion.Euler(0, rotation, 0);
-            }
+                if (plane.Raycast(ray, out distance))
+                {
+                    // Target value is the instant location of cursor, can be used for shooting function later
+                    firePoint = ray.GetPoint(distance);
+
+                    Vector3 direction = firePoint - MyEntity.gameObject.transform.position;
+                    float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                    MyEntity.gameObject.transform.rotation = Quaternion.Euler(0, rotation, 0);
+                }
 
 
-            if (Input.GetButton("Fire1"))
-            {
-                if (!PhotonNetwork.IsConnected)
+                if (Input.GetButton("Fire1"))
                 {
-                    Debug.Log("NOT CONNECtED TO NEt");
-                    Fire(firePoint, 0);
+                    if (!PhotonNetwork.IsConnected)
+                    {
+                        Fire(firePoint, 0);
+                    }
+                    else
+                    {
+                        this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 0);
+                    }
                 }
-                else
-                {
-                    this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 0);
-                }
-            }
 
-            if (Input.GetButton("Fire2"))
-            {
-                if (!PhotonNetwork.IsConnected)
+                if (Input.GetButton("Fire2"))
                 {
-                    Debug.Log("NOT CONNECtED TO NEt");
-                    Fire(firePoint, 1);
+                    if (!PhotonNetwork.IsConnected)
+                    {
+                        Fire(firePoint, 1);
+                    }
+                    else
+                    {
+                        this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 1);
+                    }
                 }
-                else
+                if (Input.GetButton("Fire3"))
                 {
-                    this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 1);
+                    if (!PhotonNetwork.IsConnected)
+                    {
+                        Fire(firePoint, 2);
+                    }
+                    else
+                    {
+                        this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 2);
+                    }
                 }
-            }
-            if (Input.GetButton("Fire3"))
-            {
-                if (!PhotonNetwork.IsConnected)
+                if (Input.GetButton("Fire4"))
                 {
-                    Debug.Log("NOT CONNECtED TO NEt");
-                    Fire(firePoint, 2);
-                }
-                else
-                {
-                    this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 2);
-                }
-            }
-            if (Input.GetButton("Fire4"))
-            {
-                if (!PhotonNetwork.IsConnected)
-                {
-                    Debug.Log("NOT CONNECtED TO NEt");
-                    Fire(firePoint, 3);
-                }
-                else
-                {
-                    this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 3);
+                    if (!PhotonNetwork.IsConnected)
+                    {
+                        Fire(firePoint, 3);
+                    }
+                    else
+                    {
+                        this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 3);
+                    }
                 }
             }
-
-            movement.horizAxis = Input.GetAxis("HorizKey");
-            movement.vertAxis = Input.GetAxis("VertKey");
+            
+            if (MyEntity.CanMove)
+            {
+                movement.horizAxis = Input.GetAxis("HorizKey");
+                movement.vertAxis = Input.GetAxis("VertKey");
+            }
+            
         }
-
-        
     }
     [PunRPC]
     private void Fire(Vector3 pos, int abilityNum)
