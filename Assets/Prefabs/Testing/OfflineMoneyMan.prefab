@@ -1147,7 +1147,6 @@ GameObject:
   m_Component:
   - component: {fileID: 625004231368973353}
   - component: {fileID: 625004231368973354}
-  - component: {fileID: 625004231368973355}
   - component: {fileID: 625004231368973364}
   - component: {fileID: 625004231368973365}
   - component: {fileID: 625004231368973366}
@@ -1202,24 +1201,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &625004231368973355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625004231368973373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36375e6b6c042864f8e7bc4c11033859, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFiring: 0
-  bullet: {fileID: 2611586976283010915, guid: 8ec3450441275204e846f74d39d18ce5, type: 3}
-  bulletSpeed: 5
-  timeBetweenShots: 0.1
-  photonView: {fileID: 625004231368973366}
-  targeting: {fileID: 0}
 --- !u!114 &625004231368973364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1371,6 +1352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   photonView: {fileID: 0}
+  horizAxis: 0
+  vertAxis: 0
 --- !u!114 &625004231368973372
 MonoBehaviour:
   m_ObjectHideFlags: 0

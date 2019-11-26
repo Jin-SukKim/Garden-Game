@@ -44,6 +44,11 @@ public class Abilities : MonoBehaviour
         return AbilitiesDirectory.TryCastAbility(abilityIDs[0], owner, targetPosition, castInfos[abilityIDs[0]]);
     }
 
+    public Ability.AbilityFeedback castAbility(int index, Vector3 targetPosition)
+    {
+        return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[0]]);
+    }
+
     //public float GetAbilityTimestamp()
     //{
 

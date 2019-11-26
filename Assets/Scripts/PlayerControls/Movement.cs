@@ -7,9 +7,6 @@ using Photon.Pun;
 
 public class Movement : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    //public GunController theGun;
-
     [SerializeField]
     float speed = 4f;
 
@@ -24,6 +21,8 @@ public class Movement : MonoBehaviour
     // Will be used later for animation
     //private Animator anim;
 
+    public float horizAxis;
+    public float vertAxis;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +33,6 @@ public class Movement : MonoBehaviour
 
         // attach photon view WITH THE GAMEOBJECT KEYWORD :)
         photonView = gameObject.GetComponent<PhotonView>();
-
-        rb = GetComponent<Rigidbody2D>();
 
         // Establish the forwardBack direction relative to the camera's
         forwardBackDirection = Camera.main.transform.forward;
@@ -65,22 +62,9 @@ public class Movement : MonoBehaviour
         if (photonView.IsMine || !PhotonNetwork.IsConnected){
             // WASD movement
 
-            // Triggering animations through parameters
-/*            if (Input.GetAxis("HorizKey") != 0 || Input.GetAxis("VertKey") != 0)
-            {
-                // Set walking to true if there is a movement input
-                anim.setbool("iswalking", true);
-                Debug.Log("MOVING!");
-            }
-            else
-            {
-                anim.SetBool("IsWalking", false);
-                Debug.Log("NOT MOVING!");
-            }*/
-
             // Using Time.deltaTime allows for smoother movement
-            Vector3 leftRightMovement = leftRightDirection * speed * Time.deltaTime * Input.GetAxis("HorizKey");
-            Vector3 forwardBackMovement = forwardBackDirection * speed * Time.deltaTime * Input.GetAxis("VertKey");
+            Vector3 leftRightMovement = leftRightDirection * speed * Time.deltaTime * horizAxis;
+            Vector3 forwardBackMovement = forwardBackDirection * speed * Time.deltaTime * vertAxis;
 
             // Causes movement
             transform.position += leftRightMovement;
