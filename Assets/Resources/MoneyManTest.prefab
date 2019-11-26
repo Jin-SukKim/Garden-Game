@@ -1149,6 +1149,7 @@ MonoBehaviour:
   health: {fileID: 0}
   abilities: {fileID: 0}
   spawnPoint: {fileID: 0}
+  resources: {fileID: 0}
 --- !u!114 &114606246167635992
 MonoBehaviour:
   m_ObjectHideFlags: 0
