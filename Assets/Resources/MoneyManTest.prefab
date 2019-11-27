@@ -634,7 +634,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300034, guid: a15355922238d2c4bac93539912aab18, type: 3}
+  m_Mesh: {fileID: 4300008, guid: a15355922238d2c4bac93539912aab18, type: 3}
   m_Bones:
   - {fileID: 4766889928794180583}
   - {fileID: 4766889928794180581}
@@ -965,10 +965,9 @@ GameObject:
   - component: {fileID: 4235325832265764883}
   - component: {fileID: 114606246167635992}
   - component: {fileID: 1504644891503217732}
-  - component: {fileID: 114857193365507930}
   m_Layer: 0
   m_Name: MoneyManTest
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1132,7 +1131,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityIDs:
+  - shootAttack
   - shotgunAttack
+  - spineAttack
+  - lobAttack
 --- !u!114 &4235325832265764883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,6 +1151,7 @@ MonoBehaviour:
   health: {fileID: 0}
   abilities: {fileID: 0}
   spawnPoint: {fileID: 0}
+  resources: {fileID: 0}
 --- !u!114 &114606246167635992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1178,23 +1181,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &114857193365507930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4766889928794413047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36375e6b6c042864f8e7bc4c11033859, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFiring: 0
-  bullet: {fileID: 0}
-  bulletSpeed: 0
-  timeBetweenShots: 0
-  photonView: {fileID: 0}
 --- !u!1 &4766889928794413049
 GameObject:
   m_ObjectHideFlags: 0
