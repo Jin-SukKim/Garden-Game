@@ -16,18 +16,29 @@ public class InputManager : MonoBehaviour
 
     void Start()
     {
-        /*
-        photonView = gameObject.GetComponent<PhotonView>();
+
+        // Attached on script attachment see gamemanager
+        MyEntity = gameObject.GetComponent<Entity>();
+        photonView = PhotonView.Get(this);
+        //photonView = gameObject.GetComponent<PhotonView>();
         abilities = gameObject.GetComponent<Abilities>();
-        */
+        movement = gameObject.GetComponent<Movement>();
     }
 
-    public void InitializeInputManager(Entity myEntity)
+/*    public void InitializeInputManager(Entity myEntity)
     {
         MyEntity = myEntity;
         photonView = MyEntity.gameObject.GetComponent<PhotonView>();
         abilities = MyEntity.gameObject.GetComponent<Abilities>();
         movement = MyEntity.gameObject.GetComponent<Movement>();
+    }*/
+
+    // Due to the nature of photon we must attach this script to the object with the photonview
+
+    [PunRPC]
+    public void Fire(Vector3 pos, int abilityNum)
+    {
+        abilities.castAbility(abilityNum, pos);
     }
 
 
@@ -75,6 +86,7 @@ public class InputManager : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("Networked fire call");
                     this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 0);
                 }
             }
@@ -121,11 +133,6 @@ public class InputManager : MonoBehaviour
         }
 
         
-    }
-    [PunRPC]
-    private void Fire(Vector3 pos, int abilityNum)
-    {
-        abilities.castAbility(abilityNum, pos);
     }
 
     public Vector3 GetPointerPosition()

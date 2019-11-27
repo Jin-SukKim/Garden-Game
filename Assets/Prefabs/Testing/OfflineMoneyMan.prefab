@@ -1322,6 +1322,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityIDs:
   - shootAttack
+  - shotgunAttack
+  - spineAttack
+  - lobAttack
 --- !u!114 &625004231368973362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,6 +1341,7 @@ MonoBehaviour:
   health: {fileID: 0}
   abilities: {fileID: 0}
   spawnPoint: {fileID: 0}
+  resources: {fileID: 0}
 --- !u!114 &625004231368973363
 MonoBehaviour:
   m_ObjectHideFlags: 0
