@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   lifeTime: 2
-  damageToGive: 10
+  damageToGive: 3
   impactEffect: {fileID: 450552748, guid: 673468142225ba14b84017679296a12b, type: 3}
   shootingLoc: {x: 0, y: 0, z: 0}
   targetLoc: {x: 0, y: 0, z: 0}
