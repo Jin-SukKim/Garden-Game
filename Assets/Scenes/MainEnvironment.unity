@@ -5321,8 +5321,8 @@ MonoBehaviour:
   player1SpawnPosition: {fileID: 1287523724}
   player2SpawnPosition: {fileID: 608304231}
   minionAISpawnPosition: {fileID: 1651474582}
-  player1ResourceString: MoneyManTest
-  player2ResourceString: FlowerChildTest
+  player1ResourceString: MoneyMan
+  player2ResourceString: FlowerChild
 --- !u!4 &756907270
 Transform:
   m_ObjectHideFlags: 0
