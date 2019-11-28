@@ -110,7 +110,7 @@ MonoBehaviour:
   speed: 5
   lifeTime: 2
   damageToGive: 10
-  impactEffect: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab, type: 3}
+  impactEffect: {fileID: 450552748, guid: 673468142225ba14b84017679296a12b, type: 3}
   shootingLoc: {x: 0, y: 0, z: 0}
   targetLoc: {x: 0, y: 0, z: 0}
   entity: {fileID: 0}
