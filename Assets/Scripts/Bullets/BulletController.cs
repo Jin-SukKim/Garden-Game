@@ -50,7 +50,7 @@ public class BulletController : MonoBehaviour
     /// Collision Enter function
     /// </summary>
     /// <param name="other"></param>
-    private void OnCollisionEnter(Collision other)
+    protected virtual void OnCollisionEnter(Collision other)
     {
         if (gameObject.tag == "Bullet")
         {
