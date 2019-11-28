@@ -18,7 +18,6 @@ public class CharacterSelectScript : MonoBehaviour
     int PlayerSelection = -1;
     GameObject[] SelectButtons = new GameObject[4];
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,16 +40,25 @@ public class CharacterSelectScript : MonoBehaviour
         object[] content = new object[] { PlayerSelection, PlayerID };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // You would have to set the Receivers to All in order to receive this event on the local client as well
         SendOptions sendOptions = new SendOptions { Reliability = true };
-
-        if (PlayerSelection >= 0)
+        string t = SelectButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text;
+        Debug.Log("t = " + t);
+        if (PlayerSelection == i)
         {
-            //this.pv.RPC("deselectChar", RpcTarget.AllBuffered, PlayerSelection);
             PhotonNetwork.RaiseEvent(evCodeDeSelect, content, raiseEventOptions, sendOptions);
+            PlayerSelection = -1;
+
         }
-        PlayerSelection = i;
-        content = new object[] { PlayerSelection, PlayerID };
-        //this.pv.RPC("selectChar", RpcTarget.AllBuffered, PlayerSelection);
-        PhotonNetwork.RaiseEvent(evCodeSelect, content, raiseEventOptions, sendOptions);
+        else if(t.Equals(""))
+        {
+            if (PlayerSelection >= 0)
+            {
+                PhotonNetwork.RaiseEvent(evCodeDeSelect, content, raiseEventOptions, sendOptions);
+            }
+            PlayerSelection = i;
+            content = new object[] { PlayerSelection, PlayerID };
+            PhotonNetwork.RaiseEvent(evCodeSelect, content, raiseEventOptions, sendOptions);
+        }
+        
     }
     public void OnEvent(EventData photonEvent)
     {
@@ -80,6 +88,7 @@ public class CharacterSelectScript : MonoBehaviour
 
         Text t = SelectButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>();
         t.text = playerName;
+        //but.interactable = false;
     }
 
 
@@ -94,6 +103,7 @@ public class CharacterSelectScript : MonoBehaviour
 
         Text t = SelectButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>();
         t.text = "";
+        but.interactable = true;
     }
 
     public void OnEnable()
