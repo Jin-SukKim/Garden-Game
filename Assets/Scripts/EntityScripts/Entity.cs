@@ -7,10 +7,23 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public Teams.Faction team;
+    public int playerNum;
     public DamageSystem health;
     public Abilities abilities;
     public Transform spawnPoint;
     public EntityResources resources;
+
+    GameObject respawnPoint;
+    
+    const float respawnPointWait = 2f;
+
+    //public MeshRenderer renderer;
+    public CapsuleCollider collider;
+
+    public bool respawning;
+    public bool canMove;
+    public bool canAct;
+    public bool isPlayer;
 
     private void Start()
     {
@@ -20,5 +33,60 @@ public class Entity : MonoBehaviour
         abilities = GetComponent<Abilities>();
         spawnPoint = gameObject.transform.Find("spawnPoint");
         resources = GetComponent<EntityResources>();
+        //renderer = GetComponent<MeshRenderer>();
+        respawnPoint = GameObject.Find("Player" + playerNum + "SpawnPosition");
+        collider = GetComponent<CapsuleCollider>();
+    }
+
+    public void DeactivatePlayer()
+    {
+        collider.enabled = false;
+        //renderer.enabled = false;
+        respawning = true;
+    }
+
+    public void Despawn()
+    {
+        DeactivatePlayer();
+        //this.StartCoroutine(RespawnCoroutine(Time.time + 2f, this));
+        transform.position = new Vector3(-999, -999, -999);
+        StartCoroutine(WaitingRespawn(Time.time + respawnPointWait));
+        //StartCoroutine(routine(Time.time));
+    }
+
+    /// <summary>
+    /// Respawn function that moves the object to the respawn point and resets health
+    /// </summary>
+    public void Respawn()
+    {
+        transform.position = respawnPoint.transform.position;
+        health.currentHealth = health.health;
+        ReactivatePlayer();
+    }
+
+    public void ReactivatePlayer()
+    {
+        collider.enabled = true;
+        //renderer.enabled = true;
+        respawning = false;
+    }
+
+
+    /// <summary>
+    /// Waiting function for respawn that waits before respawning the object
+    /// </summary>
+    /// <param name="timeStamp">the given timestamp for the entity to respawn</param>
+    /// <returns></returns>
+    public IEnumerator WaitingRespawn(float timeStamp)
+    {
+        while (Time.time < timeStamp)
+        {
+            // wait for spawn timer
+            yield return null;
+        }
+                
+        Respawn();
+
+        yield return null;
     }
 }
