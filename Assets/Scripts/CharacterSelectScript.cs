@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using ExitGames.Client.Photon;
 
-public class CharacterSelectScript : MonoBehaviourPunCallbacks
+public class CharacterSelectScript : MonoBehaviour
 {
     public PhotonView pv;
     string PlayerID;
@@ -33,14 +34,42 @@ public class CharacterSelectScript : MonoBehaviourPunCallbacks
 
     public void ClickSelect(int i)
     {
-            if (PlayerSelection >= 0) deselectChar(PlayerSelection);
+        Debug.Log(i);
+        Debug.Log(pv);
+        byte evCodeDeSelect = 1;
+        byte evCodeSelect = 2;
+        object[] content = new object[] { PlayerSelection, PlayerID };
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // You would have to set the Receivers to All in order to receive this event on the local client as well
+        SendOptions sendOptions = new SendOptions { Reliability = true };
 
-            PlayerSelection = i;
-            selectChar(PlayerSelection);
+        if (PlayerSelection >= 0)
+        {
+            //this.pv.RPC("deselectChar", RpcTarget.AllBuffered, PlayerSelection);
+            PhotonNetwork.RaiseEvent(evCodeDeSelect, content, raiseEventOptions, sendOptions);
+        }
+        PlayerSelection = i;
+        content = new object[] { PlayerSelection, PlayerID };
+        //this.pv.RPC("selectChar", RpcTarget.AllBuffered, PlayerSelection);
+        PhotonNetwork.RaiseEvent(evCodeSelect, content, raiseEventOptions, sendOptions);
+    }
+    public void OnEvent(EventData photonEvent)
+    {
+        byte eventCode = photonEvent.Code;
+        object[] data = (object[])photonEvent.CustomData;
+
+        if (eventCode == 1)
+        {
+            Debug.Log("deselecting");
+            deselectChar((int)data[0]);
+        }
+        if (eventCode == 2)
+        {
+            Debug.Log("selecting");
+            selectChar((int)data[0], (string)data[1]);
+        }
     }
 
-    [PunRPC]
-    private void selectChar(int i)
+    private void selectChar(int i, string playerName)
     {
         Button but = SelectButtons[i].GetComponent<Button>();
 
@@ -50,10 +79,10 @@ public class CharacterSelectScript : MonoBehaviourPunCallbacks
         but.colors = cb;
 
         Text t = SelectButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>();
-        t.text = PlayerID;
+        t.text = playerName;
     }
 
-    [PunRPC]
+
     private void deselectChar(int i)
     {
         Button but = SelectButtons[i].GetComponent<Button>();
@@ -65,5 +94,15 @@ public class CharacterSelectScript : MonoBehaviourPunCallbacks
 
         Text t = SelectButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>();
         t.text = "";
+    }
+
+    public void OnEnable()
+    {
+        PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+    }
+
+    public void OnDisable()
+    {
+        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
     }
 }
