@@ -7,14 +7,16 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public Teams.Faction team;
+    public int playerNum;
     public DamageSystem health;
     public Abilities abilities;
     public Transform spawnPoint;
 
-    public GameObject respawnPoint;
-    public float respawnPointWait;
+    GameObject respawnPoint;
+    
+    const float respawnPointWait = 2f;
 
-    public MeshRenderer renderer;
+    //public MeshRenderer renderer;
     public CapsuleCollider collider;
 
     public bool respawning;
@@ -29,14 +31,15 @@ public class Entity : MonoBehaviour
         health = GetComponent<DamageSystem>();
         abilities = GetComponent<Abilities>();
         spawnPoint = gameObject.transform.Find("spawnPoint");
-        renderer = GetComponent<MeshRenderer>();
+        //renderer = GetComponent<MeshRenderer>();
+        respawnPoint = GameObject.Find("Player" + playerNum + "SpawnPosition");
         collider = GetComponent<CapsuleCollider>();
     }
 
     public void DeactivatePlayer()
     {
         collider.enabled = false;
-        renderer.enabled = false;
+        //renderer.enabled = false;
         respawning = true;
     }
 
@@ -44,6 +47,7 @@ public class Entity : MonoBehaviour
     {
         DeactivatePlayer();
         //this.StartCoroutine(RespawnCoroutine(Time.time + 2f, this));
+        transform.position = new Vector3(-999, -999, -999);
         StartCoroutine(WaitingRespawn(Time.time + respawnPointWait));
         //StartCoroutine(routine(Time.time));
     }
@@ -61,7 +65,7 @@ public class Entity : MonoBehaviour
     public void ReactivatePlayer()
     {
         collider.enabled = true;
-        renderer.enabled = true;
+        //renderer.enabled = true;
         respawning = false;
     }
 
@@ -77,10 +81,8 @@ public class Entity : MonoBehaviour
         {
             // wait for spawn timer
             yield return null;
-
         }
-
-        
+                
         Respawn();
 
         yield return null;
