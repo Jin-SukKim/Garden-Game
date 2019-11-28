@@ -18,21 +18,26 @@ public class DashAction : IAction
         float total = Vector3.Distance(start, end);
 
         float startTime = Time.time;
-        float timeInterval = 0.01f;
-        e.CanAct = false;
+
+        Vector3 lastLoc = end;
+        e.IsDisabled = true;
         while (Vector3.Distance(e.transform.position, end) >= 0.1)
         {
+            if (Time.time - startTime > 1f && Mathf.Abs(Vector3.Distance(lastLoc, e.transform.position)) <= 0.05)
+            {
+                break;
+            }
             float curDistance = (Time.time - startTime) * speed;
 
             float fractionOfDistance = curDistance / total;
 
+            lastLoc = e.transform.position;
             e.transform.position = Vector3.Lerp(start, end, fractionOfDistance);
 
-            Debug.Log(Vector3.Distance(e.transform.position, end));
             yield return new WaitForEndOfFrame();
         }
         Debug.Log("Dash ended");
-        e.CanAct = true;
+        e.IsDisabled = false;
 
     }
 }

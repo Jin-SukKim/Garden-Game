@@ -8,7 +8,6 @@ public class Bulldozer : BulletController
     void Start()
     {
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        Debug.Log(transform.position);
     }
 
     // Update is called once per frame
@@ -23,7 +22,7 @@ public class Bulldozer : BulletController
         if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.team)
         {
             other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
-            GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            GameObject obj = (GameObject)Instantiate(impactEffect, transform.position + transform.forward, transform.rotation);
             Destroy(obj, 1f);
         }
     }

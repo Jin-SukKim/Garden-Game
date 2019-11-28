@@ -31,8 +31,9 @@ namespace Photon.Pun.Demo.PunBasics
         // Start Method
         void Start()
         {
+            Debug.Log(GameObject.FindGameObjectsWithTag("Player")[1].name);
             //Finds the first player and assigns it to the input manager
-            GameObject.Find("InputManager").GetComponent<InputManager>().InitializeInputManager(GameObject.FindWithTag("Player").GetComponent<Entity>());
+            GameObject.Find("InputManager").GetComponent<InputManager>().InitializeInputManager(GameObject.FindGameObjectsWithTag("Player")[1].GetComponent<Entity>());
             if (!PhotonNetwork.IsConnected) // Check if client is connected
             {
                 SceneManager.LoadScene("Launcher"); // Reload Launcher to attempt reconnect

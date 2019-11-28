@@ -10,7 +10,7 @@ public class Entity : MonoBehaviour
     public DamageSystem health;
     public Abilities abilities;
     public Transform spawnPoint;
-    public bool CanAct;
+    public bool IsDisabled;
     public bool CanCast;
     public bool CanMove;
     private void Start()
@@ -20,7 +20,7 @@ public class Entity : MonoBehaviour
         health = GetComponent<DamageSystem>();
         abilities = GetComponent<Abilities>();
         spawnPoint = gameObject.transform.Find("spawnPoint");
-        CanAct = true;
+        IsDisabled = false;
         CanCast = true;
         CanMove = true;
     }
