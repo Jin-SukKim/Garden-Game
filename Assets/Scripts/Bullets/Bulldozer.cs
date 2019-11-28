@@ -19,6 +19,13 @@ public class Bulldozer : BulletController
 
     protected override void OnCollisionEnter(Collision other)
     {
+        if(other.gameObject.tag == "Environment")
+        {
+            GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(obj, 2f);
+            Destroy(gameObject);
+        }
+
         if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.team)
         {
             other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
