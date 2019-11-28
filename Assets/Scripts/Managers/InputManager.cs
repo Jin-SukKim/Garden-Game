@@ -3,26 +3,28 @@
 using Photon;
 using Photon.Pun;
 
-public class InputManager : MonoBehaviour
+public class InputManager : MonoBehaviourPun
 {
     private Vector3 firePoint;
 
     private Entity MyEntity;
 
     //My entity components
-    private PhotonView photonView;
-    private Abilities abilities;
-    private Movement movement;
+  //  public PhotonView photonView;
+    public Abilities abilities;
+    public Movement movement;
 
     void Start()
     {
 
         // Attached on script attachment see gamemanager
         MyEntity = gameObject.GetComponent<Entity>();
-        photonView = PhotonView.Get(this);
-        //photonView = gameObject.GetComponent<PhotonView>();
+        /*photonView = PhotonView.Get(this);*/
+     //   photonView = gameObject.GetComponent<PhotonView>();
         abilities = gameObject.GetComponent<Abilities>();
         movement = gameObject.GetComponent<Movement>();
+
+        Debug.Log("START" + photonView);
     }
 
 /*    public void InitializeInputManager(Entity myEntity)

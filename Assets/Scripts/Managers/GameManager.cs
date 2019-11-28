@@ -50,7 +50,7 @@ namespace Photon.Pun.Demo.PunBasics
                     Debug.Log("master");
                     // Hookup controls
                     player1.AddComponent<Movement>();
-                    player1.AddComponent<InputManager>();
+                    /*player1.AddComponent<InputManager>();*/
                     player1.tag = "Player";
                     minionAI = PhotonNetwork.Instantiate("EnemyAITester",
                         minionAISpawnPosition.transform.position,
@@ -64,7 +64,7 @@ namespace Photon.Pun.Demo.PunBasics
                         player2SpawnPosition.transform.rotation, 0);
                     // Hookup controls
                     player2.AddComponent<Movement>();
-                    player2.AddComponent<InputManager>();
+                    /*player2.AddComponent<InputManager>();*/
                     player2.tag = "Player";
                 }
             }
