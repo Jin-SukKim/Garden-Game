@@ -53,7 +53,6 @@ public class PlacingScript : MonoBehaviour
             Destroy(curGO);
             curPrefab = Plant1;
             Placing = true;
-            setUIText("Cactus");
         }
 
         if(Input.GetKeyDown("2"))
@@ -62,7 +61,6 @@ public class PlacingScript : MonoBehaviour
             Destroy(curGO);
             curPrefab = Plant2;
             Placing = true;
-            setUIText("Tree");
         }
 
         if(Input.GetKeyDown("0"))
@@ -71,7 +69,6 @@ public class PlacingScript : MonoBehaviour
             Destroy(curGO);
             curPrefab = PlaceableArea;
             Placing = true;
-            setUIText("PlaceableArea");
         }
 
         if(Input.GetMouseButtonDown(0))
@@ -95,7 +92,6 @@ public class PlacingScript : MonoBehaviour
             {
                 Debug.Log("Cancelling Placement");
                 Placing = false;
-                setUIText("None");
             }
 
             if(Input.GetMouseButtonDown(0))
@@ -116,13 +112,12 @@ public class PlacingScript : MonoBehaviour
                             curGO.GetComponent<PlaceableEntity>().PlaceThis();
                             curGO = null;
                             Placing = false;
-                            setUIText("None");
                         }
                     }
                     
                 }
             }
-
+            /*
             if(Input.GetKeyDown("q"))
             {
                 curRotation -= 45;
@@ -134,6 +129,7 @@ public class PlacingScript : MonoBehaviour
                 curRotation += 45;
                 curGO.transform.Rotate(0f, 45f, 0f, Space.Self);
             }
+            */
         }
     }
 
@@ -163,18 +159,10 @@ public class PlacingScript : MonoBehaviour
                     curGO.SetActive(true);
                     curGO.transform.position = hitInfo.point;
                     curGO.GetComponent<PlaceableEntity>().moveThis();
-                    //curGO = Instantiate(curPrefab, hitInfo.point, Quaternion.identity);
-                    //curGO.transform.parent = GameObject.Find("Plane").transform;
-                    //curGO.transform.Rotate(0f, curRotation, 0f, Space.World);
                 }
             }
         }else {
             Destroy(curGO);
         }
-    }
-
-    private void setUIText(string input)
-    {
-        //TestingCanvas.transform.Find("Panel/ActiveTool").GetComponent<Text>().text = input;
     }
 }
