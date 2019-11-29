@@ -13,10 +13,12 @@ public static class AbilitiesDirectory
     static AbilitiesDirectory()
     {
         // I'm not sure what's the best way to create abilities right now
+        MakeSpawnAbility();
         MakeShotgunAbility();
         MakeLobAbility();
         MakeShootAbility();
         MakeSpineAbility();
+
     }
 
     public static bool addAbility(string abilityID, Ability ability)
@@ -112,6 +114,15 @@ public static class AbilitiesDirectory
 
         Ability ability = new Ability(0.5f, 999, actions);
         abilityDictionary.Add("spineAttack", ability);
+    }
+
+    public static void MakeSpawnAbility()
+    {
+        List<IAction> actions = new List<IAction>();
+        actions.Add(new SpawnAction());
+
+        Ability ability = new Ability(0.5f, 999, actions);
+        abilityDictionary.Add("spawnAttack", ability);
     }
 }
 

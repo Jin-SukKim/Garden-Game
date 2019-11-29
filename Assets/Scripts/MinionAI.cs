@@ -1,20 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class SentryAI : MonoBehaviour
+using UnityEngine.AI;
+public class MinionAI : MonoBehaviour
 {
     public Transform target;
-    public float range = 15f;
+    public float range = 5f;
     public float turnSpeed = 10f;
+    private NavMeshAgent nma;
 
-    public Entity entity;
     public Abilities abilities;
 
     // Start is called before the first frame update
     void Start()
     {
+        nma = this.GetComponent<NavMeshAgent>();
         abilities = gameObject.GetComponent<Abilities>();
+        /*entity.team = gameObject.getComponenct<Entity>().team;*/ //Set m
         InvokeRepeating("UpdateTarget", 0f, 0.2f);
         //theGun = GameObject.Find("OfflineGun").GetComponent<OfflineGunController>();
     }
@@ -24,24 +26,60 @@ public class SentryAI : MonoBehaviour
     {
         if (target == null)
         {
+            //theGun.isFiring = false;
             return;
         }
 
-        //Vector3 lookVector = target.position - transform.position;
-        //Quaternion rot = Quaternion.LookRotation(lookVector);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1);
 
+        //script for looking
         Vector3 lookVector = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(lookVector);
         Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-        abilities.TryCastAbility("shootAttack", target.position);
+
+        //script for following
+        
+
+        //script for firing
+        if (Vector3.Distance(transform.position, target.position) < 3)
+        {
+            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+            //transform.position = transform.position;
+            //theGun.isFiring = true;
+            abilities.TryCastAbility("shootAttack", target.position);
+
+
+        } else
+        {
+            //transform.position += transform.forward * 2 * Time.deltaTime;
+            gameObject.GetComponent<NavMeshAgent>().isStopped = false;
+            nma.SetDestination(target.transform.position);
+
+        }
+
+        //theGun.isFiring = true;
 
     }
 
     void UpdateTarget()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        Entity[] scripts = GameObject.FindObjectsOfType<Entity>();
+        GameObject[] objects = new GameObject[scripts.Length];
+        for (int i = 0; i < objects.Length; i++)
+        {
+            objects[i] = scripts[i].gameObject;
+        }
+
+        List<GameObject> players = new List<GameObject>();
+
+        foreach (GameObject obj in objects)
+        {
+            if (obj.GetComponent<Entity>().team == Teams.Faction.druid && obj.tag == "Player")
+            {
+                players.Add(obj);
+            }
+        }
+
         float shortestDistance = Mathf.Infinity;
         GameObject nearestPlayer = null;
 
