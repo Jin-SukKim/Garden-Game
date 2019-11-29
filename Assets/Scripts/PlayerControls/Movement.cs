@@ -25,6 +25,13 @@ public class Movement : MonoBehaviour
     public float vertAxis;
     private Animator animationController;
 
+
+    [PunRPC]
+    private void setAnimBool(string animString, bool boolean)
+    {
+        animationController.SetBool(animString, boolean);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

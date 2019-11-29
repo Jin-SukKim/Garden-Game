@@ -141,13 +141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c547f82082d3e374aabf16240cf4f686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entity: {fileID: 0}
   health: 5
   image: {fileID: 0}
   currentHealth: 0
-  respawn: 0
   enemeyDeathAnimation: {fileID: 0}
-  respawnPoint: {fileID: 0}
-  respawnPointWait: {fileID: 0}
 --- !u!54 &4117974512831428912
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -176,14 +174,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c547f82082d3e374aabf16240cf4f686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entity: {fileID: 0}
   health: 5
   image: {fileID: 0}
   currentHealth: 0
-  respawn: 0
   enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
     type: 3}
-  respawnPoint: {fileID: 0}
-  respawnPointWait: {fileID: 0}
 --- !u!114 &114075977698051234
 MonoBehaviour:
   m_ObjectHideFlags: 0
