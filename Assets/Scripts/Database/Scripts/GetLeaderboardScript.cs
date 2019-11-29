@@ -1,33 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
-using GameObject = UnityEngine.GameObject;
 
-public class ToggleForm : MonoBehaviour {
-
-    [SerializeField]
-    private Button ClickToDoSomethingButton;
-
-    [SerializeField]
-    private GameObject SubmitFormButton;
-
-    void Start() {
-        ClickToDoSomethingButton.onClick.AddListener(ToggleFormVisibility);
-        SubmitFormButton.SetActive(false);
-    }
-
-    public void ToggleFormVisibility() {
-        GetLeaderBoard();
-        if (SubmitFormButton.activeInHierarchy) {
-            SubmitFormButton.SetActive(false);
-        } else {
-            SubmitFormButton.SetActive(true);
-        }
-    }
+public class GetLeaderboardScript : MonoBehaviour {
 
     // <summary>
     /// Starts a coroutine to query the database.
@@ -72,4 +48,5 @@ public class ToggleForm : MonoBehaviour {
             Debug.Log(entry.Username);
         }
     }
+
 }

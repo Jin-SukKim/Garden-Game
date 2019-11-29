@@ -28,38 +28,31 @@ public class SubmitLoginButton : MonoBehaviour {
 
         string username = UsernameInputField.text;
         string passwordHash = PasswordHash.Generate(PasswordInputField.text);
-
-        //string localUrl = string.Format(APIEndpoint.LoginLocal, username, passwordHash);
-        //string cloudUrl = string.Format(APIEndpoint.LoginCloud, UsernameInputField.text);
-
-        //StartCoroutine(SendHttpRequest(localUrl, username, passwordHash));
-        StartCoroutine(SendHttpRequest("game", username, passwordHash));
-        //StartCoroutine(SendHttpRequest(cloudUrl));
+        Debug.Log(APIEndpoint.Login);
+        string endpoint = string.Format(APIEndpoint.Login, username, passwordHash);
+        Debug.Log(endpoint);
+        StartCoroutine(SendHttpRequest(endpoint, username, passwordHash));
     }
 
     IEnumerator SendHttpRequest(string url, string username, string passwordHash) {
-
         WWWForm postData = new WWWForm();
         postData.AddField("username", username);
         postData.AddField("passwordHash", passwordHash);
+        Debug.Log(passwordHash);
 
         UnityWebRequest request = UnityWebRequest.Post(url, postData);
         request.SetRequestHeader("Content-Type", "text/plain");
 
         yield return request.SendWebRequest();
 
-        if (request.isNetworkError || request.isHttpError)
-        {
+        if (request.isNetworkError || request.isHttpError) {
             Debug.Log("error:");
             Debug.Log(request.error);
-            StatusText.text = "incorrect username or password";
-        }
-        else
-        {
+            StatusText.text = "login unsuccessful";
+        } else {
             Account account = JsonUtility.FromJson<Account>(request.downloadHandler.text);
 
-            if (PasswordHash.Validate(PasswordInputField.text, passwordHash))
-            {
+            if (PasswordHash.Validate(PasswordInputField.text, passwordHash)) {
                 PlayerPrefs.DeleteKey("guest");
                 PlayerPrefs.SetString("username", account.username);
                 PlayerPrefs.SetString("token", account.jsonWebToken);
