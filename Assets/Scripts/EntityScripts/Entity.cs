@@ -8,6 +8,7 @@ public class Entity : MonoBehaviour
 {
     public Teams.Faction team;
     public DamageSystem health;
+    public int playerNum;
     public Abilities abilities;
     public Transform spawnPoint;
     public EntityResources resources;

@@ -1,26 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3330238575199943532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420559943257597644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 726b23495ba44714eacfcd13d2ddac07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilities: {fileID: 0}
-  movement: {fileID: 0}
---- !u!195 &195801908998681866
+--- !u!195 &1151690908
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420559943257597644}
+  m_GameObject: {fileID: 5585008124484384801}
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
@@ -36,7 +22,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!1001 &1953051185197464305
+--- !u!1001 &4984808884575331356
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -46,7 +32,7 @@ PrefabInstance:
     - target: {fileID: 625004231368973373, guid: 6459da504aa12ec4c823eae68f5dd604,
         type: 3}
       propertyPath: m_Name
-      value: OfflineMoneyMan Variant
+      value: TestingDummy
       objectReference: {fileID: 0}
     - target: {fileID: 625004231368973353, guid: 6459da504aa12ec4c823eae68f5dd604,
         type: 3}
@@ -108,11 +94,23 @@ PrefabInstance:
       propertyPath: viewIdField
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 625004231368973364, guid: 6459da504aa12ec4c823eae68f5dd604,
+        type: 3}
+      propertyPath: enemeyDeathAnimation
+      value: 
+      objectReference: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
+        type: 3}
+    - target: {fileID: 625004231368973372, guid: 6459da504aa12ec4c823eae68f5dd604,
+        type: 3}
+      propertyPath: teamsFaction
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 625004231368973363, guid: 6459da504aa12ec4c823eae68f5dd604, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6459da504aa12ec4c823eae68f5dd604, type: 3}
---- !u!1 &1420559943257597644 stripped
+--- !u!1 &5585008124484384801 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 625004231368973373, guid: 6459da504aa12ec4c823eae68f5dd604,
     type: 3}
-  m_PrefabInstance: {fileID: 1953051185197464305}
+  m_PrefabInstance: {fileID: 4984808884575331356}
   m_PrefabAsset: {fileID: 0}
