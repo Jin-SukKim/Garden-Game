@@ -59,15 +59,20 @@ public class GetLeaderboardScript : MonoBehaviour {
     /// Displays the leaderboard.
     /// </summary>
     public void DisplayLeaderboard(LeaderboardJsonWrapper lb) {
+        //only get top 8 results
+        int i = 0;
         foreach (LeaderboardEntry entry in lb.LeaderboardEntries) {
-            Debug.Log(entry.Username);
-            GameObject instance = Instantiate(myPrefab);
+            if(i < 10)
+            {
+                Debug.Log(entry.Username);
+                GameObject instance = Instantiate(myPrefab);
 
-            //GameObject tmp = instance.Find("Text").GetComponent<Text>();
-            //Debug.Log(tmp.);
-            instance.GetComponentInChildren<Text>().text = entry.Username;
-            instance.transform.SetParent(gameObject.transform, false);
-
+                //GameObject tmp = instance.Find("Text").GetComponent<Text>();
+                //Debug.Log(tmp.);
+                instance.GetComponentInChildren<Text>().text = entry.Username;
+                instance.transform.SetParent(gameObject.transform, false);
+                i++;
+            }
         }
     }
 
