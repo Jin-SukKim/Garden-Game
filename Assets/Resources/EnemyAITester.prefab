@@ -276,9 +276,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   health: {fileID: 0}
+  playerNum: 0
   abilities: {fileID: 0}
   spawnPoint: {fileID: 2593919669021539730}
   resources: {fileID: 0}
+  collider: {fileID: 0}
+  respawning: 0
+  canMove: 0
+  canAct: 0
+  isPlayer: 0
+  IsDisabled: 0
+  CanCast: 0
+  CanMove: 0
 --- !u!195 &195090731617861862
 NavMeshAgent:
   m_ObjectHideFlags: 0
