@@ -1045,8 +1045,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
-  playerNum: 0
   health: {fileID: 0}
+  playerNum: 0
   abilities: {fileID: 0}
   spawnPoint: {fileID: 0}
   resources: {fileID: 0}
@@ -1055,6 +1055,9 @@ MonoBehaviour:
   canMove: 0
   canAct: 0
   isPlayer: 0
+  IsDisabled: 0
+  CanCast: 0
+  CanMove: 0
 --- !u!114 &114606246167635992
 MonoBehaviour:
   m_ObjectHideFlags: 0

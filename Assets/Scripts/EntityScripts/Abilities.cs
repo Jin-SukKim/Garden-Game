@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon;
+using Photon.Pun;
 
 // This is a component that stores all the abilities of a unit/player/plant
 // it consists of a bunch of ability IDs and the actual ability is store in a static abilities directory class
-public class Abilities : MonoBehaviour
+public class Abilities : MonoBehaviourPun
 {
     Entity owner;
 
@@ -13,6 +15,13 @@ public class Abilities : MonoBehaviour
     private List<string> animationIDs;
 
     private Dictionary<string, AbilityCastInfo> castInfos = new Dictionary<string, AbilityCastInfo>();
+
+
+    [PunRPC]
+    private void triggerAnim(string animString)
+    {
+        GetComponentInChildren<Animator>().SetTrigger(animString);
+    }
 
     private void Start()
     {
@@ -82,14 +91,32 @@ public class Abilities : MonoBehaviour
 
     public Ability.AbilityFeedback basicAttack(Vector3 targetPosition)
     {
-        GetComponentInChildren<Animator>().SetTrigger(animationIDs[0]);
+        if (!PhotonNetwork.IsConnected)
+        {
+            triggerAnim(animationIDs[0]);
+        }
+        else
+        {
+            this.photonView.RPC("triggerAnim", RpcTarget.AllBuffered, animationIDs[0]);
+        }
         return AbilitiesDirectory.TryCastAbility(abilityIDs[0], owner, targetPosition, castInfos[abilityIDs[0]]);
     }
 
     public Ability.AbilityFeedback castAbility(int index, Vector3 targetPosition)
     {
-        GetComponentInChildren<Animator>().SetTrigger(animationIDs[index]);
-        return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[index]]);
+        // Left out for now during integration
+        //GetComponentInChildren<Animator>().SetTrigger(animationIDs[index]);
+        //return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[index]]);
+
+        if (!PhotonNetwork.IsConnected)
+        {
+            triggerAnim(animationIDs[index]);
+        }
+        else
+        {
+            this.photonView.RPC("triggerAnim", RpcTarget.AllBuffered, animationIDs[index]);
+        }
+        return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[0]]);
     }
 
     //public float GetAbilityTimestamp()
