@@ -1029,8 +1029,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityIDs:
-  - shootAttack
   - shotgunAttack
+  - spawnAttack
   - spineAttack
   - lobAttack
 --- !u!114 &4235325832265764883
