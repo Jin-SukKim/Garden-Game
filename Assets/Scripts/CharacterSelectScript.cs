@@ -8,6 +8,7 @@ using ExitGames.Client.Photon;
 
 public class CharacterSelectScript : MonoBehaviour
 {
+    public GameObject startButton;
     public PhotonView pv;
     string PlayerID;
 
@@ -21,7 +22,12 @@ public class CharacterSelectScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pv = gameObject.GetComponent<PhotonView>();
+
+        //pv = gameObject.GetComponent<PhotonView>();
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            startButton.SetActive(false);
+        }
 
         PlayerID = PhotonNetwork.LocalPlayer.NickName;
 
@@ -34,7 +40,7 @@ public class CharacterSelectScript : MonoBehaviour
     public void ClickSelect(int i)
     {
         Debug.Log(i);
-        Debug.Log(pv);
+        //Debug.Log(pv);
         byte evCodeDeSelect = 1;
         byte evCodeSelect = 2;
         object[] content = new object[] { PlayerSelection, PlayerID };
@@ -110,6 +116,7 @@ public class CharacterSelectScript : MonoBehaviour
         ExitGames.Client.Photon.Hashtable properties = new ExitGames.Client.Photon.Hashtable();
         properties.Add("selectedCharacter", character);
         p.SetCustomProperties(properties);
+        Debug.Log("selected char = " + p.CustomProperties["selectedCharacter"]);
     }
 
     private void deselectChar(int i)

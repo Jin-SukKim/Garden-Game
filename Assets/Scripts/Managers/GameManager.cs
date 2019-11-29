@@ -3,6 +3,7 @@
  */
 
 using Photon.Realtime;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +19,8 @@ namespace Photon.Pun.Demo.PunBasics
         private GameObject player1;
         private GameObject player2;
         private GameObject minionAI;
-        private Player[] players;
+        private List<Player> players;
+
         /*RESOURCE REF*/
         [SerializeField]
         private string player1ResourceString;
@@ -29,6 +31,7 @@ namespace Photon.Pun.Demo.PunBasics
         // Start Method
         void Start()
         {
+            players = new List<Player>();
             if (!PhotonNetwork.IsConnected) // Check if client is connected
             {
                 SceneManager.LoadScene("Launcher"); // Reload Launcher to attempt reconnect
@@ -39,8 +42,10 @@ namespace Photon.Pun.Demo.PunBasics
             {
                 for(int i = 0; i < PhotonNetwork.PlayerList.Length; ++i)
                 {
-                    players[i] = PhotonNetwork.PlayerList[i];
+                    players.Add(PhotonNetwork.PlayerList[i]);
+                    Debug.Log(players[i].NickName);
                 }
+
                 // Instantiate first player, save reference to player1
                 string selectedChar;
                 player1 = PhotonNetwork.Instantiate((string) players[0].CustomProperties["selectedCharacter"],
@@ -54,6 +59,9 @@ namespace Photon.Pun.Demo.PunBasics
                     player2SpawnPosition.transform.rotation, 0);
                 // Hookup controls
                 player2.AddComponent<Movement>();
+
+
+
                 //if (PhotonNetwork.IsMasterClient) // Check if client is master client
                 //{
                 //    Debug.Log("Instantiating Player 1");
