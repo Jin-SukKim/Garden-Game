@@ -10,6 +10,7 @@ public class Entity : MonoBehaviour
     public DamageSystem health;
     public Abilities abilities;
     public Transform spawnPoint;
+    public EntityResources resources;
 
     private void Start()
     {
@@ -18,5 +19,6 @@ public class Entity : MonoBehaviour
         health = GetComponent<DamageSystem>();
         abilities = GetComponent<Abilities>();
         spawnPoint = gameObject.transform.Find("spawnPoint");
+        resources = GetComponent<EntityResources>();
     }
 }

@@ -37,6 +37,18 @@ ModelImporter:
     100062: thigh.R
     100064: upper_arm.L
     100066: upper_arm.R
+    100068: Activist
+    100070: AnimalLover
+    100072: Axe
+    100074: Chainsaw
+    100076: Dutchess
+    100078: FlowerChild
+    100080: Foreman
+    100082: Minion
+    100084: MinionSummon
+    100086: MoneyMan
+    100088: Pacifist
+    100090: Suffragette
     400000: AnimalLoverSkin
     400002: CharacterModel
     400004: FlowerChildSkin
@@ -71,18 +83,46 @@ ModelImporter:
     400062: thigh.R
     400064: upper_arm.L
     400066: upper_arm.R
+    400068: Activist
+    400070: AnimalLover
+    400072: Axe
+    400074: Chainsaw
+    400076: Dutchess
+    400078: FlowerChild
+    400080: Foreman
+    400082: Minion
+    400084: MinionSummon
+    400086: MoneyMan
+    400088: Pacifist
+    400090: Suffragette
     2100000: Foreman
     2100002: FlowerChild
     2100004: MoneyMan
     2100006: Material
     2100008: Material.002
     2100010: Material.001
+    2100012: Minion
+    2100014: Pacifist
+    2100016: Activist
+    2100018: Material.003
     4300000: ForemanSkin
     4300002: AnimalLoverSkin
     4300004: MoneyManSkin
     4300006: FlowerChildSkin
     4300008: CharacterModel
     4300010: Shotgun
+    4300012: MinionSummon
+    4300014: Chainsaw
+    4300016: Axe
+    4300018: Minion
+    4300020: Pacifist
+    4300022: Activist
+    4300024: Dutchess
+    4300026: FlowerChild
+    4300028: AnimalLover
+    4300030: Foreman
+    4300032: Suffragette
+    4300034: MoneyMan
     7400000: metarig|metarigAction
     7400002: Walk
     7400004: Run
@@ -98,6 +138,18 @@ ModelImporter:
     13700006: ForemanSkin
     13700008: MoneyManSkin
     13700010: Shotgun
+    13700012: Activist
+    13700014: AnimalLover
+    13700016: Axe
+    13700018: Chainsaw
+    13700020: Dutchess
+    13700022: FlowerChild
+    13700024: Foreman
+    13700026: Minion
+    13700028: MinionSummon
+    13700030: MoneyMan
+    13700032: Pacifist
+    13700034: Suffragette
   externalObjects: {}
   materials:
     importMaterials: 1
