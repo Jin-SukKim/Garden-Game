@@ -2,11 +2,9 @@
  * Game manager script, takes care of spawning
  */
 
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-using Photon.Realtime;
-using System.Collections;
 
 //Figure out why we use demo.punbasics
 namespace Photon.Pun.Demo.PunBasics
@@ -20,7 +18,7 @@ namespace Photon.Pun.Demo.PunBasics
         private GameObject player1;
         private GameObject player2;
         private GameObject minionAI;
-
+        private Player[] players;
         /*RESOURCE REF*/
         [SerializeField]
         private string player1ResourceString;
@@ -37,36 +35,52 @@ namespace Photon.Pun.Demo.PunBasics
                 return;
             }
 
-            //Look into making playermanager script to get rid of extra demos
             if (PlayerManager.LocalPlayerInstance == null)
             {
-                if (PhotonNetwork.IsMasterClient) // Check if client is master client
+                for(int i = 0; i < PhotonNetwork.PlayerList.Length; ++i)
                 {
-                    Debug.Log("Instantiating Player 1");
-                    // Instantiate first player, save reference to player1
-                    player1 = PhotonNetwork.Instantiate(player1ResourceString,
-                        player1SpawnPosition.transform.position,
-                        player1SpawnPosition.transform.rotation, 0);
-                    Debug.Log("master");
-                    // Hookup controls
-                    player1.AddComponent<Movement>();
-                    /*player1.AddComponent<InputManager>();*/
-                    player1.tag = "Player";
-                    minionAI = PhotonNetwork.Instantiate("EnemyAITester",
-                        minionAISpawnPosition.transform.position,
-                        minionAISpawnPosition.transform.rotation, 0);
+                    players[i] = PhotonNetwork.PlayerList[i];
                 }
-                else // Normal clients instantiate second player, save reference to player2
-                {
-                    //Add more code here for player 3 and 4
-                    player2 = PhotonNetwork.Instantiate(player2ResourceString,
-                        player2SpawnPosition.transform.position,
-                        player2SpawnPosition.transform.rotation, 0);
-                    // Hookup controls
-                    player2.AddComponent<Movement>();
-                    /*player2.AddComponent<InputManager>();*/
-                    player2.tag = "Player";
-                }
+                // Instantiate first player, save reference to player1
+                string selectedChar;
+                player1 = PhotonNetwork.Instantiate((string) players[0].CustomProperties["selectedCharacter"],
+                    player1SpawnPosition.transform.position,
+                    player1SpawnPosition.transform.rotation, 0);
+                // Hookup controls
+                player1.AddComponent<Movement>();
+                // Instantiate first player, save reference to player1
+                player2 = PhotonNetwork.Instantiate((string)players[1].CustomProperties["selectedCharacter"],
+                    player2SpawnPosition.transform.position,
+                    player2SpawnPosition.transform.rotation, 0);
+                // Hookup controls
+                player2.AddComponent<Movement>();
+                //if (PhotonNetwork.IsMasterClient) // Check if client is master client
+                //{
+                //    Debug.Log("Instantiating Player 1");
+                //    // Instantiate first player, save reference to player1
+                //    player1 = PhotonNetwork.Instantiate(player1ResourceString,
+                //        player1SpawnPosition.transform.position,
+                //        player1SpawnPosition.transform.rotation, 0);
+                //    Debug.Log("master");
+                //    // Hookup controls
+                //    player1.AddComponent<Movement>();
+                //    /*player1.AddComponent<InputManager>();*/
+                //    player1.tag = "Player";
+                //    minionAI = PhotonNetwork.Instantiate("EnemyAITester",
+                //        minionAISpawnPosition.transform.position,
+                //        minionAISpawnPosition.transform.rotation, 0);
+                //}
+                //else // Normal clients instantiate second player, save reference to player2
+                //{
+                //    //Add more code here for player 3 and 4
+                //    player2 = PhotonNetwork.Instantiate(player2ResourceString,
+                //        player2SpawnPosition.transform.position,
+                //        player2SpawnPosition.transform.rotation, 0);
+                //    // Hookup controls
+                //    player2.AddComponent<Movement>();
+                //    /*player2.AddComponent<InputManager>();*/
+                //    player2.tag = "Player";
+                //}
             }
             //Finds the first player and assigns it to the input manager
             /* GameObject.Find("InputManager").GetComponent<InputManager>().InitializeInputManager(GameObject.FindWithTag("Player").GetComponent<Entity>());*/

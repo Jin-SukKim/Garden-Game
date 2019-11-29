@@ -88,9 +88,29 @@ public class CharacterSelectScript : MonoBehaviour
 
         Text t = SelectButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>();
         t.text = playerName;
-        //but.interactable = false;
+        string character = "";
+        switch (i)
+        {
+            case 0:
+                character = "AnimalLover";
+                break;
+            case 1:
+                character = "Activist";
+                break;
+            case 2:
+                character = "MoneyMan";
+                break;
+            case 3:
+                character = "Suffrogette";
+                break;
+            default:
+                break;
+        }
+        Player p = PhotonNetwork.LocalPlayer;
+        ExitGames.Client.Photon.Hashtable properties = new ExitGames.Client.Photon.Hashtable();
+        properties.Add("selectedCharacter", character);
+        p.SetCustomProperties(properties);
     }
-
 
     private void deselectChar(int i)
     {
@@ -103,7 +123,6 @@ public class CharacterSelectScript : MonoBehaviour
 
         Text t = SelectButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>();
         t.text = "";
-        but.interactable = true;
     }
 
     public void OnEnable()
@@ -114,5 +133,10 @@ public class CharacterSelectScript : MonoBehaviour
     public void OnDisable()
     {
         PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+    }
+
+    public void StartGame()
+    {
+        PhotonNetwork.LoadLevel("MainEnvironment");
     }
 }
