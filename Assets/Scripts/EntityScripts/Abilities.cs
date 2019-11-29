@@ -1,17 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon;
+using Photon.Pun;
 
 // This is a component that stores all the abilities of a unit/player/plant
 // it consists of a bunch of ability IDs and the actual ability is store in a static abilities directory class
-public class Abilities : MonoBehaviour
+public class Abilities : MonoBehaviourPun
 {
     Entity owner;
 
     [SerializeField]
     private List<string> abilityIDs = new List<string>();
+    private List<string> animationIDs;
 
     private Dictionary<string, AbilityCastInfo> castInfos = new Dictionary<string, AbilityCastInfo>();
+
+
+    [PunRPC]
+    private void triggerAnim(string animString)
+    {
+        GetComponentInChildren<Animator>().SetTrigger(animString);
+    }
 
     private void Start()
     {
@@ -21,6 +31,11 @@ public class Abilities : MonoBehaviour
             AbilityCastInfo info = new AbilityCastInfo();
             castInfos.Add(s, info);
         }
+        animationIDs = new List<string>();
+        animationIDs.Add("BasicAttack");
+        animationIDs.Add("Ability");
+        animationIDs.Add("RallyOrPlant");
+        animationIDs.Add("Ultimate");
     }
 
     public bool AddAbility(string abilityID)
@@ -41,11 +56,27 @@ public class Abilities : MonoBehaviour
 
     public Ability.AbilityFeedback basicAttack(Vector3 targetPosition)
     {
+        if (!PhotonNetwork.IsConnected)
+        {
+            triggerAnim(animationIDs[0]);
+        }
+        else
+        {
+            this.photonView.RPC("triggerAnim", RpcTarget.AllBuffered, animationIDs[0]);
+        }
         return AbilitiesDirectory.TryCastAbility(abilityIDs[0], owner, targetPosition, castInfos[abilityIDs[0]]);
     }
 
     public Ability.AbilityFeedback castAbility(int index, Vector3 targetPosition)
     {
+        if (!PhotonNetwork.IsConnected)
+        {
+            triggerAnim(animationIDs[index]);
+        }
+        else
+        {
+            this.photonView.RPC("triggerAnim", RpcTarget.AllBuffered, animationIDs[index]);
+        }
         return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[0]]);
     }
 

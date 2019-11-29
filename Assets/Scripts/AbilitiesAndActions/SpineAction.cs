@@ -29,6 +29,6 @@ public class SpineAction : IAction
             spineCount++;
             yield return new WaitForSeconds(timeInterval);
         }
-        spineCount = 0;
+        spineCount = 1;
     }
 }

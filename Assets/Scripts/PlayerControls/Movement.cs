@@ -23,6 +23,14 @@ public class Movement : MonoBehaviour
 
     public float horizAxis;
     public float vertAxis;
+    private Animator animationController;
+
+
+    [PunRPC]
+    private void setAnimBool(string animString, bool boolean)
+    {
+        animationController.SetBool(animString, boolean);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +61,9 @@ public class Movement : MonoBehaviour
         CameraWorks camWorks = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraWorks>();
         camWorks.target = gameObject.transform;
         Debug.Log("THIS IS THE PLAYER THAT HAS MOVEMENT: " + gameObject.name);
-        
+
+        animationController = gameObject.GetComponentInChildren<Animator>();
+
     }
 
     // Update is called once per frame
@@ -69,6 +79,11 @@ public class Movement : MonoBehaviour
             // Causes movement
             transform.position += leftRightMovement;
             transform.position += forwardBackMovement;
+
+            if (horizAxis != 0 || vertAxis != 0)
+                animationController.SetBool("isRunning", true);
+            else
+                animationController.SetBool("isRunning", false);
         }
     }
 }

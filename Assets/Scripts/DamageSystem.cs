@@ -5,20 +5,22 @@ using UnityEngine.UI;
 
 public class DamageSystem : MonoBehaviour
 {
+    public Entity entity;
     public float health;
     public Image image;
 
     public float currentHealth;
-    public bool respawn = false;
+    //public bool respawn = false;
 
     public GameObject enemeyDeathAnimation;
-    public GameObject respawnPoint;
-    public GameObject respawnPointWait;
+    //public GameObject respawnPoint;
+    //public GameObject respawnPointWait;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = health;
+        entity = GetComponent<Entity>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class DamageSystem : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (currentHealth <= 0 && respawn == false)
+        if (currentHealth <= 0 && !entity.isPlayer)
         {
             Debug.Log("DESTROYING OBJECT");
             GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
@@ -35,10 +37,13 @@ public class DamageSystem : MonoBehaviour
             Destroy(obj, 5f);
             Destroy(gameObject);
         }
-        else if (currentHealth <= 0 && respawn == true)
+        else if (currentHealth <= 0 && !entity.respawning)
         {
-            gameObject.transform.position = respawnPointWait.transform.position;
-            StartCoroutine(waitingRespawn());
+            //gameObject.transform.position = respawnPointWait.transform.position;
+            //StartCoroutine(waitingRespawn());
+            GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
+            Destroy(obj, 5f);
+            entity.Despawn();
         }
     }
 
@@ -53,24 +58,24 @@ public class DamageSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// Respawn function that moves the object to the respawn point and resets health
+    /// this function as been move to Entity
     /// </summary>
-    public void Respawn()
-    {
-        if (respawn)
-        {
-            gameObject.transform.position = respawnPoint.transform.position;
-            currentHealth = health;
-        }
-    }
+    //public void Respawn()
+    //{
+    //    if (respawn)
+    //    {
+    //        gameObject.transform.position = respawnPoint.transform.position;
+    //        currentHealth = health;
+    //    }
+    //}
 
     /// <summary>
-    /// Waiting function for respawn that waits 3 seconds before respawning the object
+    /// this function as been move to Entity
     /// </summary>
     /// <returns></returns>
-    IEnumerator waitingRespawn()
-    {
-        yield return new WaitForSeconds(3);
-        Respawn();
-    }
+    //IEnumerator waitingRespawn()
+    //{
+    //    yield return new WaitForSeconds(3);
+    //    Respawn();
+    //}
 }
