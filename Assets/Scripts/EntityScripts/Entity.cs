@@ -7,8 +7,8 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public Teams.Faction team;
-    public int playerNum;
     public DamageSystem health;
+    public int playerNum;
     public Abilities abilities;
     public Transform spawnPoint;
     public EntityResources resources;
@@ -25,6 +25,9 @@ public class Entity : MonoBehaviour
     public bool canAct;
     public bool isPlayer;
 
+    public bool IsDisabled;
+    public bool CanCast;
+    public bool CanMove;
     private void Start()
     {
         // Now the core components of the player can be accessed through the single entity component
@@ -32,6 +35,9 @@ public class Entity : MonoBehaviour
         health = GetComponent<DamageSystem>();
         abilities = GetComponent<Abilities>();
         spawnPoint = gameObject.transform.Find("spawnPoint");
+        IsDisabled = false;
+        CanCast = true;
+        CanMove = true;
         resources = GetComponent<EntityResources>();
         //renderer = GetComponent<MeshRenderer>();
         respawnPoint = GameObject.Find("Player" + playerNum + "SpawnPosition");

@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 2611586976283010916}
   - component: {fileID: 2611586976283010917}
   - component: {fileID: 2611586976283010914}
-  - component: {fileID: 2103778412240915368}
+  - component: {fileID: 114571281410347754}
+  - component: {fileID: 208211337204500100}
+  - component: {fileID: 54423909111836212}
   m_Layer: 0
-  m_Name: Bullet 1
+  m_Name: Bulldozer
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2611586976283010912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.115, y: 2.021, z: 1.22}
-  m_LocalScale: {x: 0.20685, y: 0.20685, z: 0.20685}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -91,9 +93,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2103778412240915368
+  m_Size: {x: 0.6, y: 0.5, z: 0.25}
+  m_Center: {x: 0, y: 0.275, z: 0.30290648}
+--- !u!114 &114571281410347754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,14 +104,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 2611586976283010912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b766a51442a0e9246b3b64dc2d5b9246, type: 3}
+  m_Script: {fileID: 11500000, guid: edebd3bca3edd9948b47d6092a3eb3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  lifeTime: 5
-  damageToGive: 1
-  impactEffect: {fileID: 4344580563010153815, guid: 9260327777720af4f9e7fc029ae7ace7,
-    type: 3}
+  speed: 5
+  lifeTime: 2
+  damageToGive: 3
+  impactEffect: {fileID: 450552748, guid: 673468142225ba14b84017679296a12b, type: 3}
   shootingLoc: {x: 0, y: 0, z: 0}
   targetLoc: {x: 0, y: 0, z: 0}
   entity: {fileID: 0}
+--- !u!208 &208211337204500100
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2611586976283010912}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.25, z: 0.15}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.25300002, z: 0.1}
+  m_TimeToStationary: 0.5
+--- !u!54 &54423909111836212
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2611586976283010912}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 3

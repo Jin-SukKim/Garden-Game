@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2611586976283010917}
   - component: {fileID: 2611586976283010914}
   - component: {fileID: 114257648290519810}
-  - component: {fileID: 54889053903338734}
+  - component: {fileID: 54731297250239048}
   m_Layer: 0
   m_Name: BulletSpine
   m_TagString: Bullet
@@ -113,7 +113,7 @@ MonoBehaviour:
   shootingLoc: {x: 0, y: 0, z: 0}
   targetLoc: {x: 0, y: 0, z: 0}
   entity: {fileID: 0}
---- !u!54 &54889053903338734
+--- !u!54 &54731297250239048
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

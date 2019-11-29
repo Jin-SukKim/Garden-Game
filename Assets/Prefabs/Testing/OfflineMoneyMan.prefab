@@ -1156,7 +1156,7 @@ GameObject:
   - component: {fileID: 625004231368973362}
   - component: {fileID: 625004231368973363}
   - component: {fileID: 625004231368973372}
-  - component: {fileID: 195280042462913804}
+  - component: {fileID: 195821385281769504}
   m_Layer: 0
   m_Name: OfflineMoneyMan
   m_TagString: Player
@@ -1214,13 +1214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c547f82082d3e374aabf16240cf4f686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entity: {fileID: 0}
   health: 10
   image: {fileID: 0}
   currentHealth: 0
-  respawn: 0
   enemeyDeathAnimation: {fileID: 0}
-  respawnPoint: {fileID: 0}
-  respawnPointWait: {fileID: 0}
 --- !u!23 &625004231368973365
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1340,9 +1338,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   health: {fileID: 0}
+  playerNum: 0
   abilities: {fileID: 0}
   spawnPoint: {fileID: 0}
   resources: {fileID: 0}
+  collider: {fileID: 0}
+  respawning: 0
+  canMove: 0
+  canAct: 0
+  isPlayer: 0
+  IsDisabled: 0
+  CanCast: 0
+  CanMove: 0
 --- !u!114 &625004231368973363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,7 +1379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamsFaction: 1
---- !u!195 &195280042462913804
+--- !u!195 &195821385281769504
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

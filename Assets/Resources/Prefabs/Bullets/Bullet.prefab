@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2611586976283010917}
   - component: {fileID: 2611586976283010914}
   - component: {fileID: 2103778412240915368}
-  - component: {fileID: 54880796906688096}
+  - component: {fileID: 54227993173483746}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -113,7 +113,7 @@ MonoBehaviour:
   shootingLoc: {x: 0, y: 0, z: 0}
   targetLoc: {x: 0, y: 0, z: 0}
   entity: {fileID: 0}
---- !u!54 &54880796906688096
+--- !u!54 &54227993173483746
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
