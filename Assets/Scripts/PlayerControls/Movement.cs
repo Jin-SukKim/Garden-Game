@@ -23,14 +23,14 @@ public class Movement : MonoBehaviour
 
     public float horizAxis;
     public float vertAxis;
-    private Animator animationController;
+/*    private Animator animationController;*/
 
 
-    [PunRPC]
+/*    [PunRPC]
     private void setAnimBool(string animString, bool boolean)
     {
         animationController.SetBool(animString, boolean);
-    }
+    }*/
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +62,7 @@ public class Movement : MonoBehaviour
         camWorks.target = gameObject.transform;
         Debug.Log("THIS IS THE PLAYER THAT HAS MOVEMENT: " + gameObject.name);
 
-        animationController = gameObject.GetComponentInChildren<Animator>();
+        //animationController = gameObject.GetComponentInChildren<Animator>();
 
     }
 
@@ -80,10 +80,10 @@ public class Movement : MonoBehaviour
             transform.position += leftRightMovement;
             transform.position += forwardBackMovement;
 
-            if (horizAxis != 0 || vertAxis != 0)
+/*            if (horizAxis != 0 || vertAxis != 0)
                 animationController.SetBool("isRunning", true);
             else
-                animationController.SetBool("isRunning", false);
+                animationController.SetBool("isRunning", false);*/
         }
     }
 

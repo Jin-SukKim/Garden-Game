@@ -2,6 +2,7 @@
 
 using Photon;
 using Photon.Pun;
+using System.Collections.Generic;
 
 public class InputManager : MonoBehaviourPun
 {
@@ -14,6 +15,9 @@ public class InputManager : MonoBehaviourPun
     public Abilities abilities;
     public Movement movement;
 
+    // For animations
+    private List<string> animationIDs;
+
     void Start()
     {
 
@@ -24,29 +28,48 @@ public class InputManager : MonoBehaviourPun
         abilities = gameObject.GetComponent<Abilities>();
         movement = gameObject.GetComponent<Movement>();
 
+        // For animations
+        animationIDs = new List<string>();
+        animationIDs.Add("BasicAttack");
+        animationIDs.Add("Ability");
+        animationIDs.Add("RallyOrPlant");
+        animationIDs.Add("Ultimate");
+
         Debug.Log("START" + photonView);
     }
 
-/*    public void InitializeInputManager(Entity myEntity)
-    {
-        MyEntity = myEntity;
-        photonView = MyEntity.gameObject.GetComponent<PhotonView>();
-        abilities = MyEntity.gameObject.GetComponent<Abilities>();
-        movement = MyEntity.gameObject.GetComponent<Movement>();
-    }*/
+    // Due to the nature of photon we must attach this script to the object with the photonview so I've commented out this code.
+    /*    public void InitializeInputManager(Entity myEntity)
+        {
+            MyEntity = myEntity;
+            photonView = MyEntity.gameObject.GetComponent<PhotonView>();
+            abilities = MyEntity.gameObject.GetComponent<Abilities>();
+            movement = MyEntity.gameObject.GetComponent<Movement>();
+        }*/
 
-    // Due to the nature of photon we must attach this script to the object with the photonview
 
+    // Network function for firing abilities
     [PunRPC]
     public void Fire(Vector3 pos, int abilityNum)
     {
         abilities.castAbility(abilityNum, pos);
     }
 
+    // Network functions for triggering animations 
+    [PunRPC]
+    private void triggerAnim(string animString)
+    {
+        GetComponentInChildren<Animator>().SetTrigger(animString);
+    }
+    [PunRPC]
+    private void setAnimBool(string animString, bool boolean)
+    {
+        GetComponentInChildren<Animator>().SetBool(animString, boolean);
+    }
+
 
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.KeypadPlus))
         {
             GetComponent<AudioSource>().volume += 1.0f;
@@ -85,47 +108,63 @@ public class InputManager : MonoBehaviourPun
 
                 if (Input.GetButton("Fire1"))
                 {
+                    int index = 0;
+
                     if (!PhotonNetwork.IsConnected)
                     {
-                        Fire(firePoint, 0);
+                        Fire(firePoint, index);
+                        triggerAnim(animationIDs[index]);
                     }
                     else
                     {
-                        this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 0);
+                        this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, index);
+                        this.photonView.RPC("triggerAnim", RpcTarget.AllBuffered, animationIDs[index]);
                     }
                 }
 
                 if (Input.GetButton("Fire2"))
                 {
+                    int index = 1;
+
                     if (!PhotonNetwork.IsConnected)
                     {
-                        Fire(firePoint, 1);
+                        Fire(firePoint, index);
+                        triggerAnim(animationIDs[index]);
                     }
                     else
                     {
-                        this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 1);
+                        this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, index);
+                        this.photonView.RPC("triggerAnim", RpcTarget.AllBuffered, animationIDs[index]);
                     }
                 }
                 if (Input.GetButton("Fire3"))
                 {
+                    int index = 2;
+
                     if (!PhotonNetwork.IsConnected)
                     {
-                        Fire(firePoint, 2);
+                        Fire(firePoint, index);
+                        triggerAnim(animationIDs[index]);
                     }
                     else
                     {
-                        this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 2);
+                        this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, index);
+                        this.photonView.RPC("triggerAnim", RpcTarget.AllBuffered, animationIDs[index]);
                     }
                 }
                 if (Input.GetButton("Fire4"))
                 {
+                    int index = 3;
+
                     if (!PhotonNetwork.IsConnected)
                     {
-                        Fire(firePoint, 3);
+                        Fire(firePoint, index);
+                        triggerAnim(animationIDs[index]);
                     }
                     else
                     {
-                        this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 3);
+                        this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, index);
+                        this.photonView.RPC("triggerAnim", RpcTarget.AllBuffered, animationIDs[index]);
                     }
                 }
 
@@ -133,6 +172,29 @@ public class InputManager : MonoBehaviourPun
                 {
                     movement.horizAxis = Input.GetAxis("HorizKey");
                     movement.vertAxis = Input.GetAxis("VertKey");
+
+                    if(movement.horizAxis != 0 || movement.vertAxis != 0)
+                    {
+                        if (!PhotonNetwork.IsConnected)
+                        {
+                            setAnimBool("isRunning", true);
+                        }
+                        else
+                        {
+                            this.photonView.RPC("setAnimBool", RpcTarget.AllBuffered, "isRunning", true);
+                        }
+                    }
+                    else
+                    {
+                        if (!PhotonNetwork.IsConnected)
+                        {
+                            setAnimBool("isRunning", false);
+                        }
+                        else
+                        {
+                            this.photonView.RPC("setAnimBool", RpcTarget.AllBuffered, "isRunning", false);
+                        }
+                    }
                 }
             }
         }
@@ -143,20 +205,4 @@ public class InputManager : MonoBehaviourPun
         return firePoint;
     }
 
-    /*
-    private void FireSecondary(Vector3 pos)
-    {
-        abilities.castAbility(1, pos);
-    }
-
-    private void FireSpell(Vector3 pos)
-    {
-        abilities.castAbility(2, pos);
-    }
-
-    private void FireUltimate(Vector3 pos)
-    {
-        abilities.castAbility(3, pos);
-    }
-    */
 }

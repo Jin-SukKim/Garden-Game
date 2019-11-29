@@ -12,16 +12,9 @@ public class Abilities : MonoBehaviourPun
 
     [SerializeField]
     private List<string> abilityIDs = new List<string>();
-    private List<string> animationIDs;
 
     private Dictionary<string, AbilityCastInfo> castInfos = new Dictionary<string, AbilityCastInfo>();
 
-
-    [PunRPC]
-    private void triggerAnim(string animString)
-    {
-        GetComponentInChildren<Animator>().SetTrigger(animString);
-    }
 
     private void Start()
     {
@@ -31,11 +24,7 @@ public class Abilities : MonoBehaviourPun
             AbilityCastInfo info = new AbilityCastInfo();
             castInfos.Add(s, info);
         }
-        animationIDs = new List<string>();
-        animationIDs.Add("BasicAttack");
-        animationIDs.Add("Ability");
-        animationIDs.Add("RallyOrPlant");
-        animationIDs.Add("Ultimate");
+        
     }
 
     public bool AddAbility(string abilityID)
@@ -91,14 +80,14 @@ public class Abilities : MonoBehaviourPun
 
     public Ability.AbilityFeedback basicAttack(Vector3 targetPosition)
     {
-        if (!PhotonNetwork.IsConnected)
+/*        if (!PhotonNetwork.IsConnected)
         {
             triggerAnim(animationIDs[0]);
         }
         else
         {
             this.photonView.RPC("triggerAnim", RpcTarget.AllBuffered, animationIDs[0]);
-        }
+        }*/
         return AbilitiesDirectory.TryCastAbility(abilityIDs[0], owner, targetPosition, castInfos[abilityIDs[0]]);
     }
 
@@ -107,16 +96,9 @@ public class Abilities : MonoBehaviourPun
         // Left out for now during integration
         //GetComponentInChildren<Animator>().SetTrigger(animationIDs[index]);
         //return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[index]]);
-
-        if (!PhotonNetwork.IsConnected)
-        {
-            triggerAnim(animationIDs[index]);
-        }
-        else
-        {
-            this.photonView.RPC("triggerAnim", RpcTarget.AllBuffered, animationIDs[index]);
-        }
-        return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[0]]);
+        
+        // SUPPOSED TO BE ZERO INSTEAD OF INDEX IN LAST PARAM?
+        return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[index]]);
     }
 
     //public float GetAbilityTimestamp()
