@@ -46,6 +46,41 @@ public class Abilities : MonoBehaviourPun
         abilityIDs.Add(abilityID);
         return true;
     }
+    
+    //Overwrites an existing ability in specified slot.
+    public bool SetAbility(string abilityID, int slot)
+    {
+        if(!castInfos.ContainsKey(abilityID))
+        {
+            AbilityCastInfo info = new AbilityCastInfo();
+            castInfos.Add(abilityID, info);
+        }
+
+        if(abilityIDs.Count < 1)
+        {
+            Debug.Log("Error setting ability: No Slot Available");
+            return false;
+        }
+        else
+        {
+            abilityIDs[slot] = abilityID;
+            return true;
+        }
+    }
+
+    //Get current ability from specified slot.
+    public string GetAbility(int slot)
+    {
+        if (abilityIDs.Count < 1)
+        {
+            Debug.Log("Error getting ability: Slot Does Not Exist");
+            return "null";
+        }
+        else
+        {
+            return abilityIDs[slot];
+        }
+    }
 
     // Tries to cast a specific ability
     // returns a specific AbilityFeedback enum of the ability is out of range, on cooldown, or there isnt enough resource to use
@@ -69,6 +104,10 @@ public class Abilities : MonoBehaviourPun
 
     public Ability.AbilityFeedback castAbility(int index, Vector3 targetPosition)
     {
+        // Left out for now during integration
+        //GetComponentInChildren<Animator>().SetTrigger(animationIDs[index]);
+        //return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[index]]);
+
         if (!PhotonNetwork.IsConnected)
         {
             triggerAnim(animationIDs[index]);

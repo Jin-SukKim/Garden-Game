@@ -86,4 +86,9 @@ public class Movement : MonoBehaviour
                 animationController.SetBool("isRunning", false);
         }
     }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
 }

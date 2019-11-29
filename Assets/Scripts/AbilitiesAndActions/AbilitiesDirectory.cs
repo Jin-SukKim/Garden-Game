@@ -19,6 +19,8 @@ public static class AbilitiesDirectory
         MakeShootAbility();
         MakeSpineAbility();
         MakeBulldozerAbility();
+        MakeBearTransformAbility();
+        MakeBearClawAbility();
     }
 
     public static bool addAbility(string abilityID, Ability ability)
@@ -134,6 +136,25 @@ public static class AbilitiesDirectory
 
         Ability ability = new Ability(4f, 999, actions);
         abilityDictionary.Add("bulldozerAttack", ability);
+    }
+
+    public static void MakeBearTransformAbility()
+    {
+        Debug.Log("MADE THE BEAR TRANSFORM ABILITY");
+        List<IAction> actions = new List<IAction>();
+        actions.Add(new BearAction());
+
+        Ability ability = new Ability(25f, 0, actions);
+        abilityDictionary.Add("bearTransform", ability);
+    }
+
+    public static void MakeBearClawAbility()
+    {
+        List<IAction> actions = new List<IAction>();
+        actions.Add(new BearClawAction());
+
+        Ability ability = new Ability(0.8f, 5, actions);
+        abilityDictionary.Add("bearClawAttack", ability);
     }
 }
 
