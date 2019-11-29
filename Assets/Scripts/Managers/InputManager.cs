@@ -13,7 +13,7 @@ public class InputManager : MonoBehaviourPun
   //  public PhotonView photonView;
     public Abilities abilities;
     public Movement movement;
-
+    public PlantLoadout plantLoadout;
     void Start()
     {
 
@@ -43,6 +43,11 @@ public class InputManager : MonoBehaviourPun
         abilities.castAbility(abilityNum, pos);
     }
 
+    [PunRPC]
+    public void Plant(Vector3 pos, int abilityNum)
+    {
+        abilities.plantAbility(abilityNum, pos);
+    }
 
     void Update()
     {
@@ -82,7 +87,6 @@ public class InputManager : MonoBehaviourPun
 
             if (MyEntity.CanCast)
             {
-
                 if (Input.GetButton("Fire1"))
                 {
                     if (!PhotonNetwork.IsConnected)
@@ -133,6 +137,55 @@ public class InputManager : MonoBehaviourPun
                 {
                     movement.horizAxis = Input.GetAxis("HorizKey");
                     movement.vertAxis = Input.GetAxis("VertKey");
+                }
+            }
+
+            if(MyEntity.IsPlanting)
+            {
+                if (Input.GetButton("Fire1"))
+                {
+                    if (!PhotonNetwork.IsConnected)
+                    {
+                        Plant(firePoint, 0);
+                    }
+                    else
+                    {
+                        this.photonView.RPC("Plant", RpcTarget.AllBuffered, firePoint, 0);
+                    }
+                }
+
+                if (Input.GetButton("Fire2"))
+                {
+                    if (!PhotonNetwork.IsConnected)
+                    {
+                        Plant(firePoint, 1);
+                    }
+                    else
+                    {
+                        this.photonView.RPC("Plant", RpcTarget.AllBuffered, firePoint, 1);
+                    }
+                }
+                if (Input.GetButton("Fire3"))
+                {
+                    if (!PhotonNetwork.IsConnected)
+                    {
+                        Plant(firePoint, 2);
+                    }
+                    else
+                    {
+                        this.photonView.RPC("Plant", RpcTarget.AllBuffered, firePoint, 2);
+                    }
+                }
+                if (Input.GetButton("Fire4"))
+                {
+                    if (!PhotonNetwork.IsConnected)
+                    {
+                        Plant(firePoint, 3);
+                    }
+                    else
+                    {
+                        this.photonView.RPC("Plant", RpcTarget.AllBuffered, firePoint, 3);
+                    }
                 }
             }
         }

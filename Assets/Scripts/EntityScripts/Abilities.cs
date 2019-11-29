@@ -11,7 +11,12 @@ public class Abilities : MonoBehaviour
     [SerializeField]
     private List<string> abilityIDs = new List<string>();
 
+    [SerializeField]
+    private List<string> plantIDs = new List<string>();
+
     private Dictionary<string, AbilityCastInfo> castInfos = new Dictionary<string, AbilityCastInfo>();
+
+    private Dictionary<string, AbilityCastInfo> plantInfos = new Dictionary<string, AbilityCastInfo>();
 
     private void Start()
     {
@@ -20,6 +25,12 @@ public class Abilities : MonoBehaviour
         {
             AbilityCastInfo info = new AbilityCastInfo();
             castInfos.Add(s, info);
+        }
+
+        foreach (string s in plantIDs)
+        {
+            AbilityCastInfo info = new AbilityCastInfo();
+            plantInfos.Add(s, info);
         }
     }
 
@@ -47,6 +58,11 @@ public class Abilities : MonoBehaviour
     public Ability.AbilityFeedback castAbility(int index, Vector3 targetPosition)
     {
         return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[0]]);
+    }
+
+    public Ability.AbilityFeedback plantAbility(int index, Vector3 targetPosition)
+    {
+        return AbilitiesDirectory.TryCastAbility(plantIDs[index], owner, targetPosition, plantInfos[plantIDs[0]]);
     }
 
     //public float GetAbilityTimestamp()

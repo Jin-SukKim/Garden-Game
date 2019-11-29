@@ -19,6 +19,7 @@ public static class AbilitiesDirectory
         MakeSpineAbility();
         MakeBulldozerAbility();
         MakePlacementAbility();
+        MakeRosePlantingAbility();
     }
 
     public static bool addAbility(string abilityID, Ability ability)
@@ -119,7 +120,7 @@ public static class AbilitiesDirectory
     public static void MakePlacementAbility()
     {
         List<IAction> actions = new List<IAction>();
-        actions.Add(new PlacementAction());
+        actions.Add(new PlacingAction());
 
         Ability ability = new Ability(0.5f, 999, actions);
         abilityDictionary.Add("placementActivate", ability);
@@ -132,6 +133,15 @@ public static class AbilitiesDirectory
 
         Ability ability = new Ability(0.5f, 999, actions);
         abilityDictionary.Add("placementActivate", ability);
+    }
+
+    public static void MakeRosePlantingAbility()
+    {
+        List<IAction> actions = new List<IAction>();
+        actions.Add(new RosePlantingAction());
+
+        Ability ability = new Ability(0.5f, 999, actions);
+        abilityDictionary.Add("rosePlant", ability);
     }
 
     public static void MakeBulldozerAbility()
