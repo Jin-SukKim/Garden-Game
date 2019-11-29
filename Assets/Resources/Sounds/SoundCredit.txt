@@ -1,0 +1,76 @@
+
+
+Area:Splash Screen
+Title: Hotshot
+Author: Scott Holmes
+Album: Inspiring and Upbeat Music
+Date(dd/mm/yyyy): 03/09/2019
+URL: https://freemusicarchive.org/music/Scott_Holmes/Inspiring__Upbeat_Music/Scott_Holmes_-_Hotshot
+License: http://creativecommons.org/licenses/by-nc/4.0/
+
+Area: Main Screen
+Title: Badger Cafe
+Author: Mathgrant
+Album: Dork is Yes!
+Date(dd/mm/yyyy): 14/01/2016
+URL: https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/mathgrant/Dork_Is_Yes/mathgrant_-_03_-_Badger_Caf.mp3
+License: http://creativecommons.org/licenses/by-nc-sa/3.0/us/
+
+
+Area: Player Select
+Title: charselect
+Author: Spring
+Album: The War Over a Melon Field - Themes and Jingles
+Date: 1/7/2019
+URL: https://opengameart.org/sites/default/files/charselect_2.ogg
+License: http://creativecommons.org/publicdomain/zero/1.0/
+
+Area: Forest Area Biome
+Title: Rabat
+Author: Phillip Gross
+Album: Morocco
+Date: 28/10/2018
+URL: https://freemusicarchive.org/music/Phillip_Gross/Morocco/Phillip_Gross_Morocco_-_02_-_Rabat
+License: http://creativecommons.org/licenses/by-nc-nd/4.0/
+
+Area: Option Screen
+Title: Garage
+Author: Monplaisir
+Album: Turbo Rallye Clicker 4000 Soundtrack
+Date: 23/4/2019
+URL: https://freemusicarchive.org/music/Monplaisir/Turbo_Rallye_Clicker_4000_Soundtrack/Monplaisir_-_Turbo_Rallye_Clicker_4000_Soundtrack_-_02_Garage
+License: http://creativecommons.org/publicdomain/zero/1.0/
+
+Area: Player Guide
+Title: Pleasant Creek
+Author: Matthew Pablo
+Album: -
+Date: 21/02/2014
+URL: https://opengameart.org/sites/default/files/Pleasant%20Creek%20Pack.zip
+License:http://creativecommons.org/licenses/by/3.0/
+
+Area: Story
+Title: My Fat Cat
+Author:Eric Matyas
+Album: - 
+Date: -
+URL: http://soundimage.org/wp-content/uploads/2015/08/My-Fat-Cat_v001.mp3
+License: https://soundimage.org/attribution-info/
+
+Area: Industrialist Victory
+Title: Royal Entrance
+Author: Visager
+Album:Songs From An Unmade World 2
+Date: 28/04/2019
+URL: https://freemusicarchive.org/music/Visager/Songs_From_An_Unmade_World_2/Visager_-_Songs_From_An_Unmade_World_2_-_02_Royal_Entrance
+License: http://creativecommons.org/licenses/by/4.0/
+
+Area: Druid Victory
+Title: Forest Fanfare[Loop]
+Author: Visager
+Album: Songs from an Unmade Forest World (Loop)
+Date: 12/09/2017
+URL: https://freemusicarchive.org/music/Visager/Songs_from_an_Unmade_Forest_World/Forest_Fanfare_Loop
+License: http://creativecommons.org/licenses/by-sa/4.0/
+
+

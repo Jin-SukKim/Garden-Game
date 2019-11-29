@@ -6,6 +6,7 @@ using UnityEngine;
 // it will have access to all the basic shared components like movement, health, abilities, etc.
 public class Entity : MonoBehaviour
 {
+    public AudioSource audioSource;
     public Teams.Faction team;
     public DamageSystem health;
     public Abilities abilities;
@@ -15,6 +16,7 @@ public class Entity : MonoBehaviour
     private void Start()
     {
         // Now the core components of the player can be accessed through the single entity component
+        audioSource = GetComponent<AudioSource>();
         team = GetComponent<Teams>().TeamsFaction;
         health = GetComponent<DamageSystem>();
         abilities = GetComponent<Abilities>();

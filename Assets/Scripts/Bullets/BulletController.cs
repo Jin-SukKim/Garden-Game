@@ -15,7 +15,7 @@ public class BulletController : MonoBehaviour
 
     public int damageToGive;
     public GameObject impactEffect;
-
+    public AudioClip collisionSound;
     public Vector3 shootingLoc;
     public Vector3 targetLoc;
 
@@ -52,6 +52,8 @@ public class BulletController : MonoBehaviour
     /// <param name="other"></param>
     private void OnCollisionEnter(Collision other)
     {
+        SoundManager.PlaySoundatLocation(collisionSound, other.transform.position);
+
         if (gameObject.tag == "Bullet")
         {
             //if (other.gameObject.tag == "Enemy")
@@ -82,7 +84,6 @@ public class BulletController : MonoBehaviour
                 GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
-
             // For nexus
 /*            if (other.gameObject.tag == "Nexus")
             {
