@@ -7,6 +7,8 @@ using UnityEngine;
 public static class PrefabManager
 {
     static Dictionary<string, GameObject> bullets = new Dictionary<string, GameObject>();
+    static private GameObject minionPrefab;
+
 
     static Dictionary<string, GameObject> placeables = new Dictionary<string, GameObject>();
 
@@ -15,6 +17,8 @@ public static class PrefabManager
     {
         LoadBullets();
         LoadPlaceables();
+        var minion = Resources.Load("EnemyAITester");
+        minionPrefab = minion as GameObject;
     }
 
     // loads all the bullets from the bullets folder in the resources folder
@@ -91,4 +95,11 @@ public static class PrefabManager
         newObj.GetComponent<PlaceableEntity>().Init(e);
         return newObj;
     }
+    public static void SpawnMinion(Vector3 pos, Entity e)
+    {
+        GameObject instantiated = GameObject.Instantiate(minionPrefab, pos, Quaternion.identity);
+        //instantiated.AddComponent<Entity>();
+        //instantiated.GetComponent<Entity>().team = e.team;
+    }
+
 }

@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon;
+using Photon.Pun;
 
 // This is a component that stores all the abilities of a unit/player/plant
 // it consists of a bunch of ability IDs and the actual ability is store in a static abilities directory class
-public class Abilities : MonoBehaviour
+public class Abilities : MonoBehaviourPun
 {
     Entity owner;
 
@@ -15,6 +17,7 @@ public class Abilities : MonoBehaviour
     private List<string> plantIDs = new List<string>();
 
     private Dictionary<string, AbilityCastInfo> castInfos = new Dictionary<string, AbilityCastInfo>();
+
 
     private Dictionary<string, AbilityCastInfo> plantInfos = new Dictionary<string, AbilityCastInfo>();
 
@@ -42,6 +45,41 @@ public class Abilities : MonoBehaviour
         abilityIDs.Add(abilityID);
         return true;
     }
+    
+    //Overwrites an existing ability in specified slot.
+    public bool SetAbility(string abilityID, int slot)
+    {
+        if(!castInfos.ContainsKey(abilityID))
+        {
+            AbilityCastInfo info = new AbilityCastInfo();
+            castInfos.Add(abilityID, info);
+        }
+
+        if(abilityIDs.Count < 1)
+        {
+            Debug.Log("Error setting ability: No Slot Available");
+            return false;
+        }
+        else
+        {
+            abilityIDs[slot] = abilityID;
+            return true;
+        }
+    }
+
+    //Get current ability from specified slot.
+    public string GetAbility(int slot)
+    {
+        if (abilityIDs.Count < 1)
+        {
+            Debug.Log("Error getting ability: Slot Does Not Exist");
+            return "null";
+        }
+        else
+        {
+            return abilityIDs[slot];
+        }
+    }
 
     // Tries to cast a specific ability
     // returns a specific AbilityFeedback enum of the ability is out of range, on cooldown, or there isnt enough resource to use
@@ -52,12 +90,25 @@ public class Abilities : MonoBehaviour
 
     public Ability.AbilityFeedback basicAttack(Vector3 targetPosition)
     {
+/*        if (!PhotonNetwork.IsConnected)
+        {
+            triggerAnim(animationIDs[0]);
+        }
+        else
+        {
+            this.photonView.RPC("triggerAnim", RpcTarget.AllBuffered, animationIDs[0]);
+        }*/
         return AbilitiesDirectory.TryCastAbility(abilityIDs[0], owner, targetPosition, castInfos[abilityIDs[0]]);
     }
 
     public Ability.AbilityFeedback castAbility(int index, Vector3 targetPosition)
     {
-        return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[0]]);
+        // Left out for now during integration
+        //GetComponentInChildren<Animator>().SetTrigger(animationIDs[index]);
+        //return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[index]]);
+        
+        // SUPPOSED TO BE ZERO INSTEAD OF INDEX IN LAST PARAM?
+        return AbilitiesDirectory.TryCastAbility(abilityIDs[index], owner, targetPosition, castInfos[abilityIDs[index]]);
     }
 
     public Ability.AbilityFeedback plantAbility(int index, Vector3 targetPosition)
