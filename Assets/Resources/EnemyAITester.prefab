@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 4117974512831428875}
   - component: {fileID: 4117974512831428873}
   - component: {fileID: 4117974512831428913}
-  - component: {fileID: 4117974512831428912}
   - component: {fileID: 114075977698051234}
   - component: {fileID: 114111430193522208}
   - component: {fileID: 114263488874155160}
@@ -161,22 +160,6 @@ MonoBehaviour:
   currentHealth: 0
   enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
     type: 3}
---- !u!54 &4117974512831428912
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4117974512831428872}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!114 &114075977698051234
 MonoBehaviour:
   m_ObjectHideFlags: 0

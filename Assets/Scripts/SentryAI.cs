@@ -41,7 +41,23 @@ public class SentryAI : MonoBehaviour
 
     void UpdateTarget()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        Entity[] scripts = GameObject.FindObjectsOfType<Entity>();
+        GameObject[] objects = new GameObject[scripts.Length];
+        for (int i = 0; i < objects.Length; i++)
+        {
+            objects[i] = scripts[i].gameObject;
+        }
+
+        List<GameObject> players = new List<GameObject>();
+
+        foreach (GameObject obj in objects)
+        {
+            if (obj.GetComponent<Entity>().team == Teams.Faction.indust && obj.tag == "Player")
+            {
+                players.Add(obj);
+            }
+        }
+
         float shortestDistance = Mathf.Infinity;
         GameObject nearestPlayer = null;
 
