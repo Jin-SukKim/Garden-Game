@@ -35,7 +35,8 @@ public class GetLeaderboardScript : MonoBehaviour {
     // <summary>
     /// Starts a coroutine to query the database.
     /// </summary>
-    public void GetLeaderBoard() {
+    public void GetLeaderBoard()
+    {
         StartCoroutine(SendHttpRequest(APIEndpoint.GetLeaderboard));
     }
 
@@ -72,7 +73,7 @@ public class GetLeaderboardScript : MonoBehaviour {
     /// </summary>
     public void DisplayLeaderboard(LeaderboardJsonWrapper lb) {
         //only get top 8 results
-        int i = 0;
+/*        int i = 0;
         foreach (LeaderboardEntry entry in lb.LeaderboardEntries) {
             if(i < 10)
             {
@@ -84,9 +85,9 @@ public class GetLeaderboardScript : MonoBehaviour {
                 instance.GetComponentInChildren<Text>().text = entry.Username;
                 instance.transform.SetParent(gameObject.transform, false);
                 i++;
-            }
-//         foreach (LeaderboardEntry entry in lb.LeaderboardEntries) {
-//             Debug.Log(entry.Username);
+            }*/
+        foreach (LeaderboardEntry entry in lb.LeaderboardEntries) {
+            Debug.Log(entry.Username);
         }
     }
 
