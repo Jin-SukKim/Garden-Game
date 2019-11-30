@@ -86,7 +86,7 @@ public class InputManager : MonoBehaviourPun
 
             if (MyEntity.CanCast)
             {
-                if (Input.GetButton("Fire1"))
+                if (Input.GetButtonDown("Fire1"))
                 {
                     if (!PhotonNetwork.IsConnected)
                     {
@@ -98,7 +98,7 @@ public class InputManager : MonoBehaviourPun
                     }
                 }
 
-                if (Input.GetButton("Fire2"))
+                if (Input.GetButtonDown("Fire2"))
                 {
                     if (!PhotonNetwork.IsConnected)
                     {
@@ -109,7 +109,7 @@ public class InputManager : MonoBehaviourPun
                         this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 1);
                     }
                 }
-                if (Input.GetButton("Fire3"))
+                if (Input.GetButtonDown("Fire3"))
                 {
                     if (!PhotonNetwork.IsConnected)
                     {
@@ -120,10 +120,13 @@ public class InputManager : MonoBehaviourPun
                         this.photonView.RPC("Fire", RpcTarget.AllBuffered, firePoint, 2);
                     }
                 }
-                if (Input.GetButton("Fire4"))
+                if (Input.GetButtonDown("Fire4"))
                 {
+
+                    Debug.Log("fire4");
                     if (!PhotonNetwork.IsConnected)
                     {
+                        Debug.Log("fire4");
                         Fire(firePoint, 3);
                     }
                     else
@@ -141,7 +144,7 @@ public class InputManager : MonoBehaviourPun
 
             if(MyEntity.IsPlanting)
             {
-                if (Input.GetButton("Fire1"))
+                if (Input.GetButtonDown("Fire1"))
                 {
                     if (!PhotonNetwork.IsConnected)
                     {

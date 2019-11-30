@@ -14,6 +14,7 @@ public static class PrefabManager
     static PrefabManager()
     {
         LoadBullets();
+        LoadPlaceables();
     }
 
     // loads all the bullets from the bullets folder in the resources folder
@@ -36,6 +37,7 @@ public static class PrefabManager
         // Store all bullets in the dictionary with name as key
         for (int i = 0; i < allPlacables.Length; i++)
         {
+            Debug.Log("Added " + allPlacables[i].name);
             placeables.Add(allPlacables[i].name, allPlacables[i]);
         }
     }

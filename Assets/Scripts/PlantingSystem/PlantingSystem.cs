@@ -28,7 +28,7 @@ public class PlantingSystem : MonoBehaviour
         plants = PrefabManager.ReturnPlacables();
 
         SelectedPlant = PlantType.shootrose;
-        CurGO = PrefabManager.SpawnPlaceable("shootRose", MyEntity.gameObject.GetComponent<InputManager>().GetPointerPosition(), MyEntity);
+        CurGO = PrefabManager.SpawnPlaceable("shootrose", MyEntity.gameObject.GetComponent<InputManager>().GetPointerPosition(), MyEntity);
     }
 
 
@@ -43,7 +43,6 @@ public class PlantingSystem : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("Placed object");
             if (CurGO.activeSelf)
             {
                 CurGO.GetComponent<PlaceableEntity>().Placing = true;

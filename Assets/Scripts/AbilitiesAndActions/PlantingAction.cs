@@ -6,11 +6,7 @@ public class PlantingAction : IAction
 {
     public void doAction(Entity e, Ability a)
     {
-        e.IsPlanting = !e.IsPlanting;
-        
-        if (e.IsPlanting)
-        {
-            e.gameObject.AddComponent<PlantingSystem>();
-        }
+        e.IsPlanting = true;
+        e.gameObject.AddComponent<PlantingSystem>();
     }
 }

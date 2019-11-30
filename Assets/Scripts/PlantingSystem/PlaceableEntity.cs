@@ -33,7 +33,8 @@ public class PlaceableEntity : MonoBehaviour
         
         if (Placing && !Colliding)
         {
-            PhotonNetwork.Instantiate("shootrose", gameObject.transform.position, Quaternion.identity);
+            Placed = true;
+            PrefabManager.SpawnPlaceable("shootrose", gameObject.transform.position, MyEntity);
             Destroy(gameObject);
         }
     }
