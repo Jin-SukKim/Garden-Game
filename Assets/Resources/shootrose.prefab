@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5633281371330107266}
   - component: {fileID: 5633281371330107268}
   - component: {fileID: 5633281371330107269}
+  - component: {fileID: 65564012871660970}
+  - component: {fileID: 114538812838929280}
   m_Layer: 0
   m_Name: shootrose
   m_TagString: Untagged
@@ -113,6 +115,37 @@ MonoBehaviour:
   IsDisabled: 0
   CanCast: 0
   CanMove: 0
+--- !u!65 &65564012871660970
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5633281371747230800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114538812838929280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5633281371747230800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c547f82082d3e374aabf16240cf4f686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 0}
+  health: 5
+  image: {fileID: 0}
+  currentHealth: 0
+  enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
+    type: 3}
 --- !u!1 &5633281371747230802
 GameObject:
   m_ObjectHideFlags: 0
