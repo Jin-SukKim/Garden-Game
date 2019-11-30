@@ -7,29 +7,41 @@ using UnityEngine.UI;
 /// <summary>
 /// This script is used to get the leaderboard and display it.
 /// </summary>
+// public class GetLeaderboardScript : MonoBehaviour {
+//    [SerializeField]
+//     public GameObject myPrefab;
+
+//     void Start()
+//     {
+//         GetLeaderBoard();
+//     }
+
+//     /// <summary>
+//     /// Starts a coroutine to query the database.
+//     /// </summary>
+//     public void GetLeaderBoard() {
+//         string localUrl = APIEndpoint.GetLeaderboardLocal;
+//         string cloudUrl = APIEndpoint.GetLeaderboardCloud;
+
+//         //StartCoroutine(SendHttpRequest(localUrl));
+//         StartCoroutine(SendHttpRequest(cloudUrl));
+//     }
+
+/// <summary>
+/// This coroutine sends a get request to query the database which will return
+/// the leaderboard as an object
 public class GetLeaderboardScript : MonoBehaviour {
-   [SerializeField]
-    public GameObject myPrefab;
 
-    void Start()
-    {
-        GetLeaderBoard();
-    }
-
-    /// <summary>
+    // <summary>
     /// Starts a coroutine to query the database.
     /// </summary>
     public void GetLeaderBoard() {
-        string localUrl = APIEndpoint.GetLeaderboardLocal;
-        string cloudUrl = APIEndpoint.GetLeaderboardCloud;
-
-        //StartCoroutine(SendHttpRequest(localUrl));
-        StartCoroutine(SendHttpRequest(cloudUrl));
+        StartCoroutine(SendHttpRequest(APIEndpoint.GetLeaderboard));
     }
 
     /// <summary>
-    /// This coroutine sends a get request to query the database which will return
-    /// the leaderboard as an object.
+    /// This coroutine sends a post request to update the database with the stats saved at
+    /// the end of each game.
     /// </summary>
     IEnumerator SendHttpRequest(string url) {
         UnityWebRequest request = UnityWebRequest.Get(url);
@@ -73,6 +85,8 @@ public class GetLeaderboardScript : MonoBehaviour {
                 instance.transform.SetParent(gameObject.transform, false);
                 i++;
             }
+//         foreach (LeaderboardEntry entry in lb.LeaderboardEntries) {
+//             Debug.Log(entry.Username);
         }
     }
 

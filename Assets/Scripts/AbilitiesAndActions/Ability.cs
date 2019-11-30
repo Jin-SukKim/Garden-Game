@@ -8,17 +8,20 @@ public class Ability {
 
     // when we try to use an ability, this enum is returned to let us know if the casting the ability succeeded or not and why
     public enum AbilityFeedback { outOfRange, onCooldown, noResource, success};
+    public delegate IResource GetResourceDelegate(Entity e);
 
     private float cost;
     private float cooldown;
-    private float cooldownTimestamp;
+    //private float cooldownTimestamp;
     private float range;
 
-    private IResource resource;
+    //private IResource resource;
 
     private List<IAction> actions;
     private Vector3 targetPosition;
 
+    private GetResourceDelegate getResource;
+       
     public Ability(float cooldown, float range, List<IAction> actions)
     {
         this.cooldown = cooldown;
@@ -26,44 +29,68 @@ public class Ability {
         this.actions = actions;
     }
 
-    public virtual AbilityFeedback TryCastAbility(Entity e)
+    public Ability(float cooldown, float range, List<IAction> actions, GetResourceDelegate getResource)
     {
-        if (!checkCooldown())
+        this.cooldown = cooldown;
+        this.range = range;
+        this.actions = actions;
+        this.getResource = getResource;
+    }
+
+    public virtual AbilityFeedback TryCastAbility(Entity e, AbilityCastInfo info)
+    {
+        if (!checkCooldown(info))
             return AbilityFeedback.onCooldown;
 
-        if (!checkCost())
+        if (!checkCost(e))
             return AbilityFeedback.noResource;
 
         targetPosition = e.transform.position;
 
-        fireAbility(e);
+        fireAbility(e, info);
         return AbilityFeedback.success;
     }
 
-    public virtual AbilityFeedback TryCastAbility(Entity e, Vector3 position) {
+    public virtual AbilityFeedback TryCastAbility(Entity e, Vector3 position, AbilityCastInfo info) {
 
         if (!checkRange(e,position))
             return AbilityFeedback.outOfRange;
 
         targetPosition = position;
 
-        if (!checkCooldown())
+        if (!checkCooldown(info))
             return AbilityFeedback.onCooldown;
 
-        if (!checkCost())
+        if (!checkCost(e))
             return AbilityFeedback.noResource;
-        
-        fireAbility(e);
+
+        fireAbility(e, info);
         return AbilityFeedback.success;
     }
 
-    protected bool checkCost()
+/*    public virtual AbilityFeedback TryCastAbility(Entity e)
     {
-        return (resource == null || resource.ResourceCheck(cost));
+        if (!checkCooldown(info))
+            return AbilityFeedback.onCooldown;
+
+        if (!checkCost(e))
+            return AbilityFeedback.noResource;
+
+        targetPosition = e.transform.position;
+
+        fireAbility(e, info);
+        return AbilityFeedback.success;
+    }*/
+
+
+
+    protected bool checkCost(Entity e)
+    {
+        return (getResource == null || getResource(e).CanPayCost(cost));
     }
 
-    protected bool checkCooldown() {
-        return (cooldown == 0 || Time.time >= cooldownTimestamp);
+    protected bool checkCooldown(AbilityCastInfo info) {
+        return (cooldown == 0 || Time.time >= info.timestamp);
     }
 
     protected bool checkRange(Entity e,Vector3 pos) {
@@ -72,8 +99,8 @@ public class Ability {
 
     // executed when an ability passes all of its checks
     // executes all actions in action list
-    protected void fireAbility(Entity e) {
-        payCostAndCoolDown();
+    protected void fireAbility(Entity e, AbilityCastInfo info) {
+        payCostAndCoolDown(e, info);
         foreach(IAction a in actions) {
             a.doAction(e,this);
         }
@@ -81,17 +108,22 @@ public class Ability {
 
     // pays any cost if there this ability has a resource cost
     // sets the cooldown timer
-    protected void payCostAndCoolDown() {
+    protected void payCostAndCoolDown(Entity e, AbilityCastInfo info) {
         if (cooldown != 0) {
-            cooldownTimestamp = Time.time + cooldown;
+            info.timestamp = Time.time + cooldown;
         }
 
-        if (resource != null)
-            resource.PayCost(cost);
+        if (getResource != null)
+            getResource(e).PayCost(cost);
     }
 
-    public void SetResource(IResource r) {
-        resource = r;
+    //public void SetResource(IResource r) {
+    //    resource = r;
+    //}
+
+    public void SetGetResource(GetResourceDelegate getResource)
+    {
+        this.getResource = getResource;
     }
 
     public void SetCooldown(float f) {
@@ -102,12 +134,13 @@ public class Ability {
         cost = f;
     }
 
-    public float GetTimestamp() {
-        return cooldownTimestamp;
-    }
+    //public float GetTimestamp() {
+    //    return cooldownTimestamp;
+    //}
 
     public Vector3 GetTargetPosition()
     {
         return targetPosition;
     }
+
 }
