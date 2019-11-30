@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 7952634743616952445}
   - component: {fileID: 4022720161973147991}
   - component: {fileID: 3724783885604482834}
+  - component: {fileID: 114318351205370304}
   m_Layer: 0
   m_Name: mortartulip
   m_TagString: Untagged
@@ -126,9 +127,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   health: {fileID: 3724783885604482834}
+  playerNum: 0
   abilities: {fileID: 4022720161973147991}
   spawnPoint: {fileID: 0}
   resources: {fileID: 0}
+  collider: {fileID: 0}
+  respawning: 0
+  isPlayer: 0
+  IsDisabled: 0
+  IsPlanting: 0
 --- !u!114 &4022720161973147991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityIDs: []
+  plantIDs: []
 --- !u!114 &3724783885604482834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,13 +162,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c547f82082d3e374aabf16240cf4f686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entity: {fileID: 0}
   health: 0
   image: {fileID: 0}
   currentHealth: 0
-  respawn: 0
   enemeyDeathAnimation: {fileID: 0}
-  respawnPoint: {fileID: 0}
-  respawnPointWait: {fileID: 0}
+--- !u!114 &114318351205370304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677980610982039661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c465b6a7598c5bf49bb26a7b7fabaecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Placed: 0
 --- !u!1 &1677980610982039663
 GameObject:
   m_ObjectHideFlags: 0

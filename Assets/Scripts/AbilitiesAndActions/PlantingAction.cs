@@ -6,8 +6,11 @@ public class PlantingAction : IAction
 {
     public void doAction(Entity e, Ability a)
     {
-        Vector3 targetPos = e.transform.position + (10 * e.transform.forward);
-        Vector3 dir = targetPos - e.transform.position;
-        //PrefabManager.SpawnPlaceable(mObjectID, e.spawnPoint.position, a.GetTargetPosition(), e);
+        e.IsPlanting = !e.IsPlanting;
+        
+        if (e.IsPlanting)
+        {
+            e.gameObject.AddComponent<PlantingSystem>();
+        }
     }
 }

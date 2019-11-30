@@ -3,12 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Photon;
+using Photon.Pun;
+using Photon.Realtime;
+
 public class PlaceableEntity : MonoBehaviour
 {
-    [SerializeField]
-    private bool Placed;
+    public bool Placed;
+    
+    public bool Placing;
+
+    private bool Colliding;
+
+    private Entity MyEntity;
+
+    public void Init(Entity e)
+    {
+        MyEntity = e;
+    }
+
     void Start(){
         Placed = false;
+        Placing = false;
+        Colliding = false;
+    }
+
+    void Update()
+    {
+        
+        if (Placing && !Colliding)
+        {
+            PhotonNetwork.Instantiate("shootrose", gameObject.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 
     //Snaps to grid
@@ -27,20 +54,14 @@ public class PlaceableEntity : MonoBehaviour
         return transform.parent.GetComponent<Grid>().LocalToCell(transform.localPosition).z;
     }
 
-    public void PlaceThis()
-    {
-        if(FindObjectOfType<PlacingScript>().CurGO != this.gameObject)
-            StartCoroutine("InvalidPlacementArea");
-        else{
-            Placed = true;
-            gameObject.layer = 2;
-        }
+    void OnTriggerEnter(Collider other){
+        Debug.Log("Collided with: " + other.gameObject.name);
+        Colliding = true;
     }
 
-    void OnTriggerEnter(Collider other){
-        Debug.Log("Collided");
-        if(!Placed)
-            gameObject.SetActive(false);
+    void OnTriggerExit(Collider other)
+    {
+        Colliding = false;
     }
 
     IEnumerator InvalidPlacementArea()

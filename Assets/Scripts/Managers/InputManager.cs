@@ -13,7 +13,6 @@ public class InputManager : MonoBehaviourPun
   //  public PhotonView photonView;
     public Abilities abilities;
     public Movement movement;
-    public PlantLoadout plantLoadout;
     void Start()
     {
 
@@ -153,7 +152,7 @@ public class InputManager : MonoBehaviourPun
                         this.photonView.RPC("Plant", RpcTarget.AllBuffered, firePoint, 0);
                     }
                 }
-
+                /*
                 if (Input.GetButton("Fire2"))
                 {
                     if (!PhotonNetwork.IsConnected)
@@ -187,6 +186,7 @@ public class InputManager : MonoBehaviourPun
                         this.photonView.RPC("Plant", RpcTarget.AllBuffered, firePoint, 3);
                     }
                 }
+                */
             }
         }
     }

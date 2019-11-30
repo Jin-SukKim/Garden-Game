@@ -31,13 +31,18 @@ public static class PrefabManager
     // loads all the placeables from the placeables folder in the resources folder
     public static void LoadPlaceables()
     {
-        GameObject[] allBullets = Resources.LoadAll("Prefabs/Placeables", typeof(GameObject)).Cast<GameObject>().ToArray();
+        GameObject[] allPlacables = Resources.LoadAll("Prefabs/Placeables", typeof(GameObject)).Cast<GameObject>().ToArray();
 
         // Store all bullets in the dictionary with name as key
-        for (int i = 0; i < allBullets.Length; i++)
+        for (int i = 0; i < allPlacables.Length; i++)
         {
-            bullets.Add(allBullets[i].name, allBullets[i]);
+            placeables.Add(allPlacables[i].name, allPlacables[i]);
         }
+    }
+
+    public static Dictionary<string, GameObject> ReturnPlacables()
+    {
+        return placeables;
     }
 
     /*    public static bool SpawnBullet(string bulletID, Vector3 pos, Quaternion rot, Entity e)
@@ -77,23 +82,11 @@ public static class PrefabManager
     }
 
 
-    public static bool SpawnPlaceable(string objectID, Vector3 pos, Vector3 targetLoc, Entity e)
+    public static GameObject SpawnPlaceable(string objectID, Vector3 targetLoc, Entity e)
     {
-
-        if (placeables.ContainsKey(objectID))
-        {
-            Quaternion dir = Quaternion.LookRotation(targetLoc);
-            GameObject newObj = GameObject.Instantiate(placeables[objectID], pos, dir);
-            //BulletController newObject = newObj.GetComponent<BulletController>();
-            //newBullet.InitBullet(pos, targetLoc);
-
-            //not the best way to do this
-            //newBullet.entity = e;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        Quaternion dir = Quaternion.LookRotation(targetLoc);
+        GameObject newObj = GameObject.Instantiate(placeables[objectID], targetLoc, dir);
+        newObj.GetComponent<PlaceableEntity>().Init(e);
+        return newObj;
     }
 }

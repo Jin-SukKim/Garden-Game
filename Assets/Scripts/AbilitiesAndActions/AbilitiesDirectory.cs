@@ -18,7 +18,7 @@ public static class AbilitiesDirectory
         MakeShootAbility();
         MakeSpineAbility();
         MakeBulldozerAbility();
-        MakePlacementAbility();
+        MakePlantingAbility();
         MakeRosePlantingAbility();
     }
 
@@ -115,15 +115,6 @@ public static class AbilitiesDirectory
 
         Ability ability = new Ability(1f, 999, actions);
         abilityDictionary.Add("spineAttack", ability);
-    }
-
-    public static void MakePlacementAbility()
-    {
-        List<IAction> actions = new List<IAction>();
-        actions.Add(new PlacingAction());
-
-        Ability ability = new Ability(0.5f, 999, actions);
-        abilityDictionary.Add("placementActivate", ability);
     }
 
     public static void MakePlantingAbility()
