@@ -2,7 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
+/// <summary>
+/// This script is used to get the leaderboard and display it.
+/// </summary>
+// public class GetLeaderboardScript : MonoBehaviour {
+//    [SerializeField]
+//     public GameObject myPrefab;
+
+//     void Start()
+//     {
+//         GetLeaderBoard();
+//     }
+
+//     /// <summary>
+//     /// Starts a coroutine to query the database.
+//     /// </summary>
+//     public void GetLeaderBoard() {
+//         string localUrl = APIEndpoint.GetLeaderboardLocal;
+//         string cloudUrl = APIEndpoint.GetLeaderboardCloud;
+
+//         //StartCoroutine(SendHttpRequest(localUrl));
+//         StartCoroutine(SendHttpRequest(cloudUrl));
+//     }
+
+/// <summary>
+/// This coroutine sends a get request to query the database which will return
+/// the leaderboard as an object
 public class GetLeaderboardScript : MonoBehaviour {
 
     // <summary>
@@ -44,8 +71,22 @@ public class GetLeaderboardScript : MonoBehaviour {
     /// Displays the leaderboard.
     /// </summary>
     public void DisplayLeaderboard(LeaderboardJsonWrapper lb) {
+        //only get top 8 results
+        int i = 0;
         foreach (LeaderboardEntry entry in lb.LeaderboardEntries) {
-            Debug.Log(entry.Username);
+            if(i < 10)
+            {
+                Debug.Log(entry.Username);
+                GameObject instance = Instantiate(myPrefab);
+
+                //GameObject tmp = instance.Find("Text").GetComponent<Text>();
+                //Debug.Log(tmp.);
+                instance.GetComponentInChildren<Text>().text = entry.Username;
+                instance.transform.SetParent(gameObject.transform, false);
+                i++;
+            }
+//         foreach (LeaderboardEntry entry in lb.LeaderboardEntries) {
+//             Debug.Log(entry.Username);
         }
     }
 
