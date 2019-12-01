@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityIDs:
-  - shotgunAttack
+  - shootAttack
   plantIDs: []
 --- !u!114 &114122266329949346
 MonoBehaviour:
@@ -169,6 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2009133668103599435}
   - component: {fileID: 2009133668097893391}
+  - component: {fileID: 8896902016930081981}
   m_Layer: 0
   m_Name: Plane.006
   m_TagString: Untagged
@@ -183,7 +184,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009133668103104683}
-  m_LocalRotation: {x: -0.534855, y: -0.12029153, z: 0.6111125, w: 0.5709655}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.36818823, y: 2.7282937, z: -0.45590502}
   m_LocalScale: {x: 8.481341, y: 8.481341, z: 8.481341}
   m_Children: []
@@ -273,6 +274,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0076668784, y: 0.021503435, z: 0.006248587}
     m_Extent: {x: 0.027045988, y: 0.020301098, z: 0.023832005}
   m_DirtyAABB: 0
+--- !u!136 &8896902016930081981
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009133668103104683}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.15
+  m_Height: 0.65
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2009133668103104685
 GameObject:
   m_ObjectHideFlags: 0
