@@ -35,7 +35,6 @@ public class SentryAI : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(lookVector);
         Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-        Debug.Log(target.position);
         abilities.castAbility(0, target.position);
 
     }
@@ -53,7 +52,7 @@ public class SentryAI : MonoBehaviour
 
         foreach (GameObject obj in objects)
         {
-            if (obj.GetComponent<Entity>().team == Teams.Faction.indust && obj.tag == "Player")
+            if (obj.GetComponent<Entity>().Team == Teams.Faction.indust && obj.tag == "Player")
             {
                 players.Add(obj);
             }

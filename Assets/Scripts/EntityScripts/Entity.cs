@@ -6,7 +6,13 @@ using UnityEngine;
 // it will have access to all the basic shared components like movement, health, abilities, etc.
 public class Entity : MonoBehaviour
 {
-    public Teams.Faction team;
+    public Teams.Faction Team
+    {
+        get
+        {
+            return gameObject.GetComponent<Teams>().teamsFaction;
+        }
+    }
     public DamageSystem health;
     public int playerNum;
     public Abilities abilities;
@@ -52,7 +58,7 @@ public class Entity : MonoBehaviour
     private void Start()
     {
         // Now the core components of the player can be accessed through the single entity component
-        team = GetComponent<Teams>().TeamsFaction;
+        // team = GetComponent<Teams>().TeamsFaction;
         health = GetComponent<DamageSystem>();
         abilities = GetComponent<Abilities>();
         spawnPoint = gameObject.transform.Find("spawnPoint");

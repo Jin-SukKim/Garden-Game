@@ -64,7 +64,7 @@ public class BulletController : MonoBehaviour
 
             // For now anything with this tag can be destroyed in the same way.
             // For now anything with this tag can be destroyed in the same way.
-            if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.team)
+            if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.Team)
             {
                 other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
                 GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
@@ -77,7 +77,7 @@ public class BulletController : MonoBehaviour
             }
 
             // Shooting team mate case
-            if (other.gameObject.GetComponent<Teams>().TeamsFaction == entity.team)
+            if (other.gameObject.GetComponent<Teams>().TeamsFaction == entity.Team)
             {
                 GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
                 Destroy(gameObject);

@@ -74,7 +74,7 @@ public class MinionAI : MonoBehaviour
 
         foreach (GameObject obj in objects)
         {
-            if (obj.GetComponent<Entity>().team == Teams.Faction.druid && obj.tag == "Player")
+            if (obj.GetComponent<Entity>().Team == Teams.Faction.druid && obj.tag == "Player")
             {
                 players.Add(obj);
             }
