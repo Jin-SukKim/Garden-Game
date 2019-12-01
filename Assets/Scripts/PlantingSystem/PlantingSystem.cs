@@ -15,14 +15,15 @@ public class PlantingSystem : MonoBehaviour
 
     public Entity MyEntity;
 
-    private enum PlantType { shootrose, mortartulip }
+    public enum PlantType { shootrose, mortartulip }
 
-    private PlantType SelectedPlant;
+    public PlantType SelectedPlant;
 
     private Dictionary<string, GameObject> plants = new Dictionary<string, GameObject>();
 
     void Start()
     {
+        Debug.Log("Planting system started");
         MyEntity = gameObject.GetComponent<Entity>();
 
         plants = PrefabManager.ReturnPlacables();
@@ -37,33 +38,34 @@ public class PlantingSystem : MonoBehaviour
     {
         if (Input.GetButton("Fire2"))
         {
-            Debug.Log("Cancelling Placement");
+            MyEntity.IsPlanting = false;
+            Destroy(CurGO);
             Destroy(this);
         }
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if (CurGO.activeSelf)
-            {
-                CurGO.GetComponent<PlaceableEntity>().Placing = true;
-            }
+            CurGO.GetComponent<PlaceableEntity>().Placing = true;
         }
 
         if (Input.GetButtonUp("Fire1"))
         {
-            CurGO.GetComponent<PlaceableEntity>().Placing = false;
+            if(CurGO.GetComponent<PlaceableEntity>() != null)
+                CurGO.GetComponent<PlaceableEntity>().Placing = false;
+
             if (CurGO.GetComponent<PlaceableEntity>().Placed)
             {
+                MyEntity.IsPlanting = false;
                 Destroy(this);
             }
         }
 
-        if (Input.GetButton("Fire3"))
+        if (Input.GetButtonDown("Fire3"))
         {
             ToggleDown();
         }
 
-        if (Input.GetButton("Fire4"))
+        if (Input.GetButtonDown("Fire4"))
         {
             ToggleUp();
         }
@@ -97,14 +99,8 @@ public class PlantingSystem : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitInfo))
         {
-            if (hitInfo.transform.gameObject.layer.ToString() == "Plane")
+            if (hitInfo.transform.gameObject.layer.ToString() == "8")
             {
-                Debug.Log("move");
-                if (CurGO == null)
-                {
-                    placeGO(hitInfo.point);
-                }
-                CurGO.SetActive(true);
                 CurGO.transform.position = hitInfo.point;
                 CurGO.GetComponent<PlaceableEntity>().moveThis();
             }

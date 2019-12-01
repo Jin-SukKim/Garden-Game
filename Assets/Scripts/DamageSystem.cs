@@ -31,7 +31,7 @@ public class DamageSystem : MonoBehaviour
     {
         if (currentHealth <= 0 && !entity.isPlayer)
         {
-            Debug.Log("DESTROYING OBJECT");
+            Debug.Log("DESTROYING OBJECT: " + gameObject.name);
             GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
             //Destroy(gameObject.GetComponent("Rigidbody"));
             Destroy(obj, 5f);

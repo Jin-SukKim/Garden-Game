@@ -10,9 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2009133668103599433}
   - component: {fileID: 2009133668093745871}
-  - component: {fileID: 2009133667988102008}
   - component: {fileID: 2009133667988102011}
   - component: {fileID: 114420549104517274}
+  - component: {fileID: 6843811337455114245}
+  - component: {fileID: 114122266329949346}
+  - component: {fileID: 114834960672446298}
+  - component: {fileID: 114770373749203414}
   m_Layer: 0
   m_Name: shootrose
   m_TagString: Untagged
@@ -29,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2009133668103104681}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 24, y: 2.0764126e-17, z: -23.54}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 2009133668103599407}
   - {fileID: 2009133668103599435}
@@ -56,23 +59,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2009133667988102008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009133668103104681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45507039dfe1e294289adefb31c6a6bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFiring: 0
-  bullet: {fileID: 114493536088432428, guid: 8ec3450441275204e846f74d39d18ce5, type: 3}
-  bulletSpeed: 5
-  timeBetweenShots: 1
-  firePoint: {fileID: 2009133668828386440}
 --- !u!114 &2009133667988102011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +74,9 @@ MonoBehaviour:
   target: {fileID: 0}
   range: 5
   turnSpeed: 10
-  theGun: {fileID: 2009133667988102008}
+  entity: {fileID: 114467751621612190, guid: 40872b3746e4fef4996bbb380d4b4708, type: 3}
+  abilities: {fileID: 4022720161973147991, guid: 40872b3746e4fef4996bbb380d4b4708,
+    type: 3}
 --- !u!114 &114420549104517274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +90,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Placed: 0
+  Placing: 0
+--- !u!114 &6843811337455114245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009133668103104681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d047c02093d1fb641a5e739e3aed2cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIDs:
+  - shootAttack
+  plantIDs: []
+--- !u!114 &114122266329949346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009133668103104681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ddfaa2efc3aada4cb7a5ef3408c7138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  health: {fileID: 114770373749203414}
+  playerNum: 0
+  abilities: {fileID: 6843811337455114245}
+  spawnPoint: {fileID: 0}
+  resources: {fileID: 0}
+  collider: {fileID: 0}
+  respawning: 0
+  isPlayer: 0
+  IsDisabled: 0
+  IsPlanting: 0
+--- !u!114 &114834960672446298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009133668103104681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad43ce6c85503824ebca3a7798ca7bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamsFaction: 0
+--- !u!114 &114770373749203414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009133668103104681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c547f82082d3e374aabf16240cf4f686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 0}
+  health: 5
+  image: {fileID: 0}
+  currentHealth: 0
+  enemeyDeathAnimation: {fileID: 450552748, guid: 673468142225ba14b84017679296a12b,
+    type: 3}
 --- !u!1 &2009133668103104683
 GameObject:
   m_ObjectHideFlags: 0

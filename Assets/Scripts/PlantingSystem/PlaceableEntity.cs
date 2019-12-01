@@ -30,18 +30,14 @@ public class PlaceableEntity : MonoBehaviour
 
     void Update()
     {
-        
         if (Placing && !Colliding)
         {
             Placed = true;
-            PrefabManager.SpawnPlaceable("shootrose", gameObject.transform.position, MyEntity);
-            Destroy(gameObject);
         }
     }
 
     //Snaps to grid
     public void moveThis(){
-        Debug.Log("moved");
         Grid grid = GameObject.Find("GridHolder").GetComponent<Grid>();
         Vector3Int cellPos = grid.LocalToCell(transform.localPosition);
         transform.localPosition = grid.GetCellCenterLocal(cellPos);

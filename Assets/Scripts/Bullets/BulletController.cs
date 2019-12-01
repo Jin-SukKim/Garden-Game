@@ -52,7 +52,7 @@ public class BulletController : MonoBehaviour
     /// <param name="other"></param>
     protected virtual void OnCollisionEnter(Collision other)
     {
-        if (gameObject.tag == "Bullet")
+        if (gameObject.tag == "Bullet" && other.gameObject.GetComponent<Teams>() != null)
         {
             //if (other.gameObject.tag == "Enemy")
             //{

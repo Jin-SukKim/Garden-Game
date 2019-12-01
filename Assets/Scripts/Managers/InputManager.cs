@@ -56,9 +56,10 @@ public class InputManager : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void Plant(Vector3 pos, int abilityNum)
+    public void Plant(Vector3 pos)
     {
-        abilities.plantAbility(abilityNum, pos);
+        abilities.plantAbility((int)gameObject.GetComponent<PlantingSystem>().SelectedPlant, pos);
+        Destroy(MyEntity.gameObject.GetComponent<PlantingSystem>());
     }
     // Network functions for triggering animations 
     [PunRPC]
@@ -171,48 +172,49 @@ public class InputManager : MonoBehaviourPun
                         this.photonView.RPC("triggerAnim", RpcTarget.AllBuffered, animationIDs[index]);
                     }
                 }
+            }
 
-                if (MyEntity.CanMove)
+            if (MyEntity.CanMove)
+            {
+                movement.horizAxis = Input.GetAxis("HorizKey");
+                movement.vertAxis = Input.GetAxis("VertKey");
+
+                if (movement.horizAxis != 0 || movement.vertAxis != 0)
                 {
-                    movement.horizAxis = Input.GetAxis("HorizKey");
-                    movement.vertAxis = Input.GetAxis("VertKey");
-
-                    if(movement.horizAxis != 0 || movement.vertAxis != 0)
+                    if (!PhotonNetwork.IsConnected)
                     {
-                        if (!PhotonNetwork.IsConnected)
-                        {
-                            setAnimBool("isRunning", true);
-                        }
-                        else
-                        {
-                            this.photonView.RPC("setAnimBool", RpcTarget.AllBuffered, "isRunning", true);
-                        }
+                        setAnimBool("isRunning", true);
                     }
                     else
                     {
-                        if (!PhotonNetwork.IsConnected)
-                        {
-                            setAnimBool("isRunning", false);
-                        }
-                        else
-                        {
-                            this.photonView.RPC("setAnimBool", RpcTarget.AllBuffered, "isRunning", false);
-                        }
+                        this.photonView.RPC("setAnimBool", RpcTarget.AllBuffered, "isRunning", true);
+                    }
+                }
+                else
+                {
+                    if (!PhotonNetwork.IsConnected)
+                    {
+                        setAnimBool("isRunning", false);
+                    }
+                    else
+                    {
+                        this.photonView.RPC("setAnimBool", RpcTarget.AllBuffered, "isRunning", false);
                     }
                 }
             }
 
-            if(MyEntity.IsPlanting)
+            if (MyEntity.IsPlanting)
             {
-                if (Input.GetButtonDown("Fire1"))
+                if (Input.GetButtonUp("Fire1") && !MyEntity.IsPlanting)
                 {
+                    Debug.Log("Plant1");
                     if (!PhotonNetwork.IsConnected)
                     {
-                        Plant(firePoint, 0);
+                        Plant(firePoint);
                     }
                     else
                     {
-                        this.photonView.RPC("Plant", RpcTarget.AllBuffered, firePoint, 0);
+                        this.photonView.RPC("Plant", RpcTarget.AllBuffered, firePoint);
                     }
                 }
                 /*

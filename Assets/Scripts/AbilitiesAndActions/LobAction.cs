@@ -10,6 +10,9 @@ public class LobAction : IAction
     public string mBulletID = "BulletLob";
     public void doAction(Entity e, Ability a)
     {
-        PrefabManager.SpawnBullet(mBulletID, e.spawnPoint.position, a.GetTargetPosition(), e);
+        Debug.Log("Lobbing");
+        Debug.Log(e);
+        Debug.Log(a.GetTargetPosition());
+        PrefabManager.SpawnBullet(mBulletID, e.transform.position, a.GetTargetPosition(), e);
     }
 }

@@ -21,6 +21,7 @@ public static class AbilitiesDirectory
         MakeBulldozerAbility();
         MakePlantingAbility();
         MakeRosePlantingAbility();
+        MakeTulipPlantingAbility();
         MakeBearTransformAbility();
         MakeBearClawAbility();
     }
@@ -138,6 +139,14 @@ public static class AbilitiesDirectory
         abilityDictionary.Add("rosePlant", ability);
     }
 
+    public static void MakeTulipPlantingAbility()
+    {
+        List<IAction> actions = new List<IAction>();
+        actions.Add(new TulipPlantingAction());
+
+        Ability ability = new Ability(0.5f, 999, actions);
+        abilityDictionary.Add("tulipPlant", ability);
+    }
 
     public static void MakeSpawnAbility()
     {

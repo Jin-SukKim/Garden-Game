@@ -22,7 +22,7 @@ public class SentryAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null)
+        if (target == null || !gameObject.GetComponent<PlaceableEntity>().Placed)
         {
             return;
         }
@@ -35,7 +35,8 @@ public class SentryAI : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(lookVector);
         Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-        abilities.TryCastAbility("shootAttack", target.position);
+        Debug.Log(target.position);
+        abilities.castAbility(0, target.position);
 
     }
 
