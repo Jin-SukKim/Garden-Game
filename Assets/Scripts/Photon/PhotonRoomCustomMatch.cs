@@ -181,7 +181,7 @@ public class PhotonRoomCustomMatch : MonoBehaviourPunCallbacks, IInRoomCallbacks
         } else
         {
             textRoomError.enabled = false;
-            PhotonNetwork.LoadLevel("MainEnvironment");
+            PhotonNetwork.LoadLevel("CharacterSelect");
         }
     }   
 
