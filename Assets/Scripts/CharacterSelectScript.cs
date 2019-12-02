@@ -19,6 +19,9 @@ public class CharacterSelectScript : MonoBehaviour
     int PlayerSelection = -1;
     GameObject[] SelectButtons = new GameObject[4];
 
+    ExitGames.Client.Photon.Hashtable properties;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +38,12 @@ public class CharacterSelectScript : MonoBehaviour
         SelectButtons[1] = GameObject.Find("DruidSelect2");
         SelectButtons[2] = GameObject.Find("IndustrialistSelect1");
         SelectButtons[3] = GameObject.Find("IndustrialistSelect2");
+
+        properties = new ExitGames.Client.Photon.Hashtable();
     }
 
     public void ClickSelect(int i)
     {
-        Debug.Log(i);
         //Debug.Log(pv);
         byte evCodeDeSelect = 1;
         byte evCodeSelect = 2;
@@ -47,7 +51,6 @@ public class CharacterSelectScript : MonoBehaviour
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // You would have to set the Receivers to All in order to receive this event on the local client as well
         SendOptions sendOptions = new SendOptions { Reliability = true };
         string t = SelectButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text;
-        Debug.Log("t = " + t);
         if (PlayerSelection == i)
         {
             PhotonNetwork.RaiseEvent(evCodeDeSelect, content, raiseEventOptions, sendOptions);
@@ -112,11 +115,15 @@ public class CharacterSelectScript : MonoBehaviour
             default:
                 break;
         }
-        Player p = PhotonNetwork.LocalPlayer;
-        ExitGames.Client.Photon.Hashtable properties = new ExitGames.Client.Photon.Hashtable();
-        properties.Add("selectedCharacter", character);
-        p.SetCustomProperties(properties);
-        Debug.Log("selected char = " + p.CustomProperties["selectedCharacter"]);
+        Room r = PhotonNetwork.CurrentRoom;
+        if (properties.ContainsKey(playerName))
+        {
+            properties[playerName] = character;
+        } else
+        {
+            properties.Add(playerName, character);
+        }
+        r.SetCustomProperties(properties);
     }
 
     private void deselectChar(int i)

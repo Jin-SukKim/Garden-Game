@@ -43,7 +43,9 @@ namespace Photon.Pun.Demo.PunBasics
                 for(int i = 0; i < PhotonNetwork.PlayerList.Length; ++i)
                 {
                     players.Add(PhotonNetwork.PlayerList[i]);
-                    Debug.Log(players[i].NickName);
+                    //Debug.Log(players[i].NickName);
+                    //BELOW PRINTS NULL, NOT GETTING/SETTING CORRECTLY
+                    //Debug.Log(players[i].CustomProperties["selectedCharacter"]);
                 }
 
                 // Instantiate first player, save reference to player1
