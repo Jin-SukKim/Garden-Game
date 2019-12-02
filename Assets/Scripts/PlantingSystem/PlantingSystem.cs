@@ -30,6 +30,8 @@ public class PlantingSystem : MonoBehaviour
 
         SelectedPlant = PlantType.shootrose;
         CurGO = PrefabManager.SpawnPlaceable("shootrose", MyEntity.gameObject.GetComponent<InputManager>().GetPointerPosition(), MyEntity);
+        CurGO.GetComponent<Entity>().IsDisabled = true;
+        CurGO.transform.Find("CollisionIndicator").gameObject.SetActive(true);
     }
 
 
@@ -43,21 +45,23 @@ public class PlantingSystem : MonoBehaviour
             Destroy(this);
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             CurGO.GetComponent<PlaceableEntity>().Placing = true;
+
+            if (CurGO.GetComponent<PlaceableEntity>().Placed)
+            {
+                MyEntity.IsPlanting = false;
+                gameObject.GetComponent<Abilities>().plantAbility((int)SelectedPlant, CurGO.transform.position);
+                Destroy(CurGO);
+                Destroy(this);
+            }
         }
 
         if (Input.GetButtonUp("Fire1"))
         {
             if(CurGO.GetComponent<PlaceableEntity>() != null)
                 CurGO.GetComponent<PlaceableEntity>().Placing = false;
-
-            if (CurGO.GetComponent<PlaceableEntity>().Placed)
-            {
-                MyEntity.IsPlanting = false;
-                Destroy(this);
-            }
         }
 
         if (Input.GetButtonDown("Fire3"))
@@ -76,6 +80,7 @@ public class PlantingSystem : MonoBehaviour
         SelectedPlant = (int)SelectedPlant + 1 >= Enum.GetValues(typeof(PlantType)).Length ? 0 : SelectedPlant++;
         Destroy(CurGO);
         CurGO = PrefabManager.SpawnPlaceable(SelectedPlant.ToString(), MyEntity.gameObject.GetComponent<InputManager>().GetPointerPosition(), MyEntity);
+        CurGO.transform.Find("CollisionIndicator").gameObject.SetActive(true);
     }
 
     public void ToggleDown()
@@ -83,12 +88,7 @@ public class PlantingSystem : MonoBehaviour
         SelectedPlant = (int)SelectedPlant - 1 < 0 ? (PlantType)Enum.GetValues(typeof(PlantType)).Length - 1 : 0;
         Destroy(CurGO);
         CurGO = PrefabManager.SpawnPlaceable(SelectedPlant.ToString(), MyEntity.gameObject.GetComponent<InputManager>().GetPointerPosition(), MyEntity);
-    }
-
-    private void placeGO(Vector3 position)
-    {
-        CurGO = Instantiate(curPrefab, position, Quaternion.identity);
-        CurGO.transform.parent = GridObject.transform;
+        CurGO.transform.Find("CollisionIndicator").gameObject.SetActive(true);
     }
 
     //Occurs after Update

@@ -22,16 +22,12 @@ public class PlaceableEntity : MonoBehaviour
         MyEntity = e;
     }
 
-    void Start(){
-        Placed = false;
-        Placing = false;
-        Colliding = false;
-    }
 
     void Update()
     {
         if (Placing && !Colliding)
         {
+            moveThis();
             Placed = true;
         }
     }
@@ -51,28 +47,21 @@ public class PlaceableEntity : MonoBehaviour
         return transform.parent.GetComponent<Grid>().LocalToCell(transform.localPosition).z;
     }
 
-    void OnTriggerEnter(Collider other){
-        Debug.Log("Collided with: " + other.gameObject.name);
-        Colliding = true;
+    void OnTriggerStay(Collider other){
+        if(other.gameObject.GetComponent<Entity>() != null)
+        {
+            Debug.Log("Colliding with " + other.gameObject.name);
+            gameObject.transform.Find("CollisionIndicator").GetComponent<ParticleSystem>().startColor = new Color(255, 0, 0, 120);
+            Colliding = true;
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        Colliding = false;
-    }
-
-    IEnumerator InvalidPlacementArea()
-    {
-        transform.Find("Canvas").gameObject.SetActive(true);
-        Color c = gameObject.transform.Find("Canvas/InvalidPanel").GetComponent<Image>().color;
-        yield return new WaitForSeconds(0.5f);
-        for(float i=0.5f; i>=0; i-= 0.1f){
-            c.a = i;
-            gameObject.transform.Find("Canvas/InvalidPanel").GetComponent<Image>().color = c;
-            yield return new WaitForSeconds(0.1f);
+        if (other.gameObject.GetComponent<Entity>() != null)
+        {
+            gameObject.transform.Find("CollisionIndicator").GetComponent<ParticleSystem>().startColor = new Color(0, 255, 0, 120);
+            Colliding = false;
         }
-        transform.Find("Canvas").gameObject.SetActive(false);
-        c.a = 0.5f;
-        gameObject.transform.Find("Canvas/InvalidPanel").GetComponent<Image>().color = c;
     }
 }

@@ -202,10 +202,10 @@ public class InputManager : MonoBehaviourPun
                     }
                 }
             }
-
+            /*
             if (MyEntity.IsPlanting)
             {
-                if (Input.GetButtonUp("Fire1") && !MyEntity.IsPlanting)
+                if (Input.GetButtonUp("Fire1"))
                 {
                     Debug.Log("Plant1");
                     if (!PhotonNetwork.IsConnected)
@@ -217,42 +217,8 @@ public class InputManager : MonoBehaviourPun
                         this.photonView.RPC("Plant", RpcTarget.AllBuffered, firePoint);
                     }
                 }
-                /*
-                if (Input.GetButton("Fire2"))
-                {
-                    if (!PhotonNetwork.IsConnected)
-                    {
-                        Plant(firePoint, 1);
-                    }
-                    else
-                    {
-                        this.photonView.RPC("Plant", RpcTarget.AllBuffered, firePoint, 1);
-                    }
-                }
-                if (Input.GetButton("Fire3"))
-                {
-                    if (!PhotonNetwork.IsConnected)
-                    {
-                        Plant(firePoint, 2);
-                    }
-                    else
-                    {
-                        this.photonView.RPC("Plant", RpcTarget.AllBuffered, firePoint, 2);
-                    }
-                }
-                if (Input.GetButton("Fire4"))
-                {
-                    if (!PhotonNetwork.IsConnected)
-                    {
-                        Plant(firePoint, 3);
-                    }
-                    else
-                    {
-                        this.photonView.RPC("Plant", RpcTarget.AllBuffered, firePoint, 3);
-                    }
-                }
-                */
             }
+            */
         }
     }
 

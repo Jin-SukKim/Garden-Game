@@ -17,8 +17,9 @@ public class SentryAI : MonoBehaviour
     void Start()
     {
         abilities = gameObject.GetComponent<Abilities>();
-        startTime = Time.time;
         InvokeRepeating("UpdateTarget", 0f, 0.2f);
+
+        startTime = Time.time;
         //theGun = GameObject.Find("OfflineGun").GetComponent<OfflineGunController>();
     }
 
@@ -27,6 +28,7 @@ public class SentryAI : MonoBehaviour
     {
         if (target == null || !gameObject.GetComponent<PlaceableEntity>().Placed)
         {
+            Debug.Log("NotAttacking");
             return;
         }
 
@@ -38,9 +40,8 @@ public class SentryAI : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(lookVector);
         Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-        if(Time.time >= startTime + 2f)
+        if(Time.time >= startTime + 2f && gameObject.GetComponent<Entity>().CanCast)
         {
-
             abilities.castAbility(0, target.position);
         }
 

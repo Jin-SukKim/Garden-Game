@@ -7,6 +7,8 @@ public class RosePlantingAction : IAction
     private string mObjectID = "shootrose";
     public void doAction(Entity e, Ability a)
     {
-        PrefabManager.SpawnPlaceable(mObjectID, a.GetTargetPosition(), e).GetComponent<PlaceableEntity>().moveThis();
+        GameObject plant = PrefabManager.SpawnPlaceable(mObjectID, a.GetTargetPosition(), e);
+        plant.GetComponent<PlaceableEntity>().moveThis();
+        plant.GetComponent<PlaceableEntity>().Placed = true;
     }
 }
