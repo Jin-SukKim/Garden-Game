@@ -77,7 +77,8 @@ public class PlantingSystem : MonoBehaviour
 
     public void ToggleUp()
     {
-        SelectedPlant = (int)SelectedPlant + 1 >= Enum.GetValues(typeof(PlantType)).Length ? 0 : SelectedPlant++;
+        Debug.Log((int)SelectedPlant + " " + Enum.GetValues(typeof(PlantType)).Length + " " + ((int)SelectedPlant + 1 > Enum.GetValues(typeof(PlantType)).Length));
+        SelectedPlant = (int)SelectedPlant + 1 >= Enum.GetValues(typeof(PlantType)).Length ? 0 : (PlantType)((int) SelectedPlant) + 1;
         Destroy(CurGO);
         CurGO = PrefabManager.SpawnPlaceable(SelectedPlant.ToString(), MyEntity.gameObject.GetComponent<InputManager>().GetPointerPosition(), MyEntity);
         CurGO.transform.Find("CollisionIndicator").gameObject.SetActive(true);

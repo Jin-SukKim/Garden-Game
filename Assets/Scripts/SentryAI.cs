@@ -28,7 +28,6 @@ public class SentryAI : MonoBehaviour
     {
         if (target == null || !gameObject.GetComponent<PlaceableEntity>().Placed)
         {
-            Debug.Log("NotAttacking");
             return;
         }
 

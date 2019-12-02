@@ -47,20 +47,24 @@ public class PlaceableEntity : MonoBehaviour
         return transform.parent.GetComponent<Grid>().LocalToCell(transform.localPosition).z;
     }
 
-    void OnTriggerStay(Collider other){
-        if(other.gameObject.GetComponent<Entity>() != null)
+    void OnTriggerEnter(Collider other){
+        if(other.gameObject.GetComponent<Entity>() != null || other.gameObject.tag == "Environment")
         {
             Debug.Log("Colliding with " + other.gameObject.name);
-            gameObject.transform.Find("CollisionIndicator").GetComponent<ParticleSystem>().startColor = new Color(255, 0, 0, 120);
+            ParticleSystem ps = gameObject.transform.Find("CollisionIndicator").GetComponent<ParticleSystem>();
+            ParticleSystem.MainModule main = ps.main;
+            main.startColor = new Color(0.8784314f, 0.2695822f, 0.2196078f, 0.4039216f);
             Colliding = true;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<Entity>() != null)
+        if (other.gameObject.GetComponent<Entity>() != null || other.gameObject.tag == "Environment")
         {
-            gameObject.transform.Find("CollisionIndicator").GetComponent<ParticleSystem>().startColor = new Color(0, 255, 0, 120);
+            ParticleSystem ps = gameObject.transform.Find("CollisionIndicator").GetComponent<ParticleSystem>();
+            ParticleSystem.MainModule main = ps.main;
+            main.startColor = new Color(0.2193396f, 0.8773585f, 0.6492321f, 0.4039216f);
             Colliding = false;
         }
     }
