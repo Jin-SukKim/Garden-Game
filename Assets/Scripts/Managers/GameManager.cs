@@ -40,12 +40,14 @@ namespace Photon.Pun.Demo.PunBasics
         // Start Method
         void Start()
         {
-            
+            PhotonNetwork.AutomaticallySyncScene = true;
+
             if (!PhotonNetwork.IsConnected) // Check if client is connected
             {
                 SceneManager.LoadScene("Launcher"); // Reload Launcher to attempt reconnect
                 return;
             }
+
             properties = PhotonNetwork.CurrentRoom.CustomProperties;
 
             players = new List<Player>();

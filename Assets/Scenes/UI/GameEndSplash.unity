@@ -505,5 +505,49 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2117312823}
+    - target: {fileID: 7563459482583901074, guid: 9bb292e9e55616f4fbe3ceab9edb90c0,
+        type: 3}
+      propertyPath: druidDefeatCanvas
+      value: 
+      objectReference: {fileID: 7563459483931502347}
+    - target: {fileID: 7563459482583901074, guid: 9bb292e9e55616f4fbe3ceab9edb90c0,
+        type: 3}
+      propertyPath: druidVictoryCanvas
+      value: 
+      objectReference: {fileID: 7563459483931502346}
+    - target: {fileID: 7563459482583901074, guid: 9bb292e9e55616f4fbe3ceab9edb90c0,
+        type: 3}
+      propertyPath: industrialistDefeatCanvas
+      value: 
+      objectReference: {fileID: 7563459483931502345}
+    - target: {fileID: 7563459482583901074, guid: 9bb292e9e55616f4fbe3ceab9edb90c0,
+        type: 3}
+      propertyPath: industrialistVictoryCanvas
+      value: 
+      objectReference: {fileID: 7563459483931502344}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bb292e9e55616f4fbe3ceab9edb90c0, type: 3}
+--- !u!223 &7563459483931502344 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7563459484230723740, guid: 9bb292e9e55616f4fbe3ceab9edb90c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7563459483931502343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &7563459483931502345 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7563459482567106273, guid: 9bb292e9e55616f4fbe3ceab9edb90c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7563459483931502343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &7563459483931502346 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7563459483995935928, guid: 9bb292e9e55616f4fbe3ceab9edb90c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7563459483931502343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &7563459483931502347 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7563459483726088476, guid: 9bb292e9e55616f4fbe3ceab9edb90c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7563459483931502343}
+  m_PrefabAsset: {fileID: 0}

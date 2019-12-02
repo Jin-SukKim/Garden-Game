@@ -6,8 +6,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class TimeManager : MonoBehaviour
+public class TimeManager : MonoBehaviourPun
 {
     // The lifetree
     public GameObject lifeTree;
@@ -19,38 +20,70 @@ public class TimeManager : MonoBehaviour
     public bool druidWin;
     public bool industWin;
 
+    ExitGames.Client.Photon.Hashtable properties;
+
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("STARTING TIME SCRIPT");
         // Attach nexus
-        lifeTree = GameObject.FindGameObjectWithTag("Nexus");
+        lifeTree = GameObject.Find("Nexus");
 
         // START GAME TIMER and set win conditions to false
         druidWin = false;
         industWin = false;
-        seconds = 10;
+        seconds = 100;
         StartCoroutine(timer());
     }
 
     // Update is called once per frame
     void Update()
     {
+        properties = PhotonNetwork.CurrentRoom.CustomProperties;
+
         // Check for win conditions
         if (industWin == true)
         {
-            Debug.Log("Industrialists win! Druids lose!");
-            // Do something to reflect win on indust clients
-            // Do something to reflect loss on druid client 
+            Debug.Log("GAME ENDED WIN CONDITION MET LOADING SPASH");
+
+            // add who won to hashtable to persist scene switch
+            this.photonView.RPC("addProp", RpcTarget.AllBuffered, "Indust");
+            PhotonNetwork.LoadLevel("GameEndSplash");
+            return;
         }
-        if (druidWin == true)
+        else if (druidWin == true)
         {
-            Debug.Log("Druids win! Industrialists lose!");
-            // Do something to reflect win on druid clients
-            // Do something to reflect loss on indust clients
+            Debug.Log("GAME ENDED WIN CONDITION MET LOADING SPASH");
+
+            // add who won to hashtable to persist scene switch
+            this.photonView.RPC("addProp", RpcTarget.AllBuffered, "Druid");
+            PhotonNetwork.LoadLevel("GameEndSplash");
+            return;
         }
+        
     }
 
+    [PunRPC]
+    private void addProp(string winner)
+    {
+        properties.Add("winner", winner);
+    }
+
+    // Tracks time
+/*    private IEnumerator roundStartTimer()
+    {
+
+        Debug.Log("In round start timer");
+        while (true)
+        {
+            roundStartSeconds--;
+
+            // trigger decrement
+            yield return new WaitForSeconds(1.0f);
+        }
+    }*/
+
+   
     // Tracks time
     private IEnumerator timer()
     {
