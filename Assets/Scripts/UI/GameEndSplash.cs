@@ -15,7 +15,8 @@ public class GameEndSplash : MonoBehaviour
         druidDefeat,
         druidVictory,
         industrialistDefeat,
-        industrialistVictory
+        industrialistVictory,
+        nothing // Added as default
     };
 
 
@@ -60,6 +61,12 @@ public class GameEndSplash : MonoBehaviour
         }
         else if (myState == gameStates.industrialistVictory)
         {
+            industrialistVictoryCanvas.enabled = true;
+        } else if (myState == gameStates.nothing)
+        {
+            druidDefeatCanvas.enabled = false;
+            druidVictoryCanvas.enabled = false;
+            industrialistDefeatCanvas.enabled = false;
             industrialistVictoryCanvas.enabled = true;
         }
     }

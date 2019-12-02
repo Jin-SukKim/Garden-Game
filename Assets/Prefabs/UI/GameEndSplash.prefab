@@ -290,7 +290,7 @@ MonoBehaviour:
   druidVictoryCanvas: {fileID: 0}
   industrialistDefeatCanvas: {fileID: 0}
   industrialistVictoryCanvas: {fileID: 0}
-  myState: 3
+  myState: 4
 --- !u!1 &7563459483001318384
 GameObject:
   m_ObjectHideFlags: 0
