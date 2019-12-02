@@ -16,6 +16,11 @@ namespace Photon.Pun.Demo.PunBasics
         public GameObject player2SpawnPosition;
         public GameObject minionAISpawnPosition;
 
+        public GameObject indust1SpawnPosition;
+        public GameObject indust2SpawnPosition;
+        public GameObject druid1SpawnPosition;
+        public GameObject druid2SpawnPosition;
+
         private GameObject player1;
         private GameObject player2;
         private GameObject minionAI;
@@ -51,10 +56,40 @@ namespace Photon.Pun.Demo.PunBasics
             }
             if (PlayerManager.LocalPlayerInstance == null)
             {
-                PhotonNetwork.Instantiate((string)properties[PhotonNetwork.LocalPlayer.NickName],
+                /*PhotonNetwork.Instantiate((string)properties[PhotonNetwork.LocalPlayer.NickName],
                         player1SpawnPosition.transform.position,
-                        player1SpawnPosition.transform.rotation, 0).AddComponent<Movement>();
-               
+                        player1SpawnPosition.transform.rotation, 0).AddComponent<Movement>();*/
+
+                // Hard coded spawns based on name of gameobject...
+                switch ((string)properties[PhotonNetwork.LocalPlayer.NickName])
+                {
+                    case "MoneyMan":
+                        PhotonNetwork.Instantiate((string)properties[PhotonNetwork.LocalPlayer.NickName],
+                                                    indust1SpawnPosition.transform.position,
+                                                    indust1SpawnPosition.transform.rotation, 0).AddComponent<Movement>();
+                        break;
+                    case "Suffrogette":
+                        PhotonNetwork.Instantiate((string)properties[PhotonNetwork.LocalPlayer.NickName],
+                                                    indust2SpawnPosition.transform.position,
+                                                    indust2SpawnPosition.transform.rotation, 0).AddComponent<Movement>();
+                        break;
+                    case "AnimalLover":
+                        PhotonNetwork.Instantiate((string)properties[PhotonNetwork.LocalPlayer.NickName],
+                                                    druid1SpawnPosition.transform.position,
+                                                    druid1SpawnPosition.transform.rotation, 0).AddComponent<Movement>();
+                        break;
+                    case "Activist":
+                        PhotonNetwork.Instantiate((string)properties[PhotonNetwork.LocalPlayer.NickName],
+                                                    druid2SpawnPosition.transform.position,
+                                                    druid2SpawnPosition.transform.rotation, 0).AddComponent<Movement>();
+                        break;
+                    default:
+                        Debug.LogError("Selected player does not exist in spawning swich...");
+                        break;
+                }
+
+                // Gotta add in logic to distinguish users here
+
                 //if (PhotonNetwork.IsMasterClient) // Check if client is master client
                 //{
                 //    Debug.Log("Instantiating Player 1");

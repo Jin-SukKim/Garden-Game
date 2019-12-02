@@ -55,7 +55,6 @@ public class CharacterSelectScript : MonoBehaviour
         {
             PhotonNetwork.RaiseEvent(evCodeDeSelect, content, raiseEventOptions, sendOptions);
             PlayerSelection = -1;
-
         }
         else if(t.Equals(""))
         {
@@ -67,7 +66,6 @@ public class CharacterSelectScript : MonoBehaviour
             content = new object[] { PlayerSelection, PlayerID };
             PhotonNetwork.RaiseEvent(evCodeSelect, content, raiseEventOptions, sendOptions);
         }
-        
     }
     public void OnEvent(EventData photonEvent)
     {
