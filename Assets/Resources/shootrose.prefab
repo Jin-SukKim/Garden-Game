@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 723072582753381299}
   - component: {fileID: 4957723485123217820}
   - component: {fileID: 5022460611055869878}
+  - component: {fileID: 8304826257698781075}
   m_Layer: 0
   m_Name: shootrose
   m_TagString: Destructible
@@ -351,6 +352,19 @@ MonoBehaviour:
   currentHealth: 0
   enemeyDeathAnimation: {fileID: 450552748, guid: 7b4b1d1123fee8c42b5cff01e7a4a5ab,
     type: 3}
+--- !u!114 &8304826257698781075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723072582906255462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad43ce6c85503824ebca3a7798ca7bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamsFaction: 0
 --- !u!1 &723072582906255744
 GameObject:
   m_ObjectHideFlags: 0
