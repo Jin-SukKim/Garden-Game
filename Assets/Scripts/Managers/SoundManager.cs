@@ -55,6 +55,10 @@ public class SoundManager : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(sounds[key], position);
         }
+        else
+        {
+            Debug.Log("That sound is not in the dictionary");
+        }
     }
 
     public static void PlaySoundatLocation(AudioClip key, Vector3 position)

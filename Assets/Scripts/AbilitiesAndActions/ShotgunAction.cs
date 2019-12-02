@@ -18,5 +18,8 @@ public class ShotgunAction : IAction
             Vector3 randDir = dir + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));
             PrefabManager.SpawnBullet(mBulletId,e.spawnPoint.position,randDir,e);
         }
+
+        // play sound using spawnpoint as position
+        SoundManager.PlaySoundatLocation("Shotgun_Shooting", e.spawnPoint.position);
     }
 }
