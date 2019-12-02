@@ -41,7 +41,7 @@ public class BulletController : MonoBehaviour
     /// <param name="targetLoc"></param>
     public void InitBullet(Vector3 shootingLoc, Vector3 targetLoc)
     {
-        Debug.Log("Initializing bullet: " + shootingLoc + ", " + targetLoc);
+        /*Debug.Log("Initializing bullet: " + shootingLoc + ", " + targetLoc);*/
         this.shootingLoc = shootingLoc;
         this.targetLoc = targetLoc;
     }
