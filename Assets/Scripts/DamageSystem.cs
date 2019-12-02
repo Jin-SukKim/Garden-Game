@@ -39,9 +39,7 @@ public class DamageSystem : MonoBehaviourPun
         {
             //gameObject.transform.position = respawnPointWait.transform.position;
             //StartCoroutine(waitingRespawn());
-            GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
-            Destroy(obj, 5f);
-            entity.Despawn();
+            this.photonView.RPC("despawnOnDeath", RpcTarget.AllBuffered);
         }
     }
 
@@ -55,6 +53,15 @@ public class DamageSystem : MonoBehaviourPun
         Destroy(obj, 5f);
         Destroy(gameObject);
     }
+
+    [PunRPC]
+    void despawnOnDeath()
+    {
+        GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
+        Destroy(obj, 5f);
+        entity.Despawn();
+    }
+
     /// <summary>
     /// Decreases health amount by damage value parameter
     /// </summary>

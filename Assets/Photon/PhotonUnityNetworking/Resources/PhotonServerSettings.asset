@@ -38,5 +38,6 @@ MonoBehaviour:
   - setAnimBool
   - triggerAnim
   - death
+  - despawnOnDeath
   DisableAutoOpenWizard: 1
   ShowSettings: 1
