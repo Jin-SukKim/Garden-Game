@@ -13,5 +13,8 @@ public class ShootAction : IAction
         Vector3 targetPos = e.transform.position + (10 * e.transform.forward);
         Vector3 dir = targetPos - e.transform.position;
         PrefabManager.SpawnBullet(mBulletID, e.spawnPoint.position, dir, e);
+        GameObject.Instantiate(Resources.Load("Prefabs/ParticleEffects/shotgunFire"), e.spawnPoint.position, Quaternion.LookRotation(dir));
+
     }
+
 }

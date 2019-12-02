@@ -29,11 +29,13 @@ public class SkinManager : MonoBehaviour
      * 2. Suffragette   3. Dutchess
      * 4. Animal Lover  5. Flower Child
      * 6. Activist      7. Pacifist
+     * 8. Minion        9. Minion Summon
+     * 10. Bear
      * </example>
      */
     public void applySkin(GameObject go, int i)
     {
-        SkinnedMeshRenderer m = go.GetComponent<SkinnedMeshRenderer>();
+        SkinnedMeshRenderer m = go.GetComponentInChildren<SkinnedMeshRenderer>();
         m.sharedMesh = skinMeshes[i];
         m.material = skinMaterials[i];
     }

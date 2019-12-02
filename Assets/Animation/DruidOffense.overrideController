@@ -7,5 +7,19 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DruidOffense
-  m_Controller: {fileID: 9100000, guid: d0ae570be9682e045af432d54d232b56, type: 2}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 5fceaa253d7a3414691cff8525e4859e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400014, guid: a15355922238d2c4bac93539912aab18, type: 3}
+    m_OverrideClip: {fileID: 7400014, guid: a15355922238d2c4bac93539912aab18, type: 3}
+  - m_OriginalClip: {fileID: 7400008, guid: a15355922238d2c4bac93539912aab18, type: 3}
+    m_OverrideClip: {fileID: 7400008, guid: a15355922238d2c4bac93539912aab18, type: 3}
+  - m_OriginalClip: {fileID: 7400026, guid: a15355922238d2c4bac93539912aab18, type: 3}
+    m_OverrideClip: {fileID: 7400012, guid: a15355922238d2c4bac93539912aab18, type: 3}
+  - m_OriginalClip: {fileID: 7400012, guid: a15355922238d2c4bac93539912aab18, type: 3}
+    m_OverrideClip: {fileID: 7400028, guid: a15355922238d2c4bac93539912aab18, type: 3}
+  - m_OriginalClip: {fileID: 7400004, guid: a15355922238d2c4bac93539912aab18, type: 3}
+    m_OverrideClip: {fileID: 7400004, guid: a15355922238d2c4bac93539912aab18, type: 3}
+  - m_OriginalClip: {fileID: 7400010, guid: a15355922238d2c4bac93539912aab18, type: 3}
+    m_OverrideClip: {fileID: 7400024, guid: a15355922238d2c4bac93539912aab18, type: 3}
+  - m_OriginalClip: {fileID: 7400028, guid: a15355922238d2c4bac93539912aab18, type: 3}
+    m_OverrideClip: {fileID: 7400028, guid: a15355922238d2c4bac93539912aab18, type: 3}

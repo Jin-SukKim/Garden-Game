@@ -7,11 +7,14 @@ using UnityEngine;
 public static class PrefabManager
 {
     static Dictionary<string, GameObject> bullets = new Dictionary<string, GameObject>();
-    
+    static private GameObject minionPrefab;
+
     // static constructor for any initialization
     static PrefabManager()
     {
         LoadBullets();
+        var minion = Resources.Load("EnemyAITester");
+        minionPrefab = minion as GameObject;
     }
 
     // loads all the bullets from the bullets folder in the resources folder
@@ -52,7 +55,6 @@ public static class PrefabManager
             GameObject newObj = GameObject.Instantiate(bullets[bulletID], pos, dir);
             BulletController newBullet = newObj.GetComponent<BulletController>();
             newBullet.InitBullet(pos, targetLoc);
-
             //not the best way to do this
             newBullet.entity = e;
             return true;
@@ -63,4 +65,11 @@ public static class PrefabManager
         }
     }
 
+    public static void SpawnMinion(Vector3 pos, Entity e)
+    {
+        GameObject instantiated = GameObject.Instantiate(minionPrefab, pos, Quaternion.identity);
+        //instantiated.AddComponent<Entity>();
+        //instantiated.GetComponent<Entity>().team = e.team;
+    }
+    
 }

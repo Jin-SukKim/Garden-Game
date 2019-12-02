@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4460861651448575885}
   - component: {fileID: 4460861651448575886}
   - component: {fileID: 6356598204953770190}
+  - component: {fileID: 54133233264737834}
   m_Layer: 0
   m_Name: BulletRound
   m_TagString: Bullet
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4de6db7f8e1140c4b82addd0e8206e2b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,3 +113,19 @@ MonoBehaviour:
   shootingLoc: {x: 0, y: 0, z: 0}
   targetLoc: {x: 0, y: 0, z: 0}
   entity: {fileID: 0}
+--- !u!54 &54133233264737834
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4460861651448575887}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
