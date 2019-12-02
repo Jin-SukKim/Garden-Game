@@ -5439,6 +5439,21 @@ PrefabInstance:
       propertyPath: viewIdField
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1420559943257597632, guid: 4b793876a0be3a349a8508d54a506c5b,
+        type: 3}
+      propertyPath: abilityIDs.Array.data[0]
+      value: spawnAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420559943257597632, guid: 4b793876a0be3a349a8508d54a506c5b,
+        type: 3}
+      propertyPath: abilityIDs.Array.data[1]
+      value: bulldozerAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420559943257597632, guid: 4b793876a0be3a349a8508d54a506c5b,
+        type: 3}
+      propertyPath: abilityIDs.Array.data[3]
+      value: bearClawAttack
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b793876a0be3a349a8508d54a506c5b, type: 3}
 --- !u!1001 &1076268593
