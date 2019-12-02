@@ -43,5 +43,6 @@ MonoBehaviour:
   - startTimer
   - ChangeState
   - addProp
+  - Plant
   DisableAutoOpenWizard: 1
   ShowSettings: 1
