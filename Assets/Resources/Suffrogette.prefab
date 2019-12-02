@@ -1030,10 +1030,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityIDs:
-  - shootAttack
   - shotgunAttack
-  - spineAttack
   - lobAttack
+  - bulldozerAttack
+  - spawnAttack
 --- !u!114 &4235325832265764883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,11 +1052,13 @@ MonoBehaviour:
   abilities: {fileID: 0}
   spawnPoint: {fileID: 0}
   resources: {fileID: 0}
+  respawnPoint: {fileID: 5845737332396646368, guid: b48a5c769bff4bc4e9a47a02735d75df,
+    type: 3}
   collider: {fileID: 0}
   respawning: 0
   canMove: 0
   canAct: 0
-  isPlayer: 0
+  isPlayer: 1
   IsDisabled: 0
   CanCast: 0
   CanMove: 0

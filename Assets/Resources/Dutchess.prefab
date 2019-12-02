@@ -1051,11 +1051,12 @@ MonoBehaviour:
   abilities: {fileID: 0}
   spawnPoint: {fileID: 0}
   resources: {fileID: 0}
+  respawnPoint: {fileID: 0}
   collider: {fileID: 0}
   respawning: 0
   canMove: 0
   canAct: 0
-  isPlayer: 0
+  isPlayer: 1
   IsDisabled: 0
   CanCast: 0
   CanMove: 0

@@ -12,8 +12,7 @@ public class Entity : MonoBehaviour
     public Abilities abilities;
     public Transform spawnPoint;
     public EntityResources resources;
-
-    GameObject respawnPoint;
+    public GameObject respawnPoint;
     
     const float respawnPointWait = 2f;
 
@@ -40,7 +39,6 @@ public class Entity : MonoBehaviour
         CanMove = true;
         resources = GetComponent<EntityResources>();
         //renderer = GetComponent<MeshRenderer>();
-        respawnPoint = GameObject.Find("Player" + playerNum + "SpawnPosition");
         collider = GetComponent<CapsuleCollider>();
     }
 

@@ -37,6 +37,7 @@ public class DamageSystem : MonoBehaviourPun
         }
         else if (currentHealth <= 0 && !entity.respawning)
         {
+            Debug.Log("CALLING RPC FOR DESPAWN FROM DAMAGESYS");
             //gameObject.transform.position = respawnPointWait.transform.position;
             //StartCoroutine(waitingRespawn());
             this.photonView.RPC("despawnOnDeath", RpcTarget.AllBuffered);
@@ -57,6 +58,7 @@ public class DamageSystem : MonoBehaviourPun
     [PunRPC]
     void despawnOnDeath()
     {
+        Debug.Log("CALLING DESPAWN RPC");
         GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
         Destroy(obj, 5f);
         entity.Despawn();
