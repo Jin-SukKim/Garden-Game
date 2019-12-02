@@ -27,43 +27,34 @@ namespace Photon.Pun.Demo.PunBasics
         [SerializeField]
         private string player2ResourceString;
 
+        ExitGames.Client.Photon.Hashtable properties;
+
+
 
         // Start Method
         void Start()
         {
-            players = new List<Player>();
+            
             if (!PhotonNetwork.IsConnected) // Check if client is connected
             {
                 SceneManager.LoadScene("Launcher"); // Reload Launcher to attempt reconnect
                 return;
             }
+            properties = PhotonNetwork.CurrentRoom.CustomProperties;
 
+            players = new List<Player>();
+            for (int i = 0; i < PhotonNetwork.PlayerList.Length; ++i)
+            {
+                players.Add(PhotonNetwork.PlayerList[i]);
+                //Below prints character name belonging to player
+                //Debug.Log(properties[players[i].NickName]);
+            }
             if (PlayerManager.LocalPlayerInstance == null)
             {
-                for(int i = 0; i < PhotonNetwork.PlayerList.Length; ++i)
-                {
-                    players.Add(PhotonNetwork.PlayerList[i]);
-                    //Debug.Log(players[i].NickName);
-                    //BELOW PRINTS NULL, NOT GETTING/SETTING CORRECTLY
-                    //Debug.Log(players[i].CustomProperties["selectedCharacter"]);
-                }
-
-                // Instantiate first player, save reference to player1
-                string selectedChar;
-                player1 = PhotonNetwork.Instantiate((string) players[0].CustomProperties["selectedCharacter"],
-                    player1SpawnPosition.transform.position,
-                    player1SpawnPosition.transform.rotation, 0);
-                // Hookup controls
-                player1.AddComponent<Movement>();
-                // Instantiate first player, save reference to player1
-                player2 = PhotonNetwork.Instantiate((string)players[1].CustomProperties["selectedCharacter"],
-                    player2SpawnPosition.transform.position,
-                    player2SpawnPosition.transform.rotation, 0);
-                // Hookup controls
-                player2.AddComponent<Movement>();
-
-
-
+                PhotonNetwork.Instantiate((string)properties[PhotonNetwork.LocalPlayer.NickName],
+                        player1SpawnPosition.transform.position,
+                        player1SpawnPosition.transform.rotation, 0).AddComponent<Movement>();
+               
                 //if (PhotonNetwork.IsMasterClient) // Check if client is master client
                 //{
                 //    Debug.Log("Instantiating Player 1");
