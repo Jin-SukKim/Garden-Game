@@ -76,7 +76,6 @@ public static class PrefabManager
             GameObject newObj = GameObject.Instantiate(bullets[bulletID], pos, dir);
             BulletController newBullet = newObj.GetComponent<BulletController>();
             newBullet.InitBullet(pos, targetLoc);
-
             //not the best way to do this
             newBullet.entity = e;
             return true;
@@ -101,5 +100,5 @@ public static class PrefabManager
         //instantiated.AddComponent<Entity>();
         //instantiated.GetComponent<Entity>().team = e.team;
     }
-
+    
 }

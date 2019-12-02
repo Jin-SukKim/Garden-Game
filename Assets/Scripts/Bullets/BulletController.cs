@@ -41,7 +41,7 @@ public class BulletController : MonoBehaviour
     /// <param name="targetLoc"></param>
     public void InitBullet(Vector3 shootingLoc, Vector3 targetLoc)
     {
-        Debug.Log("Initializing bullet: " + shootingLoc + ", " + targetLoc);
+        /*Debug.Log("Initializing bullet: " + shootingLoc + ", " + targetLoc);*/
         this.shootingLoc = shootingLoc;
         this.targetLoc = targetLoc;
     }
@@ -54,13 +54,6 @@ public class BulletController : MonoBehaviour
     {
         if (gameObject.tag == "Bullet" && other.gameObject.GetComponent<Teams>() != null)
         {
-            //if (other.gameObject.tag == "Enemy")
-            //{
-            //    other.gameObject.GetComponent<Enemy>().HurtEnemy(damageToGive);
-            //    GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-            //    Destroy(obj, 2f);
-            //    Destroy(gameObject);
-            //}
 
             // For now anything with this tag can be destroyed in the same way.
             // For now anything with this tag can be destroyed in the same way.

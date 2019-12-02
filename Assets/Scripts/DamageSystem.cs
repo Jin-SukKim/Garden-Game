@@ -1,9 +1,16 @@
-﻿using System.Collections;
+﻿/*
+ * Game manager script, takes care of spawning
+ * Authors: Marvin, Zora
+ */
+
+using Photon.Pun;
+using Photon;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DamageSystem : MonoBehaviour
+public class DamageSystem : MonoBehaviourPun
 {
     public Entity entity;
     public float health;
@@ -31,20 +38,35 @@ public class DamageSystem : MonoBehaviour
     {
         if (currentHealth <= 0 && !entity.isPlayer)
         {
-            Debug.Log("DESTROYING OBJECT: " + gameObject.name);
-            GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
-            //Destroy(gameObject.GetComponent("Rigidbody"));
-            Destroy(obj, 5f);
-            Destroy(gameObject);
+            this.photonView.RPC("death", RpcTarget.AllBuffered);
         }
         else if (currentHealth <= 0 && !entity.respawning)
         {
+            Debug.Log("CALLING RPC FOR DESPAWN FROM DAMAGESYS");
             //gameObject.transform.position = respawnPointWait.transform.position;
             //StartCoroutine(waitingRespawn());
-            GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
-            Destroy(obj, 5f);
-            entity.Despawn();
+            this.photonView.RPC("despawnOnDeath", RpcTarget.AllBuffered);
         }
+    }
+
+    //handle destroy player object on network
+    [PunRPC]
+    void death()
+    {
+        Debug.Log("DESTROYING OBJECT");
+        GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
+        ////Destroy(gameObject.GetComponent("Rigidbody"));
+        Destroy(obj, 5f);
+        Destroy(gameObject);
+    }
+
+    [PunRPC]
+    void despawnOnDeath()
+    {
+        Debug.Log("CALLING DESPAWN RPC");
+        GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
+        Destroy(obj, 5f);
+        entity.Despawn();
     }
 
     /// <summary>

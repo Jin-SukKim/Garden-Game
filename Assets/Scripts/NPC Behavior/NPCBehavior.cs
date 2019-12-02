@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * Base class for NPC behaviors
+ * Authors: Zora
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +21,5 @@ public class NPCBehavior : StateMachineBehaviour {
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         // Assign the object that is passed in as the NPC object
         NPC = animator.gameObject;
-        //mainTarget = GameObject.FindGameObjectWithTag("Player");
     }
 }
