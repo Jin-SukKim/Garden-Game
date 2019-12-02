@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * Chases the specified target within a given range
+ * Authors: Zora, Larry
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

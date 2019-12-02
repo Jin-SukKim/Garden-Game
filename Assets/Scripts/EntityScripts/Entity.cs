@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * Entity is a core component of any player/minion/plant during gametime, it contains essential information specific to each player/minion/plant
+ * Authors: Thompson
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,8 +18,7 @@ public class Entity : MonoBehaviour
     public Abilities abilities;
     public Transform spawnPoint;
     public EntityResources resources;
-
-    GameObject respawnPoint;
+    public GameObject respawnPoint;
     
     const float respawnPointWait = 2f;
 
@@ -42,7 +46,6 @@ public class Entity : MonoBehaviour
         CanMove = true;
         resources = GetComponent<EntityResources>();
         //renderer = GetComponent<MeshRenderer>();
-        respawnPoint = GameObject.Find("Player" + playerNum + "SpawnPosition");
         collider = GetComponent<CapsuleCollider>();
     }
 

@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * Movement script allows for player movement with WASD
+ * Authors: Zora
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,28 +21,16 @@ public class Movement : MonoBehaviour
     Vector3 forwardBackDirection, leftRightDirection;
 
     public PhotonView photonView;
-
     private string playerName = "";
-    // Will be used later for animation
-    //private Animator anim;
-
     public float horizAxis;
     public float vertAxis;
-/*    private Animator animationController;*/
 
 
-/*    [PunRPC]
-    private void setAnimBool(string animString, bool boolean)
-    {
-        animationController.SetBool(animString, boolean);
-    }*/
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("PHOTON VIEW: " + photonView);
-        // Link the animator, will be used later
-        //anim = GetComponent<Animator>();
+        //Debug.Log("PHOTON VIEW: " + photonView);
 
         // attach photon view WITH THE GAMEOBJECT KEYWORD :)
         photonView = gameObject.GetComponent<PhotonView>();
@@ -60,9 +53,7 @@ public class Movement : MonoBehaviour
         // Attach camera to player through a reference to the camera objects script
         CameraWorks camWorks = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraWorks>();
         camWorks.target = gameObject.transform;
-        Debug.Log("THIS IS THE PLAYER THAT HAS MOVEMENT: " + gameObject.name);
-
-        //animationController = gameObject.GetComponentInChildren<Animator>();
+        //Debug.Log("THIS IS THE PLAYER THAT HAS MOVEMENT: " + gameObject.name);
 
     }
 
@@ -79,11 +70,6 @@ public class Movement : MonoBehaviour
             // Causes movement
             transform.position += leftRightMovement;
             transform.position += forwardBackMovement;
-
-/*            if (horizAxis != 0 || vertAxis != 0)
-                animationController.SetBool("isRunning", true);
-            else
-                animationController.SetBool("isRunning", false);*/
         }
     }
 
