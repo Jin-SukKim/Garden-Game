@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * Used to display who won the game
+ * Authors: Joanna, Zora (just touched it up for integration 90% Joanna's work)
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;

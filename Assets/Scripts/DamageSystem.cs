@@ -1,4 +1,9 @@
-﻿using Photon.Pun;
+﻿/*
+ * Game manager script, takes care of spawning
+ * Authors: Marvin, Zora
+ */
+
+using Photon.Pun;
 using Photon;
 using System.Collections;
 using System.Collections.Generic;

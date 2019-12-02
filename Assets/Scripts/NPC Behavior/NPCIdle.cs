@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * Idle behavior doesnt do anything...
+ * Authors: Zora
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

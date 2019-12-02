@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * time manager script, takes care of tracking time elapsed and watching for win conditions
+ * Authors: Joe, Zora
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

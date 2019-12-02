@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * Entity is a core component of any player/minion/plant during gametime, it contains essential information specific to each player/minion/plant
+ * Authors: Thompson
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

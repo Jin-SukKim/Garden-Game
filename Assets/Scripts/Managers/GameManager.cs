@@ -1,5 +1,6 @@
 ﻿/*
  * Game manager script, takes care of spawning
+ * Authors: Marvin, Zora
  */
 
 using Photon.Realtime;
@@ -56,6 +57,7 @@ namespace Photon.Pun.Demo.PunBasics
             }
             if (PlayerManager.LocalPlayerInstance == null)
             {
+                // For testing
                 /*PhotonNetwork.Instantiate((string)properties[PhotonNetwork.LocalPlayer.NickName],
                         player1SpawnPosition.transform.position,
                         player1SpawnPosition.transform.rotation, 0).AddComponent<Movement>();*/
@@ -86,40 +88,8 @@ namespace Photon.Pun.Demo.PunBasics
                     default:
                         Debug.LogError("Selected player does not exist in spawning swich...");
                         break;
-                }
-
-                // Gotta add in logic to distinguish users here
-
-                //if (PhotonNetwork.IsMasterClient) // Check if client is master client
-                //{
-                //    Debug.Log("Instantiating Player 1");
-                //    // Instantiate first player, save reference to player1
-                //    player1 = PhotonNetwork.Instantiate(player1ResourceString,
-                //        player1SpawnPosition.transform.position,
-                //        player1SpawnPosition.transform.rotation, 0);
-                //    Debug.Log("master");
-                //    // Hookup controls
-                //    player1.AddComponent<Movement>();
-                //    /*player1.AddComponent<InputManager>();*/
-                //    player1.tag = "Player";
-                //    minionAI = PhotonNetwork.Instantiate("EnemyAITester",
-                //        minionAISpawnPosition.transform.position,
-                //        minionAISpawnPosition.transform.rotation, 0);
-                //}
-                //else // Normal clients instantiate second player, save reference to player2
-                //{
-                //    //Add more code here for player 3 and 4
-                //    player2 = PhotonNetwork.Instantiate(player2ResourceString,
-                //        player2SpawnPosition.transform.position,
-                //        player2SpawnPosition.transform.rotation, 0);
-                //    // Hookup controls
-                //    player2.AddComponent<Movement>();
-                //    /*player2.AddComponent<InputManager>();*/
-                //    player2.tag = "Player";
-                //}
+                } 
             }
-            //Finds the first player and assigns it to the input manager
-            /* GameObject.Find("InputManager").GetComponent<InputManager>().InitializeInputManager(GameObject.FindWithTag("Player").GetComponent<Entity>());*/
         }
 
         //Quit app if escape pressed
@@ -136,10 +106,6 @@ namespace Photon.Pun.Demo.PunBasics
         public override void OnPlayerLeftRoom(Player other)
         {
             Debug.Log("OnPlayerLeftRoom() " + other.NickName); // seen when other disconnects
-            if (PhotonNetwork.IsMasterClient)
-            {
-                //PhotonNetwork.LoadLevel("Launcher");
-            }
         }
 
 
