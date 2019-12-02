@@ -35,5 +35,7 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - FireBasic
+  - setAnimBool
+  - triggerAnim
   DisableAutoOpenWizard: 1
   ShowSettings: 1

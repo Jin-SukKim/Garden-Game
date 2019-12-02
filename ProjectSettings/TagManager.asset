@@ -12,6 +12,7 @@ TagManager:
   - UsernameInput
   - CreateAccountButton
   - Nexus
+  - Environment
   layers:
   - Default
   - TransparentFX

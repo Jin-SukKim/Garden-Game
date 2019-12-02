@@ -44,16 +44,25 @@ public class SubmitCreateAccountButton : MonoBehaviour {
             string username = UsernameInputField.text;
             string passwordHash = PasswordHash.Generate(PasswordInputField.text);
 
-            string localUrl = APIEndpoint.CreateAccountLocal;
-            string cloudUrl = APIEndpoint.CreateAccountCloud;
-
-            StartCoroutine(SendHttpRequest(localUrl, username, passwordHash));
+            StartCoroutine(SendHttpRequest(APIEndpoint.CreateAccount, username, passwordHash));
             //StartCoroutine(SendHttpRequest(cloudUrl));
 
         } else {
             switch (usernameValid) {
                 case ValidateInput.Validation.usernameLetterDigits:
                     StatusText.text = "username can only contain letters and numbers";
+                    break;
+                case ValidateInput.Validation.usernameEmpty:
+                    StatusText.text = "username cannot be empty";
+                    break;
+            }
+
+            switch (passwordValid) {
+                case ValidateInput.Validation.passwordLessThanFour:
+                    StatusText.text = "password must contain at least 4 characters";
+                    break;
+                case ValidateInput.Validation.passwordEmpty:
+                    StatusText.text = "password cannot be empty";
                     break;
             }
         }
@@ -71,14 +80,11 @@ public class SubmitCreateAccountButton : MonoBehaviour {
 
         yield return request.SendWebRequest();
 
-        if (request.isNetworkError || request.isHttpError)
-        {
+        if (request.isNetworkError || request.isHttpError) {
             Debug.Log("error:");
             Debug.Log(request.error);
             StatusText.text = "that username is taken";
-        }
-        else
-        {
+        } else {
             PlayerPrefs.DeleteKey("guest");
 
             Account account = JsonUtility.FromJson<Account>(request.downloadHandler.text);

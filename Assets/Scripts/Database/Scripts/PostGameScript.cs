@@ -23,10 +23,7 @@ public class PostGameScript : MonoBehaviour {
 
         //StatusText.text = "updating stats...";
 
-        string localUrl = APIEndpoint.UpdateStatsLocal;
-        //string cloudUrl = string.Format(APIEndpoint.LoginCloud, UsernameInputField.text);
-
-        StartCoroutine(SendHttpRequest(localUrl, username));
+        StartCoroutine(SendHttpRequest(APIEndpoint.UpdateStats, username));
         //StartCoroutine(SendHttpRequest(cloudUrl));
     }
 
@@ -35,7 +32,6 @@ public class PostGameScript : MonoBehaviour {
     /// the end of each game.
     /// </summary>
     IEnumerator SendHttpRequest(string url, string username) {
-        //PlayerStat.Instance.addPlayerData();     
         PlayerStat.Instance.addWinLoseData();
         PlayerStat.Instance.addPlayerDataTESTING();
 
