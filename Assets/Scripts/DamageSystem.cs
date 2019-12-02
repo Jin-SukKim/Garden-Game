@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using Photon;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DamageSystem : MonoBehaviour
+public class DamageSystem : MonoBehaviourPun
 {
     public Entity entity;
     public float health;
@@ -31,11 +33,7 @@ public class DamageSystem : MonoBehaviour
     {
         if (currentHealth <= 0 && !entity.isPlayer)
         {
-            Debug.Log("DESTROYING OBJECT");
-            GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
-            //Destroy(gameObject.GetComponent("Rigidbody"));
-            Destroy(obj, 5f);
-            Destroy(gameObject);
+            this.photonView.RPC("death", RpcTarget.AllBuffered);
         }
         else if (currentHealth <= 0 && !entity.respawning)
         {
@@ -47,6 +45,16 @@ public class DamageSystem : MonoBehaviour
         }
     }
 
+    //handle destroy player object on network
+    [PunRPC]
+    void death()
+    {
+        Debug.Log("DESTROYING OBJECT");
+        GameObject obj = (GameObject)Instantiate(enemeyDeathAnimation, transform.position, Quaternion.identity);
+        ////Destroy(gameObject.GetComponent("Rigidbody"));
+        Destroy(obj, 5f);
+        Destroy(gameObject);
+    }
     /// <summary>
     /// Decreases health amount by damage value parameter
     /// </summary>
