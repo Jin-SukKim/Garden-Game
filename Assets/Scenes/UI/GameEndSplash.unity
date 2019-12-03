@@ -525,6 +525,16 @@ PrefabInstance:
       propertyPath: industrialistVictoryCanvas
       value: 
       objectReference: {fileID: 7563459483931502344}
+    - target: {fileID: 7563459482583901074, guid: 9bb292e9e55616f4fbe3ceab9edb90c0,
+        type: 3}
+      propertyPath: druidWin
+      value: 
+      objectReference: {fileID: 8300000, guid: a3486f3b46f4df9459271a932447f7d6, type: 3}
+    - target: {fileID: 7563459482583901074, guid: 9bb292e9e55616f4fbe3ceab9edb90c0,
+        type: 3}
+      propertyPath: industrialistWin
+      value: 
+      objectReference: {fileID: 8300000, guid: 862efe2f3babab34d8a87650e2dba72e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bb292e9e55616f4fbe3ceab9edb90c0, type: 3}
 --- !u!223 &7563459483931502344 stripped
