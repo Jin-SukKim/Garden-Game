@@ -866,8 +866,8 @@ GameObject:
   - component: {fileID: 114606246167635992}
   - component: {fileID: 1504644891503217732}
   - component: {fileID: 114063028908876100}
-  - component: {fileID: 114618290789262676}
   - component: {fileID: 195570998261631906}
+  - component: {fileID: 114618290789262676}
   m_Layer: 0
   m_Name: Activist
   m_TagString: Player
@@ -1107,21 +1107,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilities: {fileID: 0}
   movement: {fileID: 0}
---- !u!114 &114618290789262676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4766889928794413047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26a1b008ca1a75844b9e6e74f19ec2c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTree: {fileID: 0}
-  druidWin: 0
-  industWin: 0
 --- !u!195 &195570998261631906
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1144,6 +1129,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &114618290789262676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4766889928794413047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a1b008ca1a75844b9e6e74f19ec2c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTree: {fileID: 0}
+  druidWin: 0
+  industWin: 0
 --- !u!1 &4766889928794413049
 GameObject:
   m_ObjectHideFlags: 0
