@@ -888,7 +888,7 @@ Transform:
   - {fileID: 4766889928794180545}
   - {fileID: 4766889928794180563}
   - {fileID: 5736860782961633324}
-  - {fileID: 6955396630771328977}
+  - {fileID: 2581350665870691370}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1032,8 +1032,8 @@ MonoBehaviour:
   abilityIDs:
   - shootAttack
   - spineAttack
-  - bearClawAttack
-  - bearClawAttack
+  - bearTransform
+  - bearTransform
 --- !u!114 &4235325832265764883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,7 +1311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4e26baaf4574c6448790bd87b42fbb5, type: 3}
---- !u!4 &6955396630771328977 stripped
+--- !u!4 &2581350665870691370 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4851578167315541852, guid: d4e26baaf4574c6448790bd87b42fbb5,
     type: 3}
