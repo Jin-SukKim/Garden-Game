@@ -1048,13 +1048,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddfaa2efc3aada4cb7a5ef3408c7138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   team: 1
   health: {fileID: 0}
   playerNum: 0
   abilities: {fileID: 0}
   spawnPoint: {fileID: 0}
   resources: {fileID: 0}
-  respawnPoint: {fileID: 5753213754345075981, guid: 71f58a9db37367e439003e8ed43d16ea,
+  respawnPoint: {fileID: 9090281687451413694, guid: b48a5c769bff4bc4e9a47a02735d75df,
     type: 3}
   collider: {fileID: 0}
   respawning: 0
@@ -1123,6 +1124,8 @@ MonoBehaviour:
   druidVictoryCanvas: {fileID: 0}
   industrialistDefeatCanvas: {fileID: 0}
   industrialistVictoryCanvas: {fileID: 0}
+  industrialistWin: {fileID: 0}
+  druidWin: {fileID: 0}
   myState: 0
 --- !u!114 &114380508825241882
 MonoBehaviour:
