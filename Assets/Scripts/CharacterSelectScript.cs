@@ -88,6 +88,8 @@ public class CharacterSelectScript : MonoBehaviour
     {
         Button but = SelectButtons[i].GetComponent<Button>();
 
+        SoundManager.PlaySoundatLocation("Game_Start_01", Vector3.zero);
+
         ColorBlock cb = but.colors;
         cb.normalColor = selected;
         cb.highlightedColor = selected;

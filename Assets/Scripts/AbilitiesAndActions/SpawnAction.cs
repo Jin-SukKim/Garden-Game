@@ -21,6 +21,8 @@ public class SpawnAction : IAction
         GameObject.Instantiate(Resources.Load("Prefabs/ParticleEffects/MoneyParticles"), e.transform.position , Quaternion.LookRotation(dir));
         GameObject.Instantiate(Resources.Load("Prefabs/ParticleEffects/MinionSpawn"), myVec, Quaternion.identity);
 
+        SoundManager.PlaySoundatLocation("Minion_Ping", e.transform.position);
+
         e.StartCoroutine(SpawnMinion(myVec, e));
 
     }

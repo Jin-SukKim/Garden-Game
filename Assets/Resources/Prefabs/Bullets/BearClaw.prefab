@@ -110,6 +110,7 @@ MonoBehaviour:
   damageToGive: 4
   impactEffect: {fileID: 4344580563010153815, guid: 9260327777720af4f9e7fc029ae7ace7,
     type: 3}
+  collisionSound: {fileID: 8300000, guid: b923bb55f289684428c20fdf5e3062a1, type: 3}
   shootingLoc: {x: 0, y: 0, z: 0}
   targetLoc: {x: 0, y: 0, z: 0}
   entity: {fileID: 0}
