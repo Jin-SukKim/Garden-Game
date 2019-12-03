@@ -16,6 +16,9 @@ public class GameEndSplash : MonoBehaviourPun
     public Canvas industrialistDefeatCanvas;
     public Canvas industrialistVictoryCanvas;
 
+    public AudioClip industrialistWin;
+    public AudioClip druidWin;
+
     public enum gameStates
     {
         druidDefeat,
@@ -117,19 +120,24 @@ public class GameEndSplash : MonoBehaviourPun
         if (myState == gameStates.druidDefeat)
         {
             druidDefeatCanvas.enabled = true;
+            AudioSource.PlayClipAtPoint(industrialistWin,Vector3.zero);
         }
         else if (myState == gameStates.druidVictory)
         {
             druidVictoryCanvas.enabled = true;
+            AudioSource.PlayClipAtPoint(druidWin, Vector3.zero);
         }
         else if (myState == gameStates.industrialistDefeat)
         {
             industrialistDefeatCanvas.enabled = true;
+            AudioSource.PlayClipAtPoint(druidWin, Vector3.zero);
         }
         else if (myState == gameStates.industrialistVictory)
         {
             industrialistVictoryCanvas.enabled = true;
-        } else if (myState == gameStates.nothing)
+            AudioSource.PlayClipAtPoint(industrialistWin, Vector3.zero);
+        }
+        else if (myState == gameStates.nothing)
         {
             Debug.Log("in nothing");
             druidDefeatCanvas.enabled = false;

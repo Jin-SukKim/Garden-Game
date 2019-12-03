@@ -19,6 +19,7 @@ public class Entity : MonoBehaviour
     public Transform spawnPoint;
     public EntityResources resources;
     public GameObject respawnPoint;
+    public
     
     const float respawnPointWait = 2f;
 

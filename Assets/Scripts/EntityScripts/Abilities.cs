@@ -33,6 +33,7 @@ public class Abilities : MonoBehaviourPun
             return false;
 
         abilityIDs.Add(abilityID);
+        //castInfos
         return true;
     }
     
