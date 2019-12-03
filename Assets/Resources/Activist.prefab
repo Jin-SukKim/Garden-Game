@@ -1032,8 +1032,8 @@ MonoBehaviour:
   abilityIDs:
   - shootAttack
   - spineAttack
-  - bearClawAttack
-  - bearClawAttack
+  - bearTransform
+  - bearTransform
 --- !u!114 &4235325832265764883
 MonoBehaviour:
   m_ObjectHideFlags: 0
