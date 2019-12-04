@@ -7,16 +7,16 @@ public class OnSkillClick : MonoBehaviour
 {
 
     [SerializeField]
-    private float skillCooldownE;
+    private float skillCooldownQ;
     [SerializeField]
-    private float skillCooldownR;
+    private float skillCooldownE;
     [SerializeField]
     private float skillCooldownPAtk;
     [SerializeField]
     private float skillCooldownBasic;
 
+    private Image skillUsedOverlayQ;
     private Image skillUsedOverlayE;
-    private Image skillUsedOverlayR;
     private Image skillUsedOverlayPAtk;
     private Image skillUsedOverlayBasic;
     private Button btn;
@@ -24,27 +24,27 @@ public class OnSkillClick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        skillUsedOverlayQ = GameObject.Find("SkillUsedOverlayQ").GetComponent<Image>() as Image;
         skillUsedOverlayE = GameObject.Find("SkillUsedOverlayE").GetComponent<Image>() as Image;
-        skillUsedOverlayR = GameObject.Find("SkillUsedOverlayR").GetComponent<Image>() as Image;
         skillUsedOverlayPAtk = GameObject.Find("SkillUsedOverlayPAtk").GetComponent<Image>() as Image;
         skillUsedOverlayBasic = GameObject.Find("SkillUsedOverlayBasic").GetComponent<Image>() as Image;
 
+        skillUsedOverlayQ.fillAmount = 0;
         skillUsedOverlayE.fillAmount = 0;
-        skillUsedOverlayR.fillAmount = 0;
         skillUsedOverlayPAtk.fillAmount = 0;
         skillUsedOverlayBasic.fillAmount = 0;
     }
 
     void Update()
     {
+        if (Input.GetKeyDown("q"))
+        {
+            object[] parms = new object[2] { skillUsedOverlayQ, skillCooldownQ };
+            StartCoroutine("LerpOverlay", parms);
+        }
         if (Input.GetKeyDown("e"))
         {
             object[] parms = new object[2] { skillUsedOverlayE, skillCooldownE };
-            StartCoroutine("LerpOverlay", parms);
-        }
-        if (Input.GetKeyDown("r"))
-        {
-            object[] parms = new object[2] { skillUsedOverlayR, skillCooldownR };
             StartCoroutine("LerpOverlay", parms);
         }
         if (Input.GetMouseButtonDown(0))

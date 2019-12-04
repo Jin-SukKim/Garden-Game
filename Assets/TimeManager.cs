@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviourPun
 {
@@ -15,10 +16,14 @@ public class TimeManager : MonoBehaviourPun
 
     // To track time
     private int seconds;
+    private int mins;
+    private int secs;
 
     // Trigger win conditions
     public bool druidWin;
     public bool industWin;
+
+    Text timerText;
 
     ExitGames.Client.Photon.Hashtable properties;
 
@@ -28,6 +33,8 @@ public class TimeManager : MonoBehaviourPun
         Debug.Log("STARTING TIME SCRIPT");
         // Attach nexus
         lifeTree = GameObject.Find("Nexus");
+
+        timerText = GameObject.Find("TimerText").GetComponent<Text>();
 
         // START GAME TIMER and set win conditions to false
         druidWin = false;
@@ -60,7 +67,10 @@ public class TimeManager : MonoBehaviourPun
             PhotonNetwork.LoadLevel("GameEndSplash");
             return;
         }
-        
+
+        mins = seconds / 60;
+        secs = seconds % 60;
+        timerText.text = mins + ":" + secs.ToString("00");
     }
 
     [PunRPC]

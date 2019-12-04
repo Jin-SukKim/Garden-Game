@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon;
 
 /*
  * This script tracks the value of a target gameobject with the DamageSystem script attached to it
@@ -26,6 +28,9 @@ public class PlayerValueBar : MonoBehaviour {
     private float currentFillPercentage;
     //property for the value bar's currentValue;
     private float _currentValue;
+
+    GameObject[] playerList;
+    ExitGames.Client.Photon.Hashtable properties;
 
     //currentValue getter and setter
     public float CurrentValue
@@ -57,6 +62,15 @@ public class PlayerValueBar : MonoBehaviour {
     void Start()
     {
         //init 
+        properties = PhotonNetwork.CurrentRoom.CustomProperties;
+        playerList = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in playerList)
+        {
+            if (p.name.Equals((string)properties[PhotonNetwork.LocalPlayer.NickName])) ;
+            {
+                targetObject = p;
+            }
+        }
         targetDamageSystem = targetObject.GetComponent<DamageSystem>();
         maxValue = targetDamageSystem.health;
         //start value at full
