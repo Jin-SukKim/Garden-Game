@@ -59,6 +59,8 @@ public class SentryAI : MonoBehaviour
 
         foreach (GameObject obj in objects)
         {
+            Debug.Log("teams faction: " + obj.GetComponent<Entity>().Team);
+            Debug.Log("tag: " + obj.tag);
             if (obj.GetComponent<Entity>().Team == Teams.Faction.indust && obj.tag == "Player")
             {
                 players.Add(obj);

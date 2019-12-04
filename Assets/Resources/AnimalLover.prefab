@@ -1034,7 +1034,8 @@ MonoBehaviour:
   - shootAttack
   - spineAttack
   - bearTransform
-  - bearTransform
+  - tulipPlant
+  plantIDs: []
 --- !u!114 &4235325832265764883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1048,7 +1049,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  team: 0
   health: {fileID: 0}
   playerNum: 0
   abilities: {fileID: 0}
@@ -1058,12 +1058,9 @@ MonoBehaviour:
     type: 3}
   collider: {fileID: 0}
   respawning: 0
-  canMove: 0
-  canAct: 0
   isPlayer: 1
   IsDisabled: 0
-  CanCast: 0
-  CanMove: 0
+  IsPlanting: 0
 --- !u!114 &114606246167635992
 MonoBehaviour:
   m_ObjectHideFlags: 0

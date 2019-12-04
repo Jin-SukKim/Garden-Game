@@ -44,5 +44,9 @@ MonoBehaviour:
   - ChangeState
   - addProp
   - Plant
+  - plant
+  - cancel
+  - ToggleDown
+  - ToggleUp
   DisableAutoOpenWizard: 1
   ShowSettings: 1

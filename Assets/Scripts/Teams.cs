@@ -10,19 +10,6 @@ public class Teams : MonoBehaviour
     public Teams.Faction teamsFaction;
     public Teams.Faction TeamsFaction { get { return teamsFaction; } }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// Team constructor for an object
     /// </summary>

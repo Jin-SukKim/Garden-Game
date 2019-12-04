@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Photon;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PlantingSystem : MonoBehaviour
+public class PlantingSystem : MonoBehaviourPun
 {
     public GameObject CurGO;
 
@@ -40,9 +43,7 @@ public class PlantingSystem : MonoBehaviour
     {
         if (Input.GetButton("Fire2"))
         {
-            MyEntity.IsPlanting = false;
-            Destroy(CurGO);
-            Destroy(this);
+            this.photonView.RPC("cancel", RpcTarget.AllBuffered);
         }
 
         if (Input.GetButton("Fire1"))
@@ -51,10 +52,8 @@ public class PlantingSystem : MonoBehaviour
 
             if (CurGO.GetComponent<PlaceableEntity>().Placed)
             {
-                MyEntity.IsPlanting = false;
-                gameObject.GetComponent<Abilities>().plantAbility((int)SelectedPlant, CurGO.transform.position);
-                Destroy(CurGO);
-                Destroy(this);
+
+                this.photonView.RPC("plant", RpcTarget.AllBuffered);
             }
         }
 
@@ -66,15 +65,35 @@ public class PlantingSystem : MonoBehaviour
 
         if (Input.GetButtonDown("Fire3"))
         {
-            ToggleDown();
+
+            this.photonView.RPC("ToggleDown", RpcTarget.AllBuffered);
         }
 
         if (Input.GetButtonDown("Fire4"))
         {
-            ToggleUp();
+
+            this.photonView.RPC("ToggleUp", RpcTarget.AllBuffered);
         }
     }
 
+    [PunRPC]
+    public void plant()
+    {
+        MyEntity.IsPlanting = false;
+        gameObject.GetComponent<Abilities>().plantAbility((int)SelectedPlant, CurGO.transform.position);
+        Destroy(CurGO);
+        Destroy(this);
+    }
+
+    [PunRPC]
+    public void cancel()
+    {
+        MyEntity.IsPlanting = false;
+        Destroy(CurGO);
+        Destroy(this);
+    }
+
+    [PunRPC]
     public void ToggleUp()
     {
         Debug.Log((int)SelectedPlant + " " + Enum.GetValues(typeof(PlantType)).Length + " " + ((int)SelectedPlant + 1 > Enum.GetValues(typeof(PlantType)).Length));
@@ -84,6 +103,7 @@ public class PlantingSystem : MonoBehaviour
         CurGO.transform.Find("CollisionIndicator").gameObject.SetActive(true);
     }
 
+    [PunRPC]
     public void ToggleDown()
     {
         SelectedPlant = (int)SelectedPlant - 1 < 0 ? (PlantType)Enum.GetValues(typeof(PlantType)).Length - 1 : 0;
