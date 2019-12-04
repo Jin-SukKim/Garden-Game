@@ -91,14 +91,20 @@ public static class PrefabManager
     {
         Quaternion dir = Quaternion.LookRotation(targetLoc);
         GameObject newObj = GameObject.Instantiate(placeables[objectID], targetLoc, dir);
+        newObj.AddComponent<Entity>();
+        newObj.GetComponent<Entity>().abilities = newObj.GetComponent<Abilities>();
+        newObj.GetComponent<Entity>().health = newObj.GetComponent<DamageSystem>();
+        newObj.GetComponent<Entity>().spawnPoint = newObj.transform.GetChild(0).gameObject.transform;
+        newObj.AddComponent<PlaceableEntity>();
         newObj.GetComponent<PlaceableEntity>().Init(e);
         return newObj;
     }
     public static void SpawnMinion(Vector3 pos, Entity e)
     {
         GameObject instantiated = GameObject.Instantiate(minionPrefab, pos, Quaternion.identity);
-        //instantiated.AddComponent<Entity>();
-        //instantiated.GetComponent<Entity>().team = e.team;
+        instantiated.AddComponent<Entity>();
+        instantiated.GetComponent<Entity>().Team = e.Team;
+        instantiated.GetComponent<Entity>().spawnPoint = instantiated.transform.GetChild(0).gameObject.transform;
     }
     
 }

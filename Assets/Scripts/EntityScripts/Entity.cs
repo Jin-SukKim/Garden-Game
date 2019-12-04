@@ -18,6 +18,10 @@ public class Entity : MonoBehaviour
         {
             return gameObject.GetComponent<Teams>().teamsFaction;
         }
+        set
+        {
+            Team = value;
+        }
     }
     public DamageSystem health;
     public int playerNum;

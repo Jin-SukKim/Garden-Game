@@ -4709,9 +4709,7 @@ GameObject:
   - component: {fileID: 2009133668103599433}
   - component: {fileID: 2009133668093745871}
   - component: {fileID: 2009133667988102011}
-  - component: {fileID: 114420549104517274}
   - component: {fileID: 6843811337455114245}
-  - component: {fileID: 114122266329949346}
   - component: {fileID: 114834960672446298}
   - component: {fileID: 114770373749203414}
   - component: {fileID: 54298495008161406}
@@ -4736,9 +4734,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children:
+  - {fileID: 2009133668828386440}
   - {fileID: 2009133668103599407}
   - {fileID: 2009133668103599435}
-  - {fileID: 2009133668828386440}
   - {fileID: 6104418243732320559}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -4781,20 +4779,6 @@ MonoBehaviour:
   abilities: {fileID: 4022720161973147991, guid: 40872b3746e4fef4996bbb380d4b4708,
     type: 3}
   startTime: 0
---- !u!114 &114420549104517274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009133668103104681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c465b6a7598c5bf49bb26a7b7fabaecb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Placed: 0
-  Placing: 0
 --- !u!114 &6843811337455114245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4810,30 +4794,6 @@ MonoBehaviour:
   abilityIDs:
   - shootAttack
   plantIDs: []
---- !u!114 &114122266329949346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009133668103104681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ddfaa2efc3aada4cb7a5ef3408c7138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  health: {fileID: 114770373749203414}
-  playerNum: 0
-  abilities: {fileID: 6843811337455114245}
-  spawnPoint: {fileID: 0}
-  resources: {fileID: 0}
-  respawnPoint: {fileID: 0}
-  collider: {fileID: 0}
-  respawning: 0
-  isPlayer: 0
-  IsDisabled: 0
-  IsPlanting: 0
 --- !u!114 &114834960672446298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4960,7 +4920,7 @@ Transform:
   m_LocalScale: {x: 8.481341, y: 8.481341, z: 8.481341}
   m_Children: []
   m_Father: {fileID: 2009133668103599433}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &2009133668097893391
 SkinnedMeshRenderer:
@@ -5355,7 +5315,7 @@ Transform:
   m_Children:
   - {fileID: 2009133668103599405}
   m_Father: {fileID: 2009133668103599433}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2009133668103104785
 GameObject:
@@ -6622,5 +6582,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2009133668103599433}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
