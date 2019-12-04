@@ -3,17 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Photon;
+using Photon.Pun;
+using Photon.Realtime;
+
 public class PlaceableEntity : MonoBehaviour
 {
-    [SerializeField]
-    private bool Placed;
-    void Start(){
-        Placed = false;
+    public bool Placed;
+    
+    public bool Placing;
+
+    private bool Colliding;
+
+    private Entity MyEntity;
+
+    public void Init(Entity e)
+    {
+        MyEntity = e;
+    }
+
+
+    void Update()
+    {
+        if (Placing && !Colliding)
+        {
+            moveThis();
+            Placed = true;
+        }
     }
 
     //Snaps to grid
     public void moveThis(){
-        Debug.Log("moved");
         Grid grid = GameObject.Find("GridHolder").GetComponent<Grid>();
         Vector3Int cellPos = grid.LocalToCell(transform.localPosition);
         transform.localPosition = grid.GetCellCenterLocal(cellPos);
@@ -27,34 +47,25 @@ public class PlaceableEntity : MonoBehaviour
         return transform.parent.GetComponent<Grid>().LocalToCell(transform.localPosition).z;
     }
 
-    public void PlaceThis()
-    {
-        if(FindObjectOfType<PlacingScript>().CurGO != this.gameObject)
-            StartCoroutine("InvalidPlacementArea");
-        else{
-            Placed = true;
-            gameObject.layer = 2;
-        }
-    }
-
     void OnTriggerEnter(Collider other){
-        Debug.Log("Collided");
-        if(!Placed)
-            gameObject.SetActive(false);
+        if(other.gameObject.GetComponent<Entity>() != null || other.gameObject.tag == "Environment")
+        {
+            Debug.Log("Colliding with " + other.gameObject.name);
+            ParticleSystem ps = gameObject.transform.Find("CollisionIndicator").GetComponent<ParticleSystem>();
+            ParticleSystem.MainModule main = ps.main;
+            main.startColor = new Color(0.8784314f, 0.2695822f, 0.2196078f, 0.4039216f);
+            Colliding = true;
+        }
     }
 
-    IEnumerator InvalidPlacementArea()
+    void OnTriggerExit(Collider other)
     {
-        transform.Find("Canvas").gameObject.SetActive(true);
-        Color c = gameObject.transform.Find("Canvas/InvalidPanel").GetComponent<Image>().color;
-        yield return new WaitForSeconds(0.5f);
-        for(float i=0.5f; i>=0; i-= 0.1f){
-            c.a = i;
-            gameObject.transform.Find("Canvas/InvalidPanel").GetComponent<Image>().color = c;
-            yield return new WaitForSeconds(0.1f);
+        if (other.gameObject.GetComponent<Entity>() != null || other.gameObject.tag == "Environment")
+        {
+            ParticleSystem ps = gameObject.transform.Find("CollisionIndicator").GetComponent<ParticleSystem>();
+            ParticleSystem.MainModule main = ps.main;
+            main.startColor = new Color(0.2193396f, 0.8773585f, 0.6492321f, 0.4039216f);
+            Colliding = false;
         }
-        transform.Find("Canvas").gameObject.SetActive(false);
-        c.a = 0.5f;
-        gameObject.transform.Find("Canvas/InvalidPanel").GetComponent<Image>().color = c;
     }
 }

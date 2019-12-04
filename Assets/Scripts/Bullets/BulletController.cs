@@ -54,14 +54,14 @@ public class BulletController : MonoBehaviour
     /// <param name="other"></param>
     protected virtual void OnCollisionEnter(Collision other)
     {
-        SoundManager.PlaySoundatLocation(collisionSound, other.transform.position);
-
-        if (gameObject.tag == "Bullet")
+         SoundManager.PlaySoundatLocation(collisionSound, other.transform.position);
+         
+        if (gameObject.tag == "Bullet" && other.gameObject.GetComponent<Teams>() != null)
         {
 
             // For now anything with this tag can be destroyed in the same way.
             // For now anything with this tag can be destroyed in the same way.
-            if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.team)
+            if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.Team)
             {
                 if (other.gameObject.GetComponent<Teams>().TeamsFaction.ToString() == "druid")
                 {
@@ -88,7 +88,7 @@ public class BulletController : MonoBehaviour
             }
 
             // Shooting team mate case
-            if (other.gameObject.GetComponent<Teams>().TeamsFaction == entity.team)
+            if (other.gameObject.GetComponent<Teams>().TeamsFaction == entity.Team)
             {
                 GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
                 Destroy(gameObject);

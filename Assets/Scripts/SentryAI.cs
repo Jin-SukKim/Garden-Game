@@ -11,18 +11,22 @@ public class SentryAI : MonoBehaviour
     public Entity entity;
     public Abilities abilities;
 
+    public float startTime;
+
     // Start is called before the first frame update
     void Start()
     {
         abilities = gameObject.GetComponent<Abilities>();
         InvokeRepeating("UpdateTarget", 0f, 0.2f);
+
+        startTime = Time.time;
         //theGun = GameObject.Find("OfflineGun").GetComponent<OfflineGunController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (target == null)
+        if (target == null || !gameObject.GetComponent<PlaceableEntity>().Placed)
         {
             return;
         }
@@ -35,7 +39,10 @@ public class SentryAI : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(lookVector);
         Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-        abilities.TryCastAbility("shootAttack", target.position);
+        if(Time.time >= startTime + 2f && gameObject.GetComponent<Entity>().CanCast)
+        {
+            abilities.castAbility(0, target.position);
+        }
 
     }
 
@@ -52,7 +59,7 @@ public class SentryAI : MonoBehaviour
 
         foreach (GameObject obj in objects)
         {
-            if (obj.GetComponent<Entity>().team == Teams.Faction.indust && obj.tag == "Player")
+            if (obj.GetComponent<Entity>().Team == Teams.Faction.indust && obj.tag == "Player")
             {
                 players.Add(obj);
             }

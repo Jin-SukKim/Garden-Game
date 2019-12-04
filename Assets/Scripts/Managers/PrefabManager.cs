@@ -9,10 +9,14 @@ public static class PrefabManager
     static Dictionary<string, GameObject> bullets = new Dictionary<string, GameObject>();
     static private GameObject minionPrefab;
 
+
+    static Dictionary<string, GameObject> placeables = new Dictionary<string, GameObject>();
+
     // static constructor for any initialization
     static PrefabManager()
     {
         LoadBullets();
+        LoadPlaceables();
         var minion = Resources.Load("EnemyAITester");
         minionPrefab = minion as GameObject;
     }
@@ -29,26 +33,43 @@ public static class PrefabManager
         }
     }
 
-/*    public static bool SpawnBullet(string bulletID, Vector3 pos, Quaternion rot, Entity e)
+    // loads all the placeables from the placeables folder in the resources folder
+    public static void LoadPlaceables()
     {
+        GameObject[] allPlacables = Resources.LoadAll("Prefabs/Placeables", typeof(GameObject)).Cast<GameObject>().ToArray();
 
-        if (bullets.ContainsKey(bulletID))
+        // Store all bullets in the dictionary with name as key
+        for (int i = 0; i < allPlacables.Length; i++)
         {
-*//*            Quaternion dir = Quaternion.LookRotation(targetLoc);*//*
-            GameObject newObj = GameObject.Instantiate(bullets[bulletID], pos, dir);
-            newObj.transform.rotation = Quaternion.Slerp(newObj.transform.rotation, dir, 0f);
-            BulletController newBullet = newObj.GetComponent<BulletController>();
-*//*            newBullet.entity = e;*//*
-            return true;
-        } else
-        {
-            return false;
+            Debug.Log("Added " + allPlacables[i].name);
+            placeables.Add(allPlacables[i].name, allPlacables[i]);
         }
-    }*/
+    }
+
+    public static Dictionary<string, GameObject> ReturnPlacables()
+    {
+        return placeables;
+    }
+
+    /*    public static bool SpawnBullet(string bulletID, Vector3 pos, Quaternion rot, Entity e)
+        {
+
+            if (bullets.ContainsKey(bulletID))
+            {
+    *//*            Quaternion dir = Quaternion.LookRotation(targetLoc);*//*
+                GameObject newObj = GameObject.Instantiate(bullets[bulletID], pos, dir);
+                newObj.transform.rotation = Quaternion.Slerp(newObj.transform.rotation, dir, 0f);
+                BulletController newBullet = newObj.GetComponent<BulletController>();
+    *//*            newBullet.entity = e;*//*
+                return true;
+            } else
+            {
+                return false;
+            }
+        }*/
 
     public static bool SpawnBullet(string bulletID, Vector3 pos, Vector3 targetLoc, Entity e)
     {
-
         if (bullets.ContainsKey(bulletID))
         {
             Quaternion dir = Quaternion.LookRotation(targetLoc);
@@ -65,6 +86,14 @@ public static class PrefabManager
         }
     }
 
+
+    public static GameObject SpawnPlaceable(string objectID, Vector3 targetLoc, Entity e)
+    {
+        Quaternion dir = Quaternion.LookRotation(targetLoc);
+        GameObject newObj = GameObject.Instantiate(placeables[objectID], targetLoc, dir);
+        newObj.GetComponent<PlaceableEntity>().Init(e);
+        return newObj;
+    }
     public static void SpawnMinion(Vector3 pos, Entity e)
     {
         GameObject instantiated = GameObject.Instantiate(minionPrefab, pos, Quaternion.identity);

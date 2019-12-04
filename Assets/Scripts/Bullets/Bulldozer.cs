@@ -26,7 +26,7 @@ public class Bulldozer : BulletController
             Destroy(gameObject);
         }
 
-        if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.team)
+        if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.Team)
         {
             other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
             GameObject obj = (GameObject)Instantiate(impactEffect, transform.position + transform.forward, transform.rotation);

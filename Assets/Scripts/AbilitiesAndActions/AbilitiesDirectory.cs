@@ -19,6 +19,9 @@ public static class AbilitiesDirectory
         MakeShootAbility();
         MakeSpineAbility();
         MakeBulldozerAbility();
+        MakePlantingAbility();
+        MakeRosePlantingAbility();
+        MakeTulipPlantingAbility();
         MakeBearTransformAbility();
         MakeBearClawAbility();
     }
@@ -118,6 +121,32 @@ public static class AbilitiesDirectory
         abilityDictionary.Add("spineAttack", ability);
     }
 
+    public static void MakePlantingAbility()
+    {
+        List<IAction> actions = new List<IAction>();
+        actions.Add(new PlantingAction());
+
+        Ability ability = new Ability(0.5f, 999, actions);
+        abilityDictionary.Add("placementActivate", ability);
+    }
+
+    public static void MakeRosePlantingAbility()
+    {
+        List<IAction> actions = new List<IAction>();
+        actions.Add(new RosePlantingAction());
+
+        Ability ability = new Ability(0.5f, 999, actions);
+        abilityDictionary.Add("rosePlant", ability);
+    }
+
+    public static void MakeTulipPlantingAbility()
+    {
+        List<IAction> actions = new List<IAction>();
+        actions.Add(new TulipPlantingAction());
+
+        Ability ability = new Ability(0.5f, 999, actions);
+        abilityDictionary.Add("tulipPlant", ability);
+    }
 
     public static void MakeSpawnAbility()
     {

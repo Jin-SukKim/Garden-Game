@@ -12,7 +12,13 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public AudioSource audioSource;
-    public Teams.Faction team;
+    public Teams.Faction Team
+    {
+        get
+        {
+            return gameObject.GetComponent<Teams>().teamsFaction;
+        }
+    }
     public DamageSystem health;
     public int playerNum;
     public Abilities abilities;
@@ -27,18 +33,39 @@ public class Entity : MonoBehaviour
     public CapsuleCollider collider;
 
     public bool respawning;
-    public bool canMove;
-    public bool canAct;
     public bool isPlayer;
 
     public bool IsDisabled;
-    public bool CanCast;
-    public bool CanMove;
+    public bool IsPlanting;
+    private bool canCast;
+    public bool CanCast
+    {
+        get
+        {
+            return canCast && !IsDisabled && !IsPlanting;
+        }
+        set
+        {
+            canCast = value;
+        }
+    }
+    private bool canMove;
+    public bool CanMove
+    {
+        get
+        {
+            return canMove && !IsDisabled;
+        }
+        set
+        {
+            canMove = value;
+        }
+    }
     private void Start()
     {
         // Now the core components of the player can be accessed through the single entity component
         audioSource = GetComponent<AudioSource>();
-        team = GetComponent<Teams>().TeamsFaction;
+        // team = GetComponent<Teams>().TeamsFaction;
         health = GetComponent<DamageSystem>();
         abilities = GetComponent<Abilities>();
         spawnPoint = gameObject.transform.Find("spawnPoint");

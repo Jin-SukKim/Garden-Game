@@ -20,7 +20,7 @@ public class BulletBearClaw : BulletController
     {
         if (gameObject.tag == "Bullet")
         {
-            if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.team)
+            if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.Team)
             {
                 other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
                 GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
@@ -31,7 +31,7 @@ public class BulletBearClaw : BulletController
             }
 
             // Shooting team mate case
-            if (other.gameObject.GetComponent<Teams>().TeamsFaction == entity.team)
+            if (other.gameObject.GetComponent<Teams>().TeamsFaction == entity.Team)
             {
                 GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
                 Destroy(gameObject);
