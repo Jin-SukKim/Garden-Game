@@ -108,7 +108,11 @@ MonoBehaviour:
   speed: 20
   lifeTime: 5
   damageToGive: 1
-  impactEffect: {fileID: 4344580563010153815, guid: 9260327777720af4f9e7fc029ae7ace7,
+  impactEffectDruid: {fileID: 4235872098755226818, guid: 3e24676736e05564eac9b3b96bde1f03,
+    type: 3}
+  impactEffectIndustrialist: {fileID: 2485418032884307932, guid: 6a9a5b273bdadfa428e722b6de928cb3,
+    type: 3}
+  impactEffect: {fileID: 5969405619418353533, guid: 9e157d8a28ef61241b1420db0680a18c,
     type: 3}
   collisionSound: {fileID: 8300000, guid: 08b9bafa0cb6f904fb2d06ac9854f05c, type: 3}
   shootingLoc: {x: 0, y: 0, z: 0}

@@ -14,6 +14,8 @@ public class BulletController : MonoBehaviour
     public float lifeTime;
 
     public int damageToGive;
+    public GameObject impactEffectDruid;
+    public GameObject impactEffectIndustrialist;
     public GameObject impactEffect;
     public AudioClip collisionSound;
     public Vector3 shootingLoc;
@@ -61,10 +63,24 @@ public class BulletController : MonoBehaviour
             // For now anything with this tag can be destroyed in the same way.
             if (other.gameObject.tag == "Destructible" || other.gameObject.GetComponent<Teams>().TeamsFaction != entity.team)
             {
-                other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
-                GameObject obj = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-                Destroy(obj, 2f);
-                Destroy(gameObject);
+                if (other.gameObject.GetComponent<Teams>().TeamsFaction.ToString() == "druid")
+                {
+                    GameObject endeffect = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+                    Destroy(endeffect, 2f);
+                    other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
+                    GameObject obj = (GameObject)Instantiate(impactEffectDruid, transform.position, transform.rotation);
+                    Destroy(obj, 2f);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    GameObject endeffect = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+                    Destroy(endeffect, 2f);
+                    other.gameObject.GetComponent<DamageSystem>().Damage(damageToGive);
+                    GameObject obj = (GameObject)Instantiate(impactEffectIndustrialist, transform.position, transform.rotation);
+                    Destroy(obj, 2f);
+                    Destroy(gameObject);
+                }
             }
             else if (other.gameObject.GetComponent<Entity>() == entity) // If it's the caster case
             {

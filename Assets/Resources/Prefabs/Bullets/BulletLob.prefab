@@ -4809,6 +4809,10 @@ MonoBehaviour:
   speed: 5
   lifeTime: 1.5
   damageToGive: 1
+  impactEffectDruid: {fileID: 4235872098755226818, guid: 3e24676736e05564eac9b3b96bde1f03,
+    type: 3}
+  impactEffectIndustrialist: {fileID: 2485418032884307932, guid: 6a9a5b273bdadfa428e722b6de928cb3,
+    type: 3}
   impactEffect: {fileID: 6076259720710665685, guid: 827c1d510cce06246ad99ec577511ed2,
     type: 3}
   collisionSound: {fileID: 8300000, guid: 5298597206e01574d802a5ad498e9205, type: 3}
