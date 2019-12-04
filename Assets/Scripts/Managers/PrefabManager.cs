@@ -17,7 +17,7 @@ public static class PrefabManager
     {
         LoadBullets();
         LoadPlaceables();
-        var minion = Resources.Load("EnemyAITester");
+        var minion = Resources.Load("minionSummoned");
         minionPrefab = minion as GameObject;
     }
 

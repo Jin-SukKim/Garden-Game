@@ -76,7 +76,10 @@ public class TimeManager : MonoBehaviourPun
     [PunRPC]
     private void addProp(string winner)
     {
-        properties.Add("winner", winner);
+        if(properties["winner"] == null)
+        {
+            properties.Add("winner", winner);
+        }
     }
 
     // Tracks time
