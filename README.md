@@ -10,7 +10,7 @@ Select where you want to save the Build Folder>
 After building, the main executable will be called "GardenGame.exe" or "GardenGame.app"
 
 
-![Alt text](/COMP4956PrimaryRepo/Readme Files/BuildSettings.PNG?raw=true "Optional Title")
+![Alt text](https://github.com/eamonnalphin/COMP4956PrimaryRepo/blob/master/Readme%20Files/BuildSettings.PNG?raw=true "Optional Title")
 
 
 
